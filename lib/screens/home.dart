@@ -5,8 +5,8 @@ class Home extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(20.0),
+        const Padding(
+          padding: EdgeInsets.all(20.0),
           child: Text(
             "Today's outfit",
             style: TextStyle(
@@ -18,7 +18,7 @@ class Home extends StatelessWidget {
         Expanded(
           child: Center(
             child: Container(
-              child: Text('You are wearing these items:'),
+              child: const Text('You are wearing these items:'),
             ),
           ),
         ),
