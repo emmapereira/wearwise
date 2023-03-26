@@ -60,6 +60,18 @@ flutter:
 
   assets:
   - lib/assets/clothing_items.json
+  - lib/assets/images/image1.png
+  - lib/assets/images/image2.png
+  - lib/assets/images/image3.png
+  - lib/assets/images/image4.png
+  - lib/assets/images/image5.png
+  - lib/assets/images/image6.png
+  - lib/assets/images/image7.png
+  - lib/assets/images/image8.png
+  - lib/assets/images/image9.png
+  - lib/assets/images/image10.png
+  - lib/assets/images/image11.png
+  - lib/assets/images/image12.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

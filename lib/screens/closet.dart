@@ -148,6 +148,19 @@ class _ClosetState extends State<Closet> {
                                     ),
                                   ),
                                 ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Center(
+                                      child: Image.asset(
+                                        'lib/assets/images/image${clothingItem.id}.png',
+                                        width: double
+                                            .infinity, // set the width to the maximum available width
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
