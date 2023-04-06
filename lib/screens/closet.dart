@@ -91,7 +91,7 @@ class _ClosetState extends State<Closet> {
                       Color tagColor = Colors.grey;
                       if (clothingItem.type == "jacket")
                         tagColor = Colors.brown;
-                      else if (clothingItem.type == "jeans")
+                      else if (clothingItem.type == "pants")
                         tagColor = Colors.green;
                       else if (clothingItem.type == "t-shirt")
                         tagColor = Colors.deepOrange;
@@ -101,6 +101,8 @@ class _ClosetState extends State<Closet> {
                         tagColor = Colors.red;
                       else if (clothingItem.type == "coat")
                         tagColor = Colors.blue;
+                      else if (clothingItem.type == "sweatshirt")
+                        tagColor = Colors.yellow;
 
                       return GridTile(
                         child: Padding(
