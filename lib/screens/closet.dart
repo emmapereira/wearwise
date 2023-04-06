@@ -19,7 +19,6 @@ class _ClosetState extends State<Closet> {
   void initState() {
     super.initState();
     _futureClothingItems = getClothingItems();
-    print(_futureClothingItems);
   }
 
   @override
@@ -37,6 +36,7 @@ class _ClosetState extends State<Closet> {
                 color: Color(0xff865537)),
           ),
         ),
+        //here the search bar and the filter icon are displayed
         Padding(
           padding: const EdgeInsets.only(bottom: 10.0),
           child: Padding(
@@ -72,6 +72,7 @@ class _ClosetState extends State<Closet> {
             ),
           ),
         ),
+        //here we display the grid with the closet items
         Expanded(
           child: FutureBuilder<List<ClothingItem>>(
             future: _futureClothingItems,
