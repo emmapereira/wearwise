@@ -122,7 +122,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByType("shoes");
                                   });
@@ -141,7 +140,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByType("skirt");
                                   });
@@ -160,7 +158,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByType("jacket");
                                   });
@@ -179,7 +176,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByType("pants");
                                   });
@@ -198,7 +194,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByType("t-shirt");
                                   });
@@ -217,7 +212,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByType("coat");
                                   });
@@ -236,7 +230,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByType("sweatshirt");
                                   });
@@ -270,7 +263,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByColour("white");
                                   });
@@ -289,7 +281,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByColour("black");
                                   });
@@ -308,7 +299,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByColour("grey");
                                   });
@@ -327,7 +317,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByColour("yellow");
                                   });
@@ -346,7 +335,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByColour("beige");
                                   });
@@ -365,7 +353,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByColour(
                                             "light blue");
@@ -385,7 +372,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByColour(
                                             "dark blue");
@@ -405,7 +391,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsByColour(
                                             "dark green");
@@ -440,7 +425,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsBySeason("spring");
                                   });
@@ -459,7 +443,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsBySeason("summer");
                                   });
@@ -478,7 +461,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsBySeason("fall");
                                   });
@@ -497,7 +479,6 @@ class _ClosetState extends State<Closet> {
                                 color: const Color(0xff865537),
                                 onPressed: () {
                                   setState(() {
-                                    _isVisible = !_isVisible;
                                     _futureClothingItems =
                                         filterClothingItemsBySeason("winter");
                                   });
