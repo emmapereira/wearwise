@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'selectable_closet.dart';
 
 class Home extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -27,7 +28,11 @@ class Home extends StatelessWidget {
           Center(
             child: GestureDetector(
               onTap: () {
-                // Do something when the plus sign is clicked
+                // navigate to selectable closet screen
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SelectableCloset()));
               },
               child: Container(
                 width: 40.0,
