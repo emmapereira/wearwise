@@ -3,6 +3,8 @@ import 'selectable_closet.dart';
 
 class Home extends StatelessWidget {
   Widget build(BuildContext context) {
+    final Object? selectedItems = ModalRoute.of(context)?.settings.arguments;
+
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,6 +27,23 @@ class Home extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20.0),
+          if (selectedItems != null && selectedItems is List)
+            Expanded(
+              child: ListView.builder(
+                itemCount: selectedItems.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final item = selectedItems[index];
+                  return Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(item.toString()),
+                    ),
+                  );
+                },
+              ),
+            ),
+          const SizedBox(height: 16.0),
+          // the plus sign here
           Center(
             child: GestureDetector(
               onTap: () {
@@ -54,8 +73,6 @@ class Home extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 16.0),
-          // Add the rest of your widgets here
         ],
       ),
     );

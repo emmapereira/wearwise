@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wearwise/models/models.dart';
+import 'home.dart';
 
 class SelectableCloset extends StatefulWidget {
   @override
@@ -676,17 +677,21 @@ class _SelectableClosetState extends State<SelectableCloset> {
                         child: ElevatedButton(
                           onPressed: () {
                             // handle the "Cancel" button press
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home()));
                           },
                           style: ElevatedButton.styleFrom(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 24.0, vertical: 12.0),
-                            textStyle: TextStyle(fontSize: 18.0),
+                            textStyle: const TextStyle(fontSize: 18.0),
                           ),
-                          child:
-                              Text("Cancel", style: TextStyle(fontSize: 18.0)),
+                          child: const Text("Cancel",
+                              style: TextStyle(fontSize: 18.0)),
                         ),
                       ),
-                      SizedBox(width: 16.0),
+                      const SizedBox(width: 16.0),
                       Container(
                         decoration: BoxDecoration(
                           boxShadow: [
@@ -694,13 +699,19 @@ class _SelectableClosetState extends State<SelectableCloset> {
                               color: Colors.grey.withOpacity(0.5),
                               spreadRadius: 2,
                               blurRadius: 5,
-                              offset: Offset(0, 3),
+                              offset: const Offset(0, 3),
                             ),
                           ],
                         ),
                         child: ElevatedButton(
                           onPressed: () {
                             // handle the "Save" button press
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home(),
+                                    settings: RouteSettings(
+                                        arguments: _selectedItems)));
                           },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(
