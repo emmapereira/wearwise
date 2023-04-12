@@ -16,13 +16,13 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
+      margin: const EdgeInsets.only(
           bottom: 150), // Add a margin to move the expanded widget up
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
+          const Padding(
+            padding: EdgeInsets.all(20.0),
             child: Text(
               "Profile",
               style: TextStyle(
@@ -44,12 +44,12 @@ class Profile extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text(
                       name,
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(height: 8),
                     Text(
                       email,
-                      style: Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ],
                 ),
