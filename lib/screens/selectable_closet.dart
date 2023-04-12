@@ -503,142 +503,217 @@ class _SelectableClosetState extends State<SelectableCloset> {
               ),
             ),
           ),
-          //here we display the grid with the closet items
           Expanded(
-            child: FutureBuilder<List<ClothingItem>>(
-              future: _futureClothingItems,
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<ClothingItem>> snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasData) {
-                    return GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2),
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final clothingItem = snapshot.data![index];
+            child: Stack(
+              children: [
+                //here we display the grid with the closet items
+                Expanded(
+                  child: FutureBuilder<List<ClothingItem>>(
+                    future: _futureClothingItems,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<ClothingItem>> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        if (snapshot.hasData) {
+                          return GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2),
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              final clothingItem = snapshot.data![index];
 
-                        Color tagColor = Colors.grey;
-                        if (clothingItem.type == "jacket") {
-                          tagColor = Colors.brown;
-                        } else if (clothingItem.type == "pants") {
-                          tagColor = Colors.green;
-                        } else if (clothingItem.type == "t-shirt") {
-                          tagColor = Colors.deepOrange;
-                        } else if (clothingItem.type == "skirt") {
-                          tagColor = Colors.purple;
-                        } else if (clothingItem.type == "shoes") {
-                          tagColor = Colors.red;
-                        } else if (clothingItem.type == "coat") {
-                          tagColor = Colors.blue;
-                        } else if (clothingItem.type == "sweatshirt") {
-                          tagColor = Colors.yellow;
+                              Color tagColor = Colors.grey;
+                              if (clothingItem.type == "jacket") {
+                                tagColor = Colors.brown;
+                              } else if (clothingItem.type == "pants") {
+                                tagColor = Colors.green;
+                              } else if (clothingItem.type == "t-shirt") {
+                                tagColor = Colors.deepOrange;
+                              } else if (clothingItem.type == "skirt") {
+                                tagColor = Colors.purple;
+                              } else if (clothingItem.type == "shoes") {
+                                tagColor = Colors.red;
+                              } else if (clothingItem.type == "coat") {
+                                tagColor = Colors.blue;
+                              } else if (clothingItem.type == "sweatshirt") {
+                                tagColor = Colors.yellow;
+                              }
+
+                              return Stack(
+                                children: [
+                                  GridTile(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.5),
+                                              spreadRadius: 2,
+                                              blurRadius: 5,
+                                              offset: const Offset(0, 3),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                clothingItem.name,
+                                                style: const TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 12.0,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 8.0),
+                                              child: Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8.0,
+                                                        vertical: 4.0),
+                                                decoration: BoxDecoration(
+                                                  color: tagColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20.0),
+                                                ),
+                                                child: Text(
+                                                  clothingItem.type,
+                                                  style: const TextStyle(
+                                                    fontSize: 10.0,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Center(
+                                                  child: Image.asset(
+                                                    'lib/assets/images/image${clothingItem.id}.png',
+                                                    width: double
+                                                        .infinity, // set the width to the maximum available width
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    top: 8,
+                                    right: 8,
+                                    child: Checkbox(
+                                      value: _selectedItems
+                                          .contains(clothingItem.id),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(3.0),
+                                      ),
+                                      onChanged: (value) {
+                                        setState(() {
+                                          if (value == true) {
+                                            _selectedItems.add(clothingItem.id);
+                                          } else {
+                                            _selectedItems
+                                                .remove(clothingItem.id);
+                                          }
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        } else {
+                          return const Center(
+                            child: Text("No clothing items found."),
+                          );
                         }
-
-                        return Stack(
-                          children: [
-                            GridTile(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.5),
-                                        spreadRadius: 2,
-                                        blurRadius: 5,
-                                        offset: const Offset(0, 3),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          clothingItem.name,
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 12.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 8.0),
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 8.0, vertical: 4.0),
-                                          decoration: BoxDecoration(
-                                            color: tagColor,
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                          ),
-                                          child: Text(
-                                            clothingItem.type,
-                                            style: const TextStyle(
-                                              fontSize: 10.0,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Center(
-                                            child: Image.asset(
-                                              'lib/assets/images/image${clothingItem.id}.png',
-                                              width: double
-                                                  .infinity, // set the width to the maximum available width
-                                              fit: BoxFit.contain,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              top: 8,
-                              right: 8,
-                              child: Checkbox(
-                                value: _selectedItems.contains(clothingItem.id),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(3.0),
-                                ),
-                                onChanged: (value) {
-                                  setState(() {
-                                    if (value == true) {
-                                      _selectedItems.add(clothingItem.id);
-                                    } else {
-                                      _selectedItems.remove(clothingItem.id);
-                                    }
-                                  });
-                                },
-                              ),
+                      } else {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    },
+                  ),
+                ),
+                Positioned(
+                  bottom: 16.0,
+                  left: 0,
+                  right: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 3),
                             ),
                           ],
-                        );
-                      },
-                    );
-                  } else {
-                    return const Center(
-                      child: Text("No clothing items found."),
-                    );
-                  }
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // handle the "Cancel" button press
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 24.0, vertical: 12.0),
+                            textStyle: TextStyle(fontSize: 18.0),
+                          ),
+                          child:
+                              Text("Cancel", style: TextStyle(fontSize: 18.0)),
+                        ),
+                      ),
+                      SizedBox(width: 16.0),
+                      Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            // handle the "Save" button press
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 24.0, vertical: 12.0),
+                            textStyle: TextStyle(fontSize: 18.0),
+                          ),
+                          child: Text("Save", style: TextStyle(fontSize: 18.0)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ],
