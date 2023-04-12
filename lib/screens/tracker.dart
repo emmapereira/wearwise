@@ -14,7 +14,10 @@ class Tracker extends StatefulWidget {
 
 class _TrackerState extends State<Tracker> {
   late Future<List<ClothingItem>> _futureClothingItems;
-  // late bool _isVisible;
+  late bool _showWeeks;
+  late bool _showMonths;
+  late bool _showSeasons;
+  late bool _showYears;
 
   List<String> clothesList = [
     'Shoes',
@@ -31,6 +34,10 @@ class _TrackerState extends State<Tracker> {
   void initState() {
     super.initState();
     setFilters();
+    _showWeeks = false;
+    _showMonths = false;
+    _showSeasons = false;
+    _showYears = true;
     _futureClothingItems = getClothingItems();
   }
 
@@ -134,7 +141,157 @@ class _TrackerState extends State<Tracker> {
                 style:
                     const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
               ),
-              const SizedBox(height: 20.0),
+              const SizedBox(height: 10.0),
+              Positioned(
+                bottom: 16.0,
+                left: 0,
+                right: 0,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "Weeks" button press
+                          setState(() {
+                            _showWeeks = true;
+                            _showMonths = _showSeasons = _showYears = false;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showWeeks
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showWeeks
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("Weeks",
+                            style: TextStyle(fontSize: 18.0)),
+                      ),
+                    ),
+                    const SizedBox(width: 3.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "Months" button press
+                          setState(() {
+                            _showMonths = true;
+                            _showWeeks = _showSeasons = _showYears = false;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showMonths
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showMonths
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("Months",
+                            style: TextStyle(fontSize: 18.0)),
+                      ),
+                    ),
+                    const SizedBox(width: 3.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "Seasons" button press
+                          setState(() {
+                            _showSeasons = true;
+                            _showWeeks = _showMonths = _showYears = false;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showSeasons
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showSeasons
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("Seasons",
+                            style: TextStyle(fontSize: 18.0)),
+                      ),
+                    ),
+                    const SizedBox(width: 3.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "Years" button press
+                          setState(() {
+                            _showYears = true;
+                            _showWeeks = _showMonths = _showSeasons = false;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showYears
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showYears
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("Years",
+                            style: TextStyle(fontSize: 18.0)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 15.0),
               Text(
                 '$dropDownValue you haven\'t worn in this time period:',
                 style:
