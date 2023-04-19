@@ -53,13 +53,32 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
-      body: _currentIndex == 0
-          ? Home(selectedItems: widget.appState.selectedItems)
-          : _currentIndex == 1
-              ? Closet()
-              : _currentIndex == 2
-                  ? Tracker()
-                  : Profile(),
+      body: Navigator(
+        onGenerateRoute: (RouteSettings settings) {
+          Widget page;
+          switch (settings.name) {
+            case '/':
+              page = Home(selectedItems: widget.appState.selectedItems);
+              break;
+            case '/closet':
+              page = Closet();
+              break;
+            case '/tracker':
+              page = Tracker();
+              break;
+            case '/profile':
+              page = Profile();
+              break;
+            default:
+              page = Home(selectedItems: widget.appState.selectedItems);
+              break;
+          }
+          return PageRouteBuilder(
+            pageBuilder: (_, __, ___) => page,
+            transitionDuration: Duration(seconds: 0),
+          );
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
