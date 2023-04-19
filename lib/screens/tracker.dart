@@ -20,15 +20,11 @@ class ChartData {
   final double size;
 }
 
-class ClothesData {
-  ClothesData(
-      this.id, this.day, this.month, this.year, this.weekday, this.season);
-  final String id;
-  final double day;
-  final double month;
-  final double year;
-  final String weekday;
-  final String season;
+class YearData {
+  YearData(this.year, this.id, this.count);
+  final DateTime year;
+  final int id;
+  final double count;
 }
 
 class _TrackerState extends State<Tracker> {
@@ -72,6 +68,29 @@ class _TrackerState extends State<Tracker> {
     ChartData(DateTime.utc(2021, 11, 9), 34, 0.38),
     ChartData(DateTime.utc(2022, 11, 9), 52, 0.29),
     ChartData(DateTime.utc(2023, 11, 9), 40, 0.34)
+  ];
+
+  final List<YearData> yearData = [
+    YearData(DateTime.utc(2023, 6, 1), 1, id1_2023),
+    YearData(DateTime.utc(2022, 6, 1), 1, id1_2022),
+    YearData(DateTime.utc(2021, 6, 1), 1, id1_2021),
+    YearData(DateTime.utc(2020, 6, 1), 1, id1_2020),
+    YearData(DateTime.utc(2019, 6, 1), 1, id1_2019),
+    YearData(DateTime.utc(2023, 6, 1), 2, id2_2023),
+    YearData(DateTime.utc(2022, 6, 1), 2, id2_2022),
+    YearData(DateTime.utc(2021, 6, 1), 2, id2_2021),
+    YearData(DateTime.utc(2020, 6, 1), 2, id2_2020),
+    YearData(DateTime.utc(2019, 6, 1), 2, id2_2019),
+    YearData(DateTime.utc(2023, 6, 1), 3, id3_2023),
+    YearData(DateTime.utc(2022, 6, 1), 3, id3_2022),
+    YearData(DateTime.utc(2021, 6, 1), 3, id3_2021),
+    YearData(DateTime.utc(2020, 6, 1), 3, id3_2020),
+    YearData(DateTime.utc(2019, 6, 1), 4, id3_2019),
+    YearData(DateTime.utc(2023, 6, 1), 4, id3_2023),
+    YearData(DateTime.utc(2022, 6, 1), 4, id3_2022),
+    YearData(DateTime.utc(2021, 6, 1), 4, id3_2021),
+    YearData(DateTime.utc(2020, 6, 1), 4, id3_2020),
+    YearData(DateTime.utc(2019, 6, 1), 4, id3_2019),
   ];
 
   @override
@@ -310,8 +329,8 @@ class _TrackerState extends State<Tracker> {
                               backgroundColor: _showYears
                                   ? const Color(0xff865537)
                                   : Colors.white,
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 24.0, vertical: 12.0),
+                              //padding: const EdgeInsets.symmetric(
+                              // horizontal: 24.0, vertical: 12.0),
                               textStyle: const TextStyle(fontSize: 18.0),
                             ),
                             child: const Text("Years",
@@ -321,18 +340,26 @@ class _TrackerState extends State<Tracker> {
                       ],
                     ),
                   ),
+                  const SizedBox(height: 8.0),
                   SingleChildScrollView(
                       child: SfCartesianChart(
+                          tooltipBehavior: TooltipBehavior(enable: true),
                           primaryXAxis: DateTimeAxis(
-                              minimum: DateTime.utc(2018, 11, 9),
-                              maximum: DateTime.utc(2024, 11, 9)),
+                              rangePadding: ChartRangePadding.additional,
+                              minimum: DateTime.utc(2018, 6, 1),
+                              maximum: DateTime.utc(2024, 6, 1)),
+                          primaryYAxis: NumericAxis(
+                            rangePadding: ChartRangePadding.additional,
+                          ),
                           series: <ChartSeries>[
                         // Renders bubble chart
-                        BubbleSeries<ChartData, DateTime>(
-                            dataSource: chartData,
-                            sizeValueMapper: (ChartData data, _) => data.size,
-                            xValueMapper: (ChartData data, _) => data.x,
-                            yValueMapper: (ChartData data, _) => data.y)
+                        BubbleSeries<YearData, DateTime>(
+                            enableTooltip: true,
+                            dataSource: yearData,
+                            sizeValueMapper: (YearData data, _) => data.count,
+                            minimumRadius: 0,
+                            xValueMapper: (YearData data, _) => data.year,
+                            yValueMapper: (YearData data, _) => data.id)
                       ])),
                   const SizedBox(height: 15.0),
                   Text(
