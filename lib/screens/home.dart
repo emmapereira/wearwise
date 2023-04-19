@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:wearwise/models/models.dart';
 import 'selectable_closet.dart';
 
 class Home extends StatelessWidget {
   Widget build(BuildContext context) {
-    final Object? selectedItems = ModalRoute.of(context)?.settings.arguments;
+    final List<String>? selectedItems =
+        ModalRoute.of(context)?.settings.arguments as List<String>?;
 
     return Scaffold(
       body: Column(
@@ -32,12 +34,36 @@ class Home extends StatelessWidget {
               child: ListView.builder(
                 itemCount: selectedItems.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final item = selectedItems[index];
-                  return Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(item.toString()),
-                    ),
+                  final itemId = selectedItems[index].toString();
+                  return FutureBuilder<ClothingItem?>(
+                    future: findClothingItemById(itemId),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<ClothingItem?> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                      if (snapshot.hasError) {
+                        return Center(child: Text('Error: ${snapshot.error}'));
+                      }
+                      final itemInfo = snapshot.data!;
+                      return Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              itemInfo != null
+                                  ? Image.asset(
+                                      'lib/assets/images/image${itemId}.png',
+                                      width: 50,
+                                      height: 50)
+                                  : SizedBox(width: 50, height: 50),
+                              const SizedBox(width: 8.0),
+                              Text(itemInfo.name),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                   );
                 },
               ),
