@@ -3,9 +3,13 @@ import 'package:wearwise/models/models.dart';
 import 'selectable_closet.dart';
 
 class Home extends StatelessWidget {
+  final List<String> selectedItems;
+
+  const Home({Key? key, required this.selectedItems}) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
-    final List<String>? selectedItems =
-        ModalRoute.of(context)?.settings.arguments as List<String>?;
+    //final List<String>? selectedItems = ModalRoute.of(context)?.settings.arguments as List<String>?;
 
     return Scaffold(
       body: Column(
@@ -24,7 +28,7 @@ class Home extends StatelessWidget {
           const Padding(
             padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
             child: Text(
-              'You are wearing the following items:',
+              'Today you have worn all of these items:',
               style: TextStyle(fontSize: 16.0),
             ),
           ),
@@ -77,7 +81,8 @@ class Home extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SelectableCloset()));
+                        builder: (context) =>
+                            SelectableCloset(selectedItems: selectedItems)));
               },
               child: Container(
                 width: 40.0,

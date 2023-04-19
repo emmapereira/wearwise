@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:wearwise/models/models.dart';
 import 'home.dart';
+import '../models/app_state.dart';
 
 class SelectableCloset extends StatefulWidget {
+  final List<String> selectedItems;
+  const SelectableCloset({Key? key, required this.selectedItems})
+      : super(key: key);
+
   @override
   _SelectableClosetState createState() => _SelectableClosetState();
 
@@ -16,13 +21,14 @@ class SelectableCloset extends StatefulWidget {
 class _SelectableClosetState extends State<SelectableCloset> {
   late Future<List<ClothingItem>> _futureClothingItems;
   late bool _isVisible;
-  Set<String> _selectedItems = {};
+  //late List<String> _selectedItems;
 
   @override
   void initState() {
     super.initState();
     _futureClothingItems = getClothingItems();
     _isVisible = false;
+    //_selectedItems = selectedItems;
   }
 
   @override
@@ -621,7 +627,7 @@ class _SelectableClosetState extends State<SelectableCloset> {
                                     top: 8,
                                     right: 8,
                                     child: Checkbox(
-                                      value: _selectedItems
+                                      value: widget.selectedItems
                                           .contains(clothingItem.id),
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
@@ -630,9 +636,10 @@ class _SelectableClosetState extends State<SelectableCloset> {
                                       onChanged: (value) {
                                         setState(() {
                                           if (value == true) {
-                                            _selectedItems.add(clothingItem.id);
+                                            widget.selectedItems
+                                                .add(clothingItem.id);
                                           } else {
-                                            _selectedItems
+                                            widget.selectedItems
                                                 .remove(clothingItem.id);
                                           }
                                         });
@@ -680,7 +687,9 @@ class _SelectableClosetState extends State<SelectableCloset> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Home()));
+                                    builder: (context) => Home(
+                                          selectedItems: [],
+                                        )));
                           },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
@@ -709,9 +718,11 @@ class _SelectableClosetState extends State<SelectableCloset> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Home(),
+                                    builder: (context) => Home(
+                                          selectedItems: widget.selectedItems,
+                                        ),
                                     settings: RouteSettings(
-                                        arguments: _selectedItems.toList())));
+                                        arguments: widget.selectedItems)));
                           },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(

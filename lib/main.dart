@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:wearwise/models/models.dart';
 import 'screens/home.dart';
 import 'screens/closet.dart';
 import 'screens/tracker.dart';
 import 'screens/profile.dart';
+import 'models/app_state.dart';
 
 void main() {
-  runApp(const MyApp());
+  final appState = AppState();
+  appState.init();
+  runApp(MyApp(appState: appState));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final AppState appState;
+  const MyApp({Key? key, required this.appState}) : super(key: key);
 
   // This widget is the root of your application.
   @override
@@ -22,14 +25,16 @@ class MyApp extends StatelessWidget {
         bottomNavigationBarTheme:
             const BottomNavigationBarThemeData(selectedItemColor: Colors.black),
       ),
-      home: const MyHomePage(title: 'WearWise'),
+      home: MyHomePage(title: 'WearWise', appState: appState),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({Key? key, required this.title, required this.appState})
+      : super(key: key);
   final String title;
+  final AppState appState;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -37,12 +42,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
-  final List<Widget> _children = [
-    Home(),
+  /* final List<Widget> _children = [
+    Home(selectedItems: widget.appState.selectedItems),
     Closet(),
     Tracker(),
     Profile(),
-  ];
+  ]; */
 
   void onTabTapped(int index) {
     setState(() {
@@ -54,7 +59,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
-      body: _children[_currentIndex],
+      //body: _children[_currentIndex],
+      body: _currentIndex == 0
+          ? Home(selectedItems: widget.appState.selectedItems)
+          : _currentIndex == 1
+              ? Closet()
+              : _currentIndex == 2
+                  ? Tracker()
+                  : Profile(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         currentIndex: _currentIndex,
