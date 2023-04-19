@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wearwise/models/models.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Tracker extends StatefulWidget {
   @override
@@ -10,6 +11,13 @@ class Tracker extends StatefulWidget {
     // TODO: implement build
     throw UnimplementedError();
   }
+}
+
+class ChartData {
+  ChartData(this.x, this.y, this.size);
+  final DateTime x;
+  final double y;
+  final double size;
 }
 
 class _TrackerState extends State<Tracker> {
@@ -46,6 +54,14 @@ class _TrackerState extends State<Tracker> {
       dropDownValue = clothesList[4];
     });
   }
+
+  final List<ChartData> chartData = [
+    ChartData(DateTime.utc(2019, 11, 9), 35, 0.32),
+    ChartData(DateTime.utc(2020, 11, 9), 38, 0.21),
+    ChartData(DateTime.utc(2021, 11, 9), 34, 0.38),
+    ChartData(DateTime.utc(2022, 11, 9), 52, 0.29),
+    ChartData(DateTime.utc(2023, 11, 9), 40, 0.34)
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -291,6 +307,19 @@ class _TrackerState extends State<Tracker> {
                   ],
                 ),
               ),
+              Scaffold(
+                  body: Center(
+                      child: Container(
+                          child: SfCartesianChart(
+                              primaryXAxis: DateTimeAxis(),
+                              series: <ChartSeries>[
+                    // Renders bubble chart
+                    BubbleSeries<ChartData, DateTime>(
+                        dataSource: chartData,
+                        sizeValueMapper: (ChartData data, _) => data.size,
+                        xValueMapper: (ChartData data, _) => data.x,
+                        yValueMapper: (ChartData data, _) => data.y)
+                  ])))),
               const SizedBox(height: 15.0),
               Text(
                 '$dropDownValue you haven\'t worn in this time period:',
