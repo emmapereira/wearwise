@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:wearwise/models/models.dart';
 import 'screens/home.dart';
 import 'screens/closet.dart';
@@ -7,16 +6,7 @@ import 'screens/tracker.dart';
 import 'screens/profile.dart';
 
 void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider<ClothingItem>(
-          create: (_) => ClothingItem(),
-        ),
-      ],
-      child: const MyApp(),
-    ),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
