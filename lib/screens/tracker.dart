@@ -20,6 +20,17 @@ class ChartData {
   final double size;
 }
 
+class ClothesData {
+  ClothesData(
+      this.id, this.day, this.month, this.year, this.weekday, this.season);
+  final String id;
+  final double day;
+  final double month;
+  final double year;
+  final String weekday;
+  final String season;
+}
+
 class _TrackerState extends State<Tracker> {
   late Future<List<ClothingItem>> _futureClothingItems;
   late bool _showWeeks;
@@ -66,271 +77,274 @@ class _TrackerState extends State<Tracker> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Text(
-            "Tracker",
-            style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff865537)),
-          ),
-        ),
-        // Padding(
-        //   padding: const EdgeInsets.only(bottom: 10.0),
-        //   child: Padding(
-        //     padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        //     child: Row(
-        //       children: [
-        //         Expanded(
-        //           child: Container(
-        //             decoration: BoxDecoration(
-        //               color: Colors.grey[200],
-        //               borderRadius: BorderRadius.circular(25.0),
-        //             ),
-        //             child: TextField(
-        //               onChanged: (text) async {
-        //                 // setState(() {
-        //                 //   _futureClothingItems =
-        //                 //       filterClothingItemsByName(text);
-        //                 // });
-        //               },
-        //               decoration: const InputDecoration(
-        //                 hintText: 'Select Type',
-        //                 contentPadding: EdgeInsets.symmetric(
-        //                   horizontal: 20.0,
-        //                   vertical: 15.0,
-        //                 ),
-        //                 border: InputBorder.none,
-        //                 suffixIcon: Icon(Icons.arrow_drop_down),
-        //               ),
-        //             ),
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
-        Container(
-          margin: const EdgeInsets.all(20.0),
-          child: Column(
-            children: <Widget>[
-              DropdownButtonFormField(
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                      vertical: 15.0,
-                    ),
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(30.0),
-                      ),
-                    ),
-                    filled: true,
-                    hintStyle: TextStyle(color: Colors.grey[600]),
-                    hintText: "Name",
-                    fillColor: Colors.grey[200]),
-                value: dropDownValue,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    dropDownValue = newValue!;
-                  });
-                },
-                items: clothesList
-                    .map((clothesTitle) => DropdownMenuItem(
-                        value: clothesTitle, child: Text(clothesTitle)))
-                    .toList(),
+        resizeToAvoidBottomInset: true,
+        body: Container(
+            child: SingleChildScrollView(
+                child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                "Tracker",
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff865537)),
               ),
-            ],
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Times you wore each of your $dropDownValue:',
-                style:
-                    const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
+            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(bottom: 10.0),
+            //   child: Padding(
+            //     padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            //     child: Row(
+            //       children: [
+            //         Expanded(
+            //           child: Container(
+            //             decoration: BoxDecoration(
+            //               color: Colors.grey[200],
+            //               borderRadius: BorderRadius.circular(25.0),
+            //             ),
+            //             child: TextField(
+            //               onChanged: (text) async {
+            //                 // setState(() {
+            //                 //   _futureClothingItems =
+            //                 //       filterClothingItemsByName(text);
+            //                 // });
+            //               },
+            //               decoration: const InputDecoration(
+            //                 hintText: 'Select Type',
+            //                 contentPadding: EdgeInsets.symmetric(
+            //                   horizontal: 20.0,
+            //                   vertical: 15.0,
+            //                 ),
+            //                 border: InputBorder.none,
+            //                 suffixIcon: Icon(Icons.arrow_drop_down),
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            Container(
+              margin: const EdgeInsets.all(20.0),
+              child: Column(
+                children: <Widget>[
+                  DropdownButtonFormField(
+                    decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                          vertical: 15.0,
+                        ),
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30.0),
+                          ),
+                        ),
+                        filled: true,
+                        hintStyle: TextStyle(color: Colors.grey[600]),
+                        hintText: "Name",
+                        fillColor: Colors.grey[200]),
+                    value: dropDownValue,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        dropDownValue = newValue!;
+                      });
+                    },
+                    items: clothesList
+                        .map((clothesTitle) => DropdownMenuItem(
+                            value: clothesTitle, child: Text(clothesTitle)))
+                        .toList(),
+                  ),
+                ],
               ),
-              const SizedBox(height: 10.0),
-              Positioned(
-                bottom: 16.0,
-                left: 0,
-                right: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Times you wore each of your $dropDownValue:',
+                    style: const TextStyle(
+                        fontSize: 18.0, color: Color(0xff865537)),
+                  ),
+                  const SizedBox(height: 10.0),
+                  Positioned(
+                    bottom: 16.0,
+                    left: 0,
+                    right: 0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // handle the "Weeks" button press
-                          setState(() {
-                            _showWeeks = true;
-                            _showMonths = _showSeasons = _showYears = false;
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: _showWeeks
-                              ? Colors.white
-                              : const Color(0xff865537),
-                          backgroundColor: _showWeeks
-                              ? const Color(0xff865537)
-                              : Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24.0, vertical: 12.0),
-                          textStyle: const TextStyle(fontSize: 18.0),
-                        ),
-                        child: const Text("Weeks",
-                            style: TextStyle(fontSize: 18.0)),
-                      ),
-                    ),
-                    const SizedBox(width: 3.0),
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // handle the "Weeks" button press
+                              setState(() {
+                                _showWeeks = true;
+                                _showMonths = _showSeasons = _showYears = false;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: _showWeeks
+                                  ? Colors.white
+                                  : const Color(0xff865537),
+                              backgroundColor: _showWeeks
+                                  ? const Color(0xff865537)
+                                  : Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24.0, vertical: 12.0),
+                              textStyle: const TextStyle(fontSize: 18.0),
+                            ),
+                            child: const Text("Weeks",
+                                style: TextStyle(fontSize: 18.0)),
                           ),
-                        ],
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // handle the "Months" button press
-                          setState(() {
-                            _showMonths = true;
-                            _showWeeks = _showSeasons = _showYears = false;
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: _showMonths
-                              ? Colors.white
-                              : const Color(0xff865537),
-                          backgroundColor: _showMonths
-                              ? const Color(0xff865537)
-                              : Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24.0, vertical: 12.0),
-                          textStyle: const TextStyle(fontSize: 18.0),
                         ),
-                        child: const Text("Months",
-                            style: TextStyle(fontSize: 18.0)),
-                      ),
-                    ),
-                    const SizedBox(width: 3.0),
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
+                        const SizedBox(width: 3.0),
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // handle the "Seasons" button press
-                          setState(() {
-                            _showSeasons = true;
-                            _showWeeks = _showMonths = _showYears = false;
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: _showSeasons
-                              ? Colors.white
-                              : const Color(0xff865537),
-                          backgroundColor: _showSeasons
-                              ? const Color(0xff865537)
-                              : Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24.0, vertical: 12.0),
-                          textStyle: const TextStyle(fontSize: 18.0),
-                        ),
-                        child: const Text("Seasons",
-                            style: TextStyle(fontSize: 18.0)),
-                      ),
-                    ),
-                    const SizedBox(width: 3.0),
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // handle the "Months" button press
+                              setState(() {
+                                _showMonths = true;
+                                _showWeeks = _showSeasons = _showYears = false;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: _showMonths
+                                  ? Colors.white
+                                  : const Color(0xff865537),
+                              backgroundColor: _showMonths
+                                  ? const Color(0xff865537)
+                                  : Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24.0, vertical: 12.0),
+                              textStyle: const TextStyle(fontSize: 18.0),
+                            ),
+                            child: const Text("Months",
+                                style: TextStyle(fontSize: 18.0)),
                           ),
-                        ],
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // handle the "Years" button press
-                          setState(() {
-                            _showYears = true;
-                            _showWeeks = _showMonths = _showSeasons = false;
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: _showYears
-                              ? Colors.white
-                              : const Color(0xff865537),
-                          backgroundColor: _showYears
-                              ? const Color(0xff865537)
-                              : Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24.0, vertical: 12.0),
-                          textStyle: const TextStyle(fontSize: 18.0),
                         ),
-                        child: const Text("Years",
-                            style: TextStyle(fontSize: 18.0)),
-                      ),
+                        const SizedBox(width: 3.0),
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // handle the "Seasons" button press
+                              setState(() {
+                                _showSeasons = true;
+                                _showWeeks = _showMonths = _showYears = false;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: _showSeasons
+                                  ? Colors.white
+                                  : const Color(0xff865537),
+                              backgroundColor: _showSeasons
+                                  ? const Color(0xff865537)
+                                  : Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24.0, vertical: 12.0),
+                              textStyle: const TextStyle(fontSize: 18.0),
+                            ),
+                            child: const Text("Seasons",
+                                style: TextStyle(fontSize: 18.0)),
+                          ),
+                        ),
+                        const SizedBox(width: 3.0),
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // handle the "Years" button press
+                              setState(() {
+                                _showYears = true;
+                                _showWeeks = _showMonths = _showSeasons = false;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: _showYears
+                                  ? Colors.white
+                                  : const Color(0xff865537),
+                              backgroundColor: _showYears
+                                  ? const Color(0xff865537)
+                                  : Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24.0, vertical: 12.0),
+                              textStyle: const TextStyle(fontSize: 18.0),
+                            ),
+                            child: const Text("Years",
+                                style: TextStyle(fontSize: 18.0)),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  SingleChildScrollView(
+                      child: SfCartesianChart(
+                          primaryXAxis: DateTimeAxis(
+                              minimum: DateTime.utc(2018, 11, 9),
+                              maximum: DateTime.utc(2024, 11, 9)),
+                          series: <ChartSeries>[
+                        // Renders bubble chart
+                        BubbleSeries<ChartData, DateTime>(
+                            dataSource: chartData,
+                            sizeValueMapper: (ChartData data, _) => data.size,
+                            xValueMapper: (ChartData data, _) => data.x,
+                            yValueMapper: (ChartData data, _) => data.y)
+                      ])),
+                  const SizedBox(height: 15.0),
+                  Text(
+                    '$dropDownValue you haven\'t worn in this time period:',
+                    style: const TextStyle(
+                        fontSize: 18.0, color: Color(0xff865537)),
+                  ),
+                  const SizedBox(height: 20.0),
+                ],
               ),
-              Scaffold(
-                  body: Center(
-                      child: Container(
-                          child: SfCartesianChart(
-                              primaryXAxis: DateTimeAxis(),
-                              series: <ChartSeries>[
-                    // Renders bubble chart
-                    BubbleSeries<ChartData, DateTime>(
-                        dataSource: chartData,
-                        sizeValueMapper: (ChartData data, _) => data.size,
-                        xValueMapper: (ChartData data, _) => data.x,
-                        yValueMapper: (ChartData data, _) => data.y)
-                  ])))),
-              const SizedBox(height: 15.0),
-              Text(
-                '$dropDownValue you haven\'t worn in this time period:',
-                style:
-                    const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
-              ),
-              const SizedBox(height: 20.0),
-            ],
-          ),
-        ),
-      ],
-    ));
+            ),
+          ],
+        ))));
   }
 }
