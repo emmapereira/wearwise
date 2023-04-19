@@ -96,6 +96,25 @@ Future<List<ClothingItem>> filterClothingItemsByName(String filterName) async {
   return filteredList;
 }
 
+//to get the clothing item information given the id
+Future<ClothingItem?> findClothingItemById(String id) async {
+  final String data =
+      await rootBundle.loadString('lib/assets/clothing_items.json');
+  final List<dynamic> jsonList = json.decode(data)['data'];
+  final itemJson =
+      jsonList.firstWhere((item) => item['id'] == id, orElse: () => null);
+  if (itemJson == null) {
+    return null;
+  }
+  return ClothingItem(
+    id: itemJson['id'],
+    name: itemJson['name'],
+    type: itemJson['type'],
+    colour: itemJson['colour'],
+    seasons: (itemJson['seasons'] as List<dynamic>).cast<String>(),
+  );
+}
+
 Future<List<ClothingItem>> filterClothingItemsBySeason(
     String filterSeason) async {
   final String data =

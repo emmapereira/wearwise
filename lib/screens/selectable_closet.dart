@@ -711,7 +711,7 @@ class _SelectableClosetState extends State<SelectableCloset> {
                                 MaterialPageRoute(
                                     builder: (context) => Home(),
                                     settings: RouteSettings(
-                                        arguments: _selectedItems)));
+                                        arguments: _selectedItems.toList())));
                           },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(
