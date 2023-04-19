@@ -21,14 +21,12 @@ class SelectableCloset extends StatefulWidget {
 class _SelectableClosetState extends State<SelectableCloset> {
   late Future<List<ClothingItem>> _futureClothingItems;
   late bool _isVisible;
-  //late List<String> _selectedItems;
 
   @override
   void initState() {
     super.initState();
     _futureClothingItems = getClothingItems();
     _isVisible = false;
-    //_selectedItems = selectedItems;
   }
 
   @override

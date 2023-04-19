@@ -42,12 +42,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
-  /* final List<Widget> _children = [
-    Home(selectedItems: widget.appState.selectedItems),
-    Closet(),
-    Tracker(),
-    Profile(),
-  ]; */
 
   void onTabTapped(int index) {
     setState(() {
@@ -59,7 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
-      //body: _children[_currentIndex],
       body: _currentIndex == 0
           ? Home(selectedItems: widget.appState.selectedItems)
           : _currentIndex == 1
