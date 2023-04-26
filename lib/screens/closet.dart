@@ -101,6 +101,11 @@ class _ClosetState extends State<Closet> {
                     });
                   },
                 ),
+                Icon(
+                  Icons.add,
+                  color: Color(0xff865537),
+                  size: 30.0,
+                ),
               ],
             ),
           ),
