@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wearwise/models/models.dart';
 import 'package:wearwise/assets/tracked_data.dart';
 
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Tracker extends StatefulWidget {
@@ -188,7 +189,7 @@ class _TrackerState extends State<Tracker> {
     YearData(DateTime.utc(2019, 6, 1), 20, id20_2019),
   ];
 
-  final List<YearData2> yearData2 = [
+  final List<YearData2> yearDataAll = [
     YearData2(2023, "Blue blazer", id1_2023),
     YearData2(2022, "Blue blazer", id1_2022),
     YearData2(2021, "Blue blazer", id1_2021),
@@ -291,6 +292,121 @@ class _TrackerState extends State<Tracker> {
     YearData2(2019, "Black skirt", id20_2019),
   ];
 
+  final List<YearData2> yearDataShoes = [
+    YearData2(2023, "Adidas blue", id5_2023),
+    YearData2(2022, "Adidas blue", id5_2022),
+    YearData2(2021, "Adidas blue", id5_2021),
+    YearData2(2020, "Adidas blue", id5_2020),
+    YearData2(2019, "Adidas blue", id5_2019),
+    YearData2(2023, "Slip on boots", id13_2023),
+    YearData2(2022, "Slip on boots", id13_2022),
+    YearData2(2021, "Slip on boots", id13_2021),
+    YearData2(2020, "Slip on boots", id13_2020),
+    YearData2(2019, "Slip on boots", id13_2019),
+    YearData2(2023, "Nike shoes", id15_2023),
+    YearData2(2022, "Nike shoes", id15_2022),
+    YearData2(2021, "Nike shoes", id15_2021),
+    YearData2(2020, "Nike shoes", id15_2020),
+    YearData2(2019, "Nike shoes", id15_2019),
+  ];
+
+  final List<YearData2> yearDataSkirts = [
+    YearData2(2023, "Green skirt", id4_2023),
+    YearData2(2022, "Green skirt", id4_2022),
+    YearData2(2021, "Green skirt", id4_2021),
+    YearData2(2020, "Green skirt", id4_2020),
+    YearData2(2019, "Green skirt", id4_2019),
+    YearData2(2023, "Black skirt", id20_2023),
+    YearData2(2022, "Black skirt", id20_2022),
+    YearData2(2021, "Black skirt", id20_2021),
+    YearData2(2020, "Black skirt", id20_2020),
+    YearData2(2019, "Black skirt", id20_2019),
+  ];
+  final List<YearData2> yearDataJackets = [
+    YearData2(2023, "Blue blazer", id1_2023),
+    YearData2(2022, "Blue blazer", id1_2022),
+    YearData2(2021, "Blue blazer", id1_2021),
+    YearData2(2020, "Blue blazer", id1_2020),
+    YearData2(2019, "Blue blazer", id1_2019),
+    YearData2(2023, "Black blazer", id7_2023),
+    YearData2(2022, "Black blazer", id7_2022),
+    YearData2(2021, "Black blazer", id7_2021),
+    YearData2(2020, "Black blazer", id7_2020),
+    YearData2(2019, "Black blazer", id7_2019),
+  ];
+  final List<YearData2> yearDataPants = [
+    YearData2(2023, "Light jeans", id2_2023),
+    YearData2(2022, "Light jeans", id2_2022),
+    YearData2(2021, "Light jeans", id2_2021),
+    YearData2(2020, "Light jeans", id2_2020),
+    YearData2(2019, "Light jeans", id2_2019),
+    YearData2(2023, "Black jeans", id8_2023),
+    YearData2(2022, "Black jeans", id8_2022),
+    YearData2(2021, "Black jeans", id8_2021),
+    YearData2(2020, "Black jeans", id8_2020),
+    YearData2(2019, "Black jeans", id8_2019),
+    YearData2(2023, "Leggings", id14_2023),
+    YearData2(2022, "Leggings", id14_2022),
+    YearData2(2021, "Leggings", id14_2021),
+    YearData2(2020, "Leggings", id14_2020),
+    YearData2(2019, "Leggings", id14_2019),
+  ];
+  final List<YearData2> yearDataTShirts = [
+    YearData2(2023, "White neck", id3_2023),
+    YearData2(2022, "White neck", id3_2022),
+    YearData2(2021, "White neck", id3_2021),
+    YearData2(2020, "White neck", id3_2020),
+    YearData2(2019, "White neck", id3_2019),
+    YearData2(2023, "Anna's t-shirt", id6_2023),
+    YearData2(2022, "Anna's t-shirt", id6_2022),
+    YearData2(2021, "Anna's t-shirt", id6_2021),
+    YearData2(2020, "Anna's t-shirt", id6_2020),
+    YearData2(2019, "Anna's t-shirt", id6_2019),
+    YearData2(2023, "Grey t-shirt", id9_2023),
+    YearData2(2022, "Grey t-shirt", id9_2022),
+    YearData2(2021, "Grey t-shirt", id9_2021),
+    YearData2(2020, "Grey t-shirt", id9_2020),
+    YearData2(2019, "Grey t-shirt", id9_2019),
+    YearData2(2023, "Stripped shirt", id10_2023),
+    YearData2(2022, "Stripped shirt", id10_2022),
+    YearData2(2021, "Stripped shirt", id10_2021),
+    YearData2(2020, "Stripped shirt", id10_2020),
+    YearData2(2019, "Stripped shirt", id10_2019),
+  ];
+  final List<YearData2> yearDataCoats = [
+    YearData2(2023, "Beige coat", id11_2023),
+    YearData2(2022, "Beige coat", id11_2022),
+    YearData2(2021, "Beige coat", id11_2021),
+    YearData2(2020, "Beige coat", id11_2020),
+    YearData2(2019, "Beige coat", id11_2019),
+    YearData2(2023, "Long jacket", id12_2023),
+    YearData2(2022, "Long jacket", id12_2022),
+    YearData2(2021, "Long jacket", id12_2021),
+    YearData2(2020, "Long jacket", id12_2020),
+    YearData2(2019, "Long jacket", id12_2019),
+    YearData2(2023, "Black jacket", id19_2023),
+    YearData2(2022, "Black jacket", id19_2022),
+    YearData2(2021, "Black jacket", id19_2021),
+    YearData2(2020, "Black jacket", id19_2020),
+    YearData2(2019, "Black jacket", id19_2019),
+  ];
+  final List<YearData2> yearDataSweatshirts = [
+    YearData2(2023, "Wool jumper", id16_2023),
+    YearData2(2022, "Wool jumper", id16_2022),
+    YearData2(2021, "Wool jumper", id16_2021),
+    YearData2(2020, "Wool jumper", id16_2020),
+    YearData2(2019, "Wool jumper", id16_2019),
+    YearData2(2023, "Navy jumper", id17_2023),
+    YearData2(2022, "Navy jumper", id17_2022),
+    YearData2(2021, "Navy jumper", id17_2021),
+    YearData2(2020, "Navy jumper", id17_2020),
+    YearData2(2019, "Navy jumper", id17_2019),
+    YearData2(2023, "Black hoodie", id18_2023),
+    YearData2(2022, "Black hoodie", id18_2022),
+    YearData2(2021, "Black hoodie", id18_2021),
+    YearData2(2020, "Black hoodie", id18_2020),
+    YearData2(2019, "Black hoodie", id18_2019),
+  ];
   // final List<YearData3> yearData2023 = [
   //   YearData3("Blue blazer", id1_2023, const Color(0xff865537)),
   //   YearData3(
@@ -556,143 +672,442 @@ class _TrackerState extends State<Tracker> {
                   ),
                   const SizedBox(height: 8.0),
                   // Graph 1
-                  SingleChildScrollView(
-                      child: SizedBox(
-                          height: 700,
-                          child: SfCartesianChart(
-                              // zoomPanBehavior: ZoomPanBehavior(
-                              //     enablePinching: true,
-                              //     enablePanning: true),
-                              tooltipBehavior: TooltipBehavior(
-                                  enable: true,
-                                  header: '',
-                                  canShowMarker: false,
-                                  textAlignment: ChartAlignment.center,
-                                  format: 'worn point.size times'),
-                              primaryXAxis: DateTimeAxis(
-                                  rangePadding: ChartRangePadding.additional,
-                                  minimum: DateTime.utc(2018, 6, 1),
-                                  maximum: DateTime.utc(2024, 6, 1)),
-                              primaryYAxis: NumericAxis(
-                                  interval: 1,
-                                  minimum: 0,
-                                  maximum: 21,
-                                  desiredIntervals: null,
-                                  majorGridLines:
-                                      const MajorGridLines(width: 1)),
-                              series: <ChartSeries>[
-                                // Renders bubble charts
-                                BubbleSeries<YearData, DateTime>(
-                                  color: const Color(0xff865537),
-                                  name: 'Tracker by year',
-                                  xAxisName: 'Year',
-                                  yAxisName: 'Item',
-                                  selectionBehavior: SelectionBehavior(
-                                      enable: true, selectedColor: Colors.red),
-                                  enableTooltip: true,
-                                  dataSource: yearData,
-                                  sizeValueMapper: (YearData data, _) =>
-                                      data.count,
-                                  minimumRadius: 0,
-                                  xValueMapper: (YearData data, _) => data.year,
-                                  yValueMapper: (YearData data, _) => data.id,
-                                )
-                              ]))),
+                  // SingleChildScrollView(
+                  //     child: SizedBox(
+                  //         height: 700,
+                  //         child: SfCartesianChart(
+                  //             // zoomPanBehavior: ZoomPanBehavior(
+                  //             //     enablePinching: true,
+                  //             //     enablePanning: true),
+                  //             tooltipBehavior: TooltipBehavior(
+                  //                 enable: true,
+                  //                 header: '',
+                  //                 canShowMarker: false,
+                  //                 textAlignment: ChartAlignment.center,
+                  //                 format: 'worn point.size times'),
+                  //             primaryXAxis: DateTimeAxis(
+                  //                 rangePadding: ChartRangePadding.additional,
+                  //                 minimum: DateTime.utc(2018, 6, 1),
+                  //                 maximum: DateTime.utc(2024, 6, 1)),
+                  //             primaryYAxis: NumericAxis(
+                  //                 interval: 1,
+                  //                 minimum: 0,
+                  //                 maximum: 21,
+                  //                 desiredIntervals: null,
+                  //                 majorGridLines:
+                  //                     const MajorGridLines(width: 1)),
+                  //             series: <ChartSeries>[
+                  //               // Renders bubble charts
+                  //               BubbleSeries<YearData, DateTime>(
+                  //                 color: const Color(0xff865537),
+                  //                 name: 'Tracker by year',
+                  //                 xAxisName: 'Year',
+                  //                 yAxisName: 'Item',
+                  //                 selectionBehavior: SelectionBehavior(
+                  //                     enable: true, selectedColor: Colors.red),
+                  //                 enableTooltip: true,
+                  //                 dataSource: yearData,
+                  //                 sizeValueMapper: (YearData data, _) =>
+                  //                     data.count,
+                  //                 minimumRadius: 0,
+                  //                 xValueMapper: (YearData data, _) => data.year,
+                  //                 yValueMapper: (YearData data, _) => data.id,
+                  //               )
+                  //             ]))),
                   const SizedBox(height: 15.0),
-                  // Graph 2
-                  SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: SizedBox(
-                          height: 300,
-                          width: 1700,
-                          child: SfCartesianChart(
-                              // zoomPanBehavior: ZoomPanBehavior(
-                              //     enablePinching: true,
-                              //     enablePanning: true),
-                              tooltipBehavior: TooltipBehavior(
-                                  enable: true,
-                                  header: '',
-                                  canShowMarker: false,
-                                  textAlignment: ChartAlignment.center,
-                                  format: 'worn point.size times'),
-                              primaryYAxis: NumericAxis(
-                                interval: 1,
-                                minimum: 2018,
-                                maximum: 2024,
-                              ),
-                              primaryXAxis: CategoryAxis(
-                                  majorGridLines:
-                                      const MajorGridLines(width: 1)),
-                              // primaryYAxis: NumericAxis(
-                              //     interval: 1,
-                              //     minimum: 0,
-                              //     maximum: 21,
-                              //     desiredIntervals: null,
-                              //     majorGridLines:
-                              //         const MajorGridLines(width: 1)),
-                              series: <ChartSeries>[
-                                // Renders bubble charts
-                                BubbleSeries<YearData2, String>(
-                                    color: const Color(0xff865537),
-                                    name: 'Tracker by year',
-                                    xAxisName: 'Year',
-                                    yAxisName: 'Item',
-                                    selectionBehavior: SelectionBehavior(
-                                        enable: true,
-                                        selectedColor: Colors.red),
-                                    enableTooltip: true,
-                                    dataSource: yearData2,
-                                    sizeValueMapper: (YearData2 data, _) =>
-                                        data.count,
-                                    minimumRadius: 0,
-                                    xValueMapper: (YearData2 data, _) =>
-                                        data.id,
-                                    yValueMapper: (YearData2 data, _) =>
-                                        data.year)
-                              ]))),
-                  const SizedBox(height: 15.0),
-                  SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Container(
-                          alignment: Alignment.center,
-                          child: SizedBox(
-                              height: 300,
-                              child: SfCircularChart(
-                                  tooltipBehavior: TooltipBehavior(
-                                      enable: true,
-                                      header: '',
-                                      canShowMarker: false,
-                                      textAlignment: ChartAlignment.center,
-                                      format: 'point.x\nworn point.y times'),
-                                  series: <CircularSeries>[
-                                    // Renders bubble charts
-                                    PieSeries<YearData3, String>(
-                                      explode: true,
-                                      explodeIndex: 1,
-                                      explodeOffset: '30%',
-                                      dataSource: yearData2023,
-                                      //pointColorMapper: (YearData3 data, _) => data.color,
-                                      dataLabelMapper: (YearData3 data, _) =>
-                                          data.x,
 
-                                      radius: '60%',
-                                      xValueMapper: (YearData3 data, _) =>
-                                          data.x,
-                                      yValueMapper: (YearData3 data, _) =>
-                                          data.y,
-                                      dataLabelSettings: const DataLabelSettings(
-                                          isVisible: true,
-                                          labelIntersectAction:
-                                              LabelIntersectAction.shift,
-                                          labelPosition:
-                                              ChartDataLabelPosition.outside,
-                                          connectorLineSettings:
-                                              ConnectorLineSettings(
-                                                  type: ConnectorType.curve,
-                                                  length: '25%')),
-                                    )
-                                  ])))),
+                  if (dropDownValue == "All Clothes") ...[
+                    // Graph All Clothes
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: SizedBox(
+                            height: 300,
+                            width: 1700,
+                            child: SfCartesianChart(
+                                // zoomPanBehavior: ZoomPanBehavior(
+                                //     enablePinching: true,
+                                //     enablePanning: true),
+                                tooltipBehavior: TooltipBehavior(
+                                    enable: true,
+                                    header: '',
+                                    canShowMarker: false,
+                                    textAlignment: ChartAlignment.center,
+                                    format: 'worn point.size times'),
+                                primaryYAxis: NumericAxis(
+                                  interval: 1,
+                                  minimum: 2018,
+                                  maximum: 2024,
+                                ),
+                                primaryXAxis: CategoryAxis(
+                                    majorGridLines:
+                                        const MajorGridLines(width: 1)),
+                                // primaryYAxis: NumericAxis(
+                                //     interval: 1,
+                                //     minimum: 0,
+                                //     maximum: 21,
+                                //     desiredIntervals: null,
+                                //     majorGridLines:
+                                //         const MajorGridLines(width: 1)),
+                                series: <ChartSeries>[
+                                  // Renders bubble charts
+                                  BubbleSeries<YearData2, String>(
+                                      color: const Color(0xff865537),
+                                      name: 'Tracker by year',
+                                      xAxisName: 'Year',
+                                      yAxisName: 'Item',
+                                      selectionBehavior: SelectionBehavior(
+                                          enable: true,
+                                          selectedColor: Colors.red),
+                                      enableTooltip: true,
+                                      dataSource: yearDataAll,
+                                      sizeValueMapper: (YearData2 data, _) =>
+                                          data.count,
+                                      minimumRadius: 0,
+                                      xValueMapper: (YearData2 data, _) =>
+                                          data.id,
+                                      yValueMapper: (YearData2 data, _) =>
+                                          data.year)
+                                ]))),
+                  ] else if (dropDownValue == "Shoes") ...[
+                    // Graph Shoes
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: SizedBox(
+                            height: 300,
+                            width: 500,
+                            child: SfCartesianChart(
+                                tooltipBehavior: TooltipBehavior(
+                                    enable: true,
+                                    header: '',
+                                    canShowMarker: false,
+                                    textAlignment: ChartAlignment.center,
+                                    format: 'worn point.size times'),
+                                primaryYAxis: NumericAxis(
+                                  interval: 1,
+                                  minimum: 2018,
+                                  maximum: 2024,
+                                ),
+                                primaryXAxis: CategoryAxis(
+                                    majorGridLines:
+                                        const MajorGridLines(width: 1)),
+                                series: <ChartSeries>[
+                                  // Renders bubble charts
+                                  BubbleSeries<YearData2, String>(
+                                      color: const Color(0xff865537),
+                                      name: 'Tracker by year',
+                                      xAxisName: 'Year',
+                                      yAxisName: 'Item',
+                                      selectionBehavior: SelectionBehavior(
+                                          enable: true,
+                                          selectedColor: Colors.red),
+                                      enableTooltip: true,
+                                      dataSource: yearDataShoes,
+                                      sizeValueMapper: (YearData2 data, _) =>
+                                          data.count,
+                                      minimumRadius: 0,
+                                      xValueMapper: (YearData2 data, _) =>
+                                          data.id,
+                                      yValueMapper: (YearData2 data, _) =>
+                                          data.year)
+                                ]))),
+                  ] else if (dropDownValue == "Skirts") ...[
+                    // Graph Skirts
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: SizedBox(
+                            height: 300,
+                            width: 500,
+                            child: SfCartesianChart(
+                                tooltipBehavior: TooltipBehavior(
+                                    enable: true,
+                                    header: '',
+                                    canShowMarker: false,
+                                    textAlignment: ChartAlignment.center,
+                                    format: 'worn point.size times'),
+                                primaryYAxis: NumericAxis(
+                                  interval: 1,
+                                  minimum: 2018,
+                                  maximum: 2024,
+                                ),
+                                primaryXAxis: CategoryAxis(
+                                    majorGridLines:
+                                        const MajorGridLines(width: 1)),
+                                series: <ChartSeries>[
+                                  // Renders bubble charts
+                                  BubbleSeries<YearData2, String>(
+                                      color: const Color(0xff865537),
+                                      name: 'Tracker by year',
+                                      xAxisName: 'Year',
+                                      yAxisName: 'Item',
+                                      selectionBehavior: SelectionBehavior(
+                                          enable: true,
+                                          selectedColor: Colors.red),
+                                      enableTooltip: true,
+                                      dataSource: yearDataSkirts,
+                                      sizeValueMapper: (YearData2 data, _) =>
+                                          data.count,
+                                      minimumRadius: 0,
+                                      xValueMapper: (YearData2 data, _) =>
+                                          data.id,
+                                      yValueMapper: (YearData2 data, _) =>
+                                          data.year)
+                                ]))),
+                  ] else if (dropDownValue == "Jackets") ...[
+                    // Graph Jackets
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: SizedBox(
+                            height: 300,
+                            width: 500,
+                            child: SfCartesianChart(
+                                tooltipBehavior: TooltipBehavior(
+                                    enable: true,
+                                    header: '',
+                                    canShowMarker: false,
+                                    textAlignment: ChartAlignment.center,
+                                    format: 'worn point.size times'),
+                                primaryYAxis: NumericAxis(
+                                  interval: 1,
+                                  minimum: 2018,
+                                  maximum: 2024,
+                                ),
+                                primaryXAxis: CategoryAxis(
+                                    majorGridLines:
+                                        const MajorGridLines(width: 1)),
+                                series: <ChartSeries>[
+                                  // Renders bubble charts
+                                  BubbleSeries<YearData2, String>(
+                                      color: const Color(0xff865537),
+                                      name: 'Tracker by year',
+                                      xAxisName: 'Year',
+                                      yAxisName: 'Item',
+                                      selectionBehavior: SelectionBehavior(
+                                          enable: true,
+                                          selectedColor: Colors.red),
+                                      enableTooltip: true,
+                                      dataSource: yearDataJackets,
+                                      sizeValueMapper: (YearData2 data, _) =>
+                                          data.count,
+                                      minimumRadius: 0,
+                                      xValueMapper: (YearData2 data, _) =>
+                                          data.id,
+                                      yValueMapper: (YearData2 data, _) =>
+                                          data.year)
+                                ]))),
+                  ] else if (dropDownValue == "Pants") ...[
+                    // Graph Pants
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: SizedBox(
+                            height: 300,
+                            width: 500,
+                            child: SfCartesianChart(
+                                tooltipBehavior: TooltipBehavior(
+                                    enable: true,
+                                    header: '',
+                                    canShowMarker: false,
+                                    textAlignment: ChartAlignment.center,
+                                    format: 'worn point.size times'),
+                                primaryYAxis: NumericAxis(
+                                  interval: 1,
+                                  minimum: 2018,
+                                  maximum: 2024,
+                                ),
+                                primaryXAxis: CategoryAxis(
+                                    majorGridLines:
+                                        const MajorGridLines(width: 1)),
+                                series: <ChartSeries>[
+                                  // Renders bubble charts
+                                  BubbleSeries<YearData2, String>(
+                                      color: const Color(0xff865537),
+                                      name: 'Tracker by year',
+                                      xAxisName: 'Year',
+                                      yAxisName: 'Item',
+                                      selectionBehavior: SelectionBehavior(
+                                          enable: true,
+                                          selectedColor: Colors.red),
+                                      enableTooltip: true,
+                                      dataSource: yearDataPants,
+                                      sizeValueMapper: (YearData2 data, _) =>
+                                          data.count,
+                                      minimumRadius: 0,
+                                      xValueMapper: (YearData2 data, _) =>
+                                          data.id,
+                                      yValueMapper: (YearData2 data, _) =>
+                                          data.year)
+                                ]))),
+                  ] else if (dropDownValue == "T-shirts") ...[
+                    // Graph T-shirts
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: SizedBox(
+                            height: 300,
+                            width: 500,
+                            child: SfCartesianChart(
+                                tooltipBehavior: TooltipBehavior(
+                                    enable: true,
+                                    header: '',
+                                    canShowMarker: false,
+                                    textAlignment: ChartAlignment.center,
+                                    format: 'worn point.size times'),
+                                primaryYAxis: NumericAxis(
+                                  interval: 1,
+                                  minimum: 2018,
+                                  maximum: 2024,
+                                ),
+                                primaryXAxis: CategoryAxis(
+                                    majorGridLines:
+                                        const MajorGridLines(width: 1)),
+                                series: <ChartSeries>[
+                                  // Renders bubble charts
+                                  BubbleSeries<YearData2, String>(
+                                      color: const Color(0xff865537),
+                                      name: 'Tracker by year',
+                                      xAxisName: 'Year',
+                                      yAxisName: 'Item',
+                                      selectionBehavior: SelectionBehavior(
+                                          enable: true,
+                                          selectedColor: Colors.red),
+                                      enableTooltip: true,
+                                      dataSource: yearDataTShirts,
+                                      sizeValueMapper: (YearData2 data, _) =>
+                                          data.count,
+                                      minimumRadius: 0,
+                                      xValueMapper: (YearData2 data, _) =>
+                                          data.id,
+                                      yValueMapper: (YearData2 data, _) =>
+                                          data.year)
+                                ]))),
+                  ] else if (dropDownValue == "Coats") ...[
+                    // Graph Coats
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: SizedBox(
+                            height: 300,
+                            width: 500,
+                            child: SfCartesianChart(
+                                tooltipBehavior: TooltipBehavior(
+                                    enable: true,
+                                    header: '',
+                                    canShowMarker: false,
+                                    textAlignment: ChartAlignment.center,
+                                    format: 'worn point.size times'),
+                                primaryYAxis: NumericAxis(
+                                  interval: 1,
+                                  minimum: 2018,
+                                  maximum: 2024,
+                                ),
+                                primaryXAxis: CategoryAxis(
+                                    majorGridLines:
+                                        const MajorGridLines(width: 1)),
+                                series: <ChartSeries>[
+                                  // Renders bubble charts
+                                  BubbleSeries<YearData2, String>(
+                                      color: const Color(0xff865537),
+                                      name: 'Tracker by year',
+                                      xAxisName: 'Year',
+                                      yAxisName: 'Item',
+                                      selectionBehavior: SelectionBehavior(
+                                          enable: true,
+                                          selectedColor: Colors.red),
+                                      enableTooltip: true,
+                                      dataSource: yearDataCoats,
+                                      sizeValueMapper: (YearData2 data, _) =>
+                                          data.count,
+                                      minimumRadius: 0,
+                                      xValueMapper: (YearData2 data, _) =>
+                                          data.id,
+                                      yValueMapper: (YearData2 data, _) =>
+                                          data.year)
+                                ]))),
+                  ] else if (dropDownValue == "Sweatshirts") ...[
+                    // Graph Sweatshirts
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: SizedBox(
+                            height: 300,
+                            width: 500,
+                            child: SfCartesianChart(
+                                tooltipBehavior: TooltipBehavior(
+                                    enable: true,
+                                    header: '',
+                                    canShowMarker: false,
+                                    textAlignment: ChartAlignment.center,
+                                    format: 'worn point.size times'),
+                                primaryYAxis: NumericAxis(
+                                  interval: 1,
+                                  minimum: 2018,
+                                  maximum: 2024,
+                                ),
+                                primaryXAxis: CategoryAxis(
+                                    majorGridLines:
+                                        const MajorGridLines(width: 1)),
+                                series: <ChartSeries>[
+                                  // Renders bubble charts
+                                  BubbleSeries<YearData2, String>(
+                                      color: const Color(0xff865537),
+                                      name: 'Tracker by year',
+                                      xAxisName: 'Year',
+                                      yAxisName: 'Item',
+                                      selectionBehavior: SelectionBehavior(
+                                          enable: true,
+                                          selectedColor: Colors.red),
+                                      enableTooltip: true,
+                                      dataSource: yearDataSweatshirts,
+                                      sizeValueMapper: (YearData2 data, _) =>
+                                          data.count,
+                                      minimumRadius: 0,
+                                      xValueMapper: (YearData2 data, _) =>
+                                          data.id,
+                                      yValueMapper: (YearData2 data, _) =>
+                                          data.year)
+                                ]))),
+                  ],
+
+                  // PieChart
+                  // SingleChildScrollView(
+                  //     scrollDirection: Axis.horizontal,
+                  //     child: Container(
+                  //         alignment: Alignment.center,
+                  //         child: SizedBox(
+                  //             height: 300,
+                  //             child: SfCircularChart(
+                  //                 tooltipBehavior: TooltipBehavior(
+                  //                     enable: true,
+                  //                     header: '',
+                  //                     canShowMarker: false,
+                  //                     textAlignment: ChartAlignment.center,
+                  //                     format: 'point.x\nworn point.y times'),
+                  //                 series: <CircularSeries>[
+                  //                   // Renders bubble charts
+                  //                   PieSeries<YearData3, String>(
+                  //                     explode: true,
+                  //                     explodeIndex: 1,
+                  //                     explodeOffset: '30%',
+                  //                     dataSource: yearData2023,
+                  //                     //pointColorMapper: (YearData3 data, _) => data.color,
+                  //                     dataLabelMapper: (YearData3 data, _) =>
+                  //                         data.x,
+
+                  //                     radius: '60%',
+                  //                     xValueMapper: (YearData3 data, _) =>
+                  //                         data.x,
+                  //                     yValueMapper: (YearData3 data, _) =>
+                  //                         data.y,
+                  //                     dataLabelSettings: const DataLabelSettings(
+                  //                         isVisible: true,
+                  //                         labelIntersectAction:
+                  //                             LabelIntersectAction.shift,
+                  //                         labelPosition:
+                  //                             ChartDataLabelPosition.outside,
+                  //                         connectorLineSettings:
+                  //                             ConnectorLineSettings(
+                  //                                 type: ConnectorType.curve,
+                  //                                 length: '25%')),
+                  //                   )
+                  //                 ])))),
                   const SizedBox(height: 15.0),
+
                   Text(
                     '$dropDownValue you haven\'t worn in this time period:',
                     style: const TextStyle(
