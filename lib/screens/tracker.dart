@@ -803,12 +803,12 @@ class _TrackerState extends State<Tracker> {
                       series: <ChartSeries>[
                         // Renders bubble charts
                         BubbleSeries<YearData2, String>(
-                            color: const Color(0xff865537),
+                            color: Colors.red,
                             name: 'Tracker by year',
                             xAxisName: 'Year',
                             yAxisName: 'Item',
                             selectionBehavior: SelectionBehavior(
-                                enable: true, selectedColor: Colors.red),
+                                enable: true, selectedColor: Colors.deepOrange),
                             enableTooltip: true,
                             dataSource: yearDataShoes,
                             sizeValueMapper: (YearData2 data, _) => data.count,
@@ -840,7 +840,7 @@ class _TrackerState extends State<Tracker> {
                       series: <ChartSeries>[
                         // Renders bubble charts
                         BubbleSeries<YearData2, String>(
-                            color: const Color(0xff865537),
+                            color: Colors.purple,
                             name: 'Tracker by year',
                             xAxisName: 'Year',
                             yAxisName: 'Item',
@@ -877,7 +877,7 @@ class _TrackerState extends State<Tracker> {
                       series: <ChartSeries>[
                         // Renders bubble charts
                         BubbleSeries<YearData2, String>(
-                            color: const Color(0xff865537),
+                            color: Colors.brown,
                             name: 'Tracker by year',
                             xAxisName: 'Year',
                             yAxisName: 'Item',
@@ -914,7 +914,7 @@ class _TrackerState extends State<Tracker> {
                       series: <ChartSeries>[
                         // Renders bubble charts
                         BubbleSeries<YearData2, String>(
-                            color: const Color(0xff865537),
+                            color: Colors.green,
                             name: 'Tracker by year',
                             xAxisName: 'Year',
                             yAxisName: 'Item',
@@ -951,7 +951,7 @@ class _TrackerState extends State<Tracker> {
                       series: <ChartSeries>[
                         // Renders bubble charts
                         BubbleSeries<YearData2, String>(
-                            color: const Color(0xff865537),
+                            color: Colors.deepOrange,
                             name: 'Tracker by year',
                             xAxisName: 'Year',
                             yAxisName: 'Item',
@@ -988,7 +988,7 @@ class _TrackerState extends State<Tracker> {
                       series: <ChartSeries>[
                         // Renders bubble charts
                         BubbleSeries<YearData2, String>(
-                            color: const Color(0xff865537),
+                            color: Colors.blue,
                             name: 'Tracker by year',
                             xAxisName: 'Year',
                             yAxisName: 'Item',
@@ -1025,7 +1025,7 @@ class _TrackerState extends State<Tracker> {
                       series: <ChartSeries>[
                         // Renders bubble charts
                         BubbleSeries<YearData2, String>(
-                            color: const Color(0xff865537),
+                            color: Colors.yellow,
                             name: 'Tracker by year',
                             xAxisName: 'Year',
                             yAxisName: 'Item',
@@ -1106,6 +1106,13 @@ class _TrackerState extends State<Tracker> {
           Text(
             '$dropDownValue you haven\'t worn in this time period:',
             style: const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Text(
+              '$dropDownValue you haven\'t worn in this time period:',
+              style: const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
+            ),
           ),
           const SizedBox(height: 20.0),
         ]
