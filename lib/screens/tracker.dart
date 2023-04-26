@@ -50,7 +50,7 @@ class _TrackerState extends State<Tracker> {
   late bool _showYears;
 
   List<String> clothesList = [
-    'All Items',
+    'All Clothes',
     'Shoes',
     'Skirts',
     'Jackets',
@@ -418,9 +418,6 @@ class _TrackerState extends State<Tracker> {
                     value: dropDownValue,
                     onChanged: (String? newValue) {
                       setState(() {
-                        if (newValue == "All Items") {
-                          newValue = "Clothes";
-                        }
                         dropDownValue = newValue!;
                       });
                     },
@@ -438,7 +435,7 @@ class _TrackerState extends State<Tracker> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Times you wore each of your $dropDownValue:',
+                    'Times you wore each item from your list of $dropDownValue:',
                     style: const TextStyle(
                         fontSize: 18.0, color: Color(0xff865537)),
                   ),
