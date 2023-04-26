@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'bottom_nav_bar.dart';
 import 'screens/home.dart';
 import 'screens/closet.dart';
 import 'screens/tracker.dart';
@@ -37,11 +38,29 @@ class MyHomePage extends StatefulWidget {
   final AppState appState;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() =>
+      _MyHomePageState(selectedItems: appState.selectedItems);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
+  final List<String> selectedItems;
+
+  _MyHomePageState({required this.selectedItems});
+
+  /* final List<Widget> _children = [
+    Home(selectedItems: widget.appState.selectedItems),
+    Closet(),
+    Tracker(),
+    Profile(),
+  ];  */
+  List<String> _selectedItems = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedItems = widget.appState.selectedItems;
+  }
 
   void onTabTapped(int index) {
     setState(() {
@@ -49,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  @override
+  /* @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
@@ -105,6 +124,59 @@ class _MyHomePageState extends State<MyHomePage> {
             backgroundColor: Color(0xfff2e3d5),
           ),
         ],
+      ),
+    ); */
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFFFFFFF),
+      //body: _children[_currentIndex],
+      /* body: _currentIndex == 0
+          ? Home(selectedItems: _selectedItems)
+          : _currentIndex == 1
+              ? Closet()
+              : _currentIndex == 2
+                  ? Tracker()
+                  : Profile(),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: onTabTapped,
+        currentIndex: _currentIndex,
+        unselectedItemColor: const Color(0x66000000),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Color(0xfff2e3d5),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.checkroom),
+            label: 'Closet',
+            backgroundColor: Color(0xfff2e3d5),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.query_stats),
+            label: 'Tracker',
+            backgroundColor: Color(0xfff2e3d5),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+            backgroundColor: Color(0xfff2e3d5),
+          ),
+        ],
+      ), */
+      body: IndexedStack(
+        index: _currentIndex,
+        children: [
+          Home(selectedItems: _selectedItems, currentIndex: _currentIndex),
+          Closet(),
+          Tracker(),
+          Profile(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavBar(
+        currentIndex: _currentIndex,
+        onTabTapped: onTabTapped,
       ),
     );
   }

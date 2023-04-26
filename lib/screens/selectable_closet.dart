@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wearwise/models/models.dart';
+import '../bottom_nav_bar.dart';
 import 'home.dart';
 import '../models/app_state.dart';
 
@@ -31,8 +32,8 @@ class _SelectableClosetState extends State<SelectableCloset> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(
+    return Scaffold(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Padding(
@@ -686,8 +687,7 @@ class _SelectableClosetState extends State<SelectableCloset> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home(
-                                          selectedItems: [],
-                                        )));
+                                        selectedItems: [], currentIndex: 0)));
                           },
                           style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
@@ -717,8 +717,8 @@ class _SelectableClosetState extends State<SelectableCloset> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => Home(
-                                          selectedItems: widget.selectedItems,
-                                        ),
+                                        selectedItems: widget.selectedItems,
+                                        currentIndex: 0),
                                     settings: RouteSettings(
                                         arguments: widget.selectedItems)));
                           },
@@ -737,6 +737,10 @@ class _SelectableClosetState extends State<SelectableCloset> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavBar(
+        currentIndex: 0,
+        onTabTapped: (index) {},
       ),
     );
   }

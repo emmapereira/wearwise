@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:wearwise/models/models.dart';
+import '../bottom_nav_bar.dart';
 import 'selectable_closet.dart';
 
 class Home extends StatelessWidget {
   final List<String> selectedItems;
+  final int currentIndex;
 
-  const Home({Key? key, required this.selectedItems}) : super(key: key);
+  const Home(
+      {Key? key, required this.selectedItems, required this.currentIndex})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +120,12 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
+      /* bottomNavigationBar: BottomNavBar(
+        currentIndex: currentIndex,
+        onTabTapped: (index) {
+          Navigator.pushNamed(context, '/$index');
+        },
+      ), */
     );
   }
 }
