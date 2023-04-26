@@ -555,6 +555,7 @@ class _TrackerState extends State<Tracker> {
                     ),
                   ),
                   const SizedBox(height: 8.0),
+                  // Graph 1
                   SingleChildScrollView(
                       child: SizedBox(
                           height: 700,
@@ -598,11 +599,12 @@ class _TrackerState extends State<Tracker> {
                                 )
                               ]))),
                   const SizedBox(height: 15.0),
+                  // Graph 2
                   SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: SizedBox(
                           height: 300,
-                          width: 1500,
+                          width: 1700,
                           child: SfCartesianChart(
                               // zoomPanBehavior: ZoomPanBehavior(
                               //     enablePinching: true,
