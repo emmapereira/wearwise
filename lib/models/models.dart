@@ -54,6 +54,26 @@ Future<List<ClothingItem>> getClothingItems() async {
       .toList();
 }
 
+Future<String> getItemNameById(String id) async {
+  final String data =
+      await rootBundle.loadString('lib/assets/clothing_items.json');
+  final List<dynamic> jsonList = json.decode(data)['data'];
+  List<ClothingItem> tempList = jsonList
+      .map((item) => ClothingItem(
+            id: item['id'],
+            name: item['name'],
+            type: item['type'],
+            colour: item['colour'],
+            seasons: (item['seasons'] as List<dynamic>).cast<String>(),
+          ))
+      .toList();
+
+  for (var item in tempList) {
+    if (item.id == id) return item.name;
+  }
+  return '';
+}
+
 // Future<List<ClothingItem>> filterClothingItemsByType(
 //     Future<List<ClothingItem>> list, String filterType) async {
 //   List<ClothingItem> filteredList = (list as List<ClothingItem>)
