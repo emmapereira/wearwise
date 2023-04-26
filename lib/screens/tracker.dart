@@ -79,7 +79,7 @@ class _TrackerState extends State<Tracker> {
         _futureClothingItems = filterClothingItemsByMultipleIds(["20"]);
       } else if (type == "Coats") {
         _futureClothingItems = filterClothingItemsByMultipleIds(["11", "19"]);
-      } else if (type == "Swearshirts") {
+      } else if (type == "Sweatshirts") {
         _futureClothingItems = filterClothingItemsByMultipleIds(["17"]);
       } else if (type == "All Clothes") {
         _futureClothingItems =
