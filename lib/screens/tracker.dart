@@ -684,7 +684,7 @@ class _TrackerState extends State<Tracker> {
               ),
             )
           ])),
-      const SizedBox(height: 8.0),
+      const SizedBox(height: 5.0),
 
       // Graph 1
       // SingleChildScrollView(
@@ -729,7 +729,7 @@ class _TrackerState extends State<Tracker> {
       //                 yValueMapper: (YearData data, _) => data.id,
       //               )
       //             ]))),
-      const SizedBox(height: 15.0),
+      //const SizedBox(height: 5.0),
 
       Column(children: [
         if (dropDownValue == "All Clothes") ...[
@@ -1083,17 +1083,21 @@ class _TrackerState extends State<Tracker> {
       //                                 length: '25%')),
       //                   )
       //                 ])))),
-      const SizedBox(height: 15.0),
+      //const SizedBox(height: 15.0),
 
       Column(children: [
         if (dropDownValue == "Shoes" ||
             dropDownValue == "Jackets" ||
             dropDownValue == "Pants" ||
             dropDownValue == "T-shirts") ...[
-          Text(
-            'You have worn every item from the list of $dropDownValue in this time period.\nGood for you, keep it up!',
-            style: const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+              'You have worn every item from the list of $dropDownValue in this time period.\nGood for you, keep it up!',
+              style: const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
+            ),
           ),
+          const SizedBox(height: 3.0),
         ] else
           ...[],
       ]),
@@ -1103,18 +1107,14 @@ class _TrackerState extends State<Tracker> {
             dropDownValue == "Skirts" ||
             dropDownValue == "Coats" ||
             dropDownValue == "Sweatshirts") ...[
-          Text(
-            '$dropDownValue you haven\'t worn in this time period:',
-            style: const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(20.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
               '$dropDownValue you haven\'t worn in this time period:',
               style: const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
             ),
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 3.0),
         ]
       ]),
       Expanded(
