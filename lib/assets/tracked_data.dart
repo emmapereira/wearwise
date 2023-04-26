@@ -1,4 +1,6 @@
 // item 1
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
+
 double id1_2023 =
     id1_spring_2023 + id1_summer_2023 + id1_autumn_2023 + id1_winter_2023;
 double id1_2022 =
