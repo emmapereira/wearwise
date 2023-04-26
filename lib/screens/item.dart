@@ -1,30 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wearwise/screens/closet.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:wearwise/assets/tracked_data.dart';
-import 'package:intl/intl.dart';
+
 import '../models/models.dart';
-
-class MonthlyData {
-  MonthlyData(this.month, this.count);
-  final DateTime month;
-  final double count;
-}
-
-final List<MonthlyData> monthlyData = [
-  MonthlyData(DateTime.utc(2023, 1), id1_jan_2023),
-  MonthlyData(DateTime.utc(2023, 2), id1_feb_2023),
-  MonthlyData(DateTime.utc(2023, 3), id1_mar_2023),
-  MonthlyData(DateTime.utc(2023, 4), id1_apr_2023),
-  MonthlyData(DateTime.utc(2023, 5), id1_may_2023),
-  MonthlyData(DateTime.utc(2023, 6), id1_jun_2023),
-  MonthlyData(DateTime.utc(2023, 7), id1_jul_2023),
-  MonthlyData(DateTime.utc(2023, 8), id1_aug_2023),
-  MonthlyData(DateTime.utc(2023, 9), id1_sep_2023),
-  MonthlyData(DateTime.utc(2023, 10), id1_oct_2023),
-  MonthlyData(DateTime.utc(2023, 11), id1_nov_2023),
-  MonthlyData(DateTime.utc(2023, 12), id1_dec_2023),
-];
 
 class Item extends StatelessWidget {
   final String itemId;
@@ -124,62 +101,6 @@ class Item extends StatelessWidget {
                   ]),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Text(
-                  'Times you wore it:',
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xff865537)),
-                ),
-              ),
-              const SizedBox(height: 4.0),
-              SingleChildScrollView(
-                  child: SizedBox(
-                      height: 300,
-                      child: SfCartesianChart(
-                          // zoomPanBehavior: ZoomPanBehavior(
-                          //     enablePinching: true,
-                          //     enablePanning: true),
-                          tooltipBehavior: TooltipBehavior(
-                              enable: true,
-                              header: '',
-                              canShowMarker: false,
-                              textAlignment: ChartAlignment.center,
-                              format: 'worn point.count times'),
-                          primaryXAxis: DateTimeAxis(
-                              rangePadding: ChartRangePadding.none,
-                              minimum: DateTime.utc(2022, 12, 1),
-                              maximum: DateTime.utc(2024, 1, 1),
-                              labelRotation: 0,
-                              dateFormat: DateFormat.MMM(),
-                              // edgeLabelPlacement: EdgeLabelPlacement.hide,
-                              interval: 1),
-                          primaryYAxis: NumericAxis(
-                              interval: 1,
-                              minimum: 0,
-                              maximum: 15,
-                              desiredIntervals: null,
-                              majorGridLines: const MajorGridLines(width: 1)),
-                          series: <ChartSeries>[
-                            // Renders bubble charts
-                            ColumnSeries<MonthlyData, DateTime>(
-                                color: tagColor,
-                                name: 'Tracker by month',
-                                xAxisName: 'Month',
-                                yAxisName: 'Item',
-                                selectionBehavior: SelectionBehavior(
-                                    enable: true, selectedColor: Colors.red),
-                                enableTooltip: false,
-                                dataSource: monthlyData,
-                                xValueMapper: (MonthlyData data, _) =>
-                                    data.month,
-                                yValueMapper: (MonthlyData data, _) =>
-                                    data.count,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                          ]))),
             ],
           );
         },
