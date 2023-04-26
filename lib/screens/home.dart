@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(20.0),
             child: Text(
-              "Today's outfit",
+              "Today's clothes",
               style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -30,8 +30,9 @@ class Home extends StatelessWidget {
           const Padding(
             padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
             child: Text(
-              'Today you have worn all of these items:',
-              style: TextStyle(fontSize: 16.0),
+              "Add all of the items you have worn today, even if you are not wearing them anymore.",
+              style: TextStyle(
+                  fontSize: 16.0, color: Color.fromARGB(255, 98, 94, 92)),
             ),
           ),
           const SizedBox(height: 20.0),
@@ -53,17 +54,24 @@ class Home extends StatelessWidget {
                       }
                       final itemInfo = snapshot.data!;
                       return Container(
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.grey.withOpacity(0.2),
-                                spreadRadius: 1,
-                                blurRadius: 15.0,
-                                offset: const Offset(0, 15)),
-                          ],
-                        ),
+                        // decoration: BoxDecoration(
+                        //   boxShadow: [
+                        //     BoxShadow(
+                        //         color: Colors.grey.withOpacity(0.2),
+                        //         spreadRadius: 1,
+                        //         blurRadius: 15.0,
+                        //         offset: const Offset(0, 15)),
+                        //   ],
+                        // ),
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Card(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Color(0xff865537),
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
