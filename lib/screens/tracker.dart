@@ -50,6 +50,7 @@ class _TrackerState extends State<Tracker> {
   late bool _showYears;
 
   List<String> clothesList = [
+    'All Items',
     'Shoes',
     'Skirts',
     'Jackets',
@@ -72,7 +73,7 @@ class _TrackerState extends State<Tracker> {
 
   setFilters() {
     setState(() {
-      dropDownValue = clothesList[4];
+      dropDownValue = clothesList[0];
     });
   }
 
@@ -417,6 +418,9 @@ class _TrackerState extends State<Tracker> {
                     value: dropDownValue,
                     onChanged: (String? newValue) {
                       setState(() {
+                        if (newValue == "All Items") {
+                          newValue = "Clothes";
+                        }
                         dropDownValue = newValue!;
                       });
                     },
