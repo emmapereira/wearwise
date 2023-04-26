@@ -1,5 +1,10 @@
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
+
 import 'dart:convert';
+import 'dart:js';
 import 'package:flutter/services.dart';
+import 'package:csv/csv.dart';
+import 'package:flutter/widgets.dart';
 
 class ClothingItem {
   final String id;
@@ -17,6 +22,23 @@ class ClothingItem {
   });
 }
 
+class ClothesData {
+  final String id;
+  final double day;
+  final double month;
+  final double year;
+  final String weekday;
+  final String season;
+
+  ClothesData(
+      {required this.id,
+      required this.day,
+      required this.month,
+      required this.year,
+      required this.weekday,
+      required this.season});
+}
+
 Future<List<ClothingItem>> getClothingItems() async {
   final String data =
       await rootBundle.loadString('lib/assets/clothing_items.json');
@@ -30,6 +52,26 @@ Future<List<ClothingItem>> getClothingItems() async {
             seasons: (item['seasons'] as List<dynamic>).cast<String>(),
           ))
       .toList();
+}
+
+Future<String> getItemNameById(String id) async {
+  final String data =
+      await rootBundle.loadString('lib/assets/clothing_items.json');
+  final List<dynamic> jsonList = json.decode(data)['data'];
+  List<ClothingItem> tempList = jsonList
+      .map((item) => ClothingItem(
+            id: item['id'],
+            name: item['name'],
+            type: item['type'],
+            colour: item['colour'],
+            seasons: (item['seasons'] as List<dynamic>).cast<String>(),
+          ))
+      .toList();
+
+  for (var item in tempList) {
+    if (item.id == id) return item.name;
+  }
+  return '';
 }
 
 // Future<List<ClothingItem>> filterClothingItemsByType(
@@ -132,4 +174,11 @@ Future<List<ClothingItem>> filterClothingItemsBySeason(
   List<ClothingItem> filteredList =
       tempList.where((item) => (item.seasons.contains(filterSeason))).toList();
   return filteredList;
+}
+
+Future<List<List<dynamic>>> processCsv() async {
+  var result = await DefaultAssetBundle.of(context as BuildContext).loadString(
+    "assets/data/test.csv",
+  );
+  return const CsvToListConverter().convert(result, eol: "\n");
 }

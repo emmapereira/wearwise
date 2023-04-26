@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wearwise/models/models.dart';
+import 'package:wearwise/assets/tracked_data.dart';
+
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Tracker extends StatefulWidget {
   @override
@@ -12,14 +15,42 @@ class Tracker extends StatefulWidget {
   }
 }
 
+class ChartData {
+  ChartData(this.x, this.y, this.size);
+  final DateTime x;
+  final double y;
+  final double size;
+}
+
+class YearData {
+  YearData(this.year, this.id, this.count);
+  final DateTime year;
+  final int id;
+  final double count;
+}
+
+class YearData2 {
+  YearData2(this.year, this.id, this.count);
+  final int year;
+  final String id;
+  final double count;
+}
+
+class YearData3 {
+  YearData3(this.x, this.y, [this.color = Colors.red]);
+  final String x;
+  final double y;
+  final Color color;
+}
+
 class _TrackerState extends State<Tracker> {
   late Future<List<ClothingItem>> _futureClothingItems;
-  late bool _showWeeks;
   late bool _showMonths;
   late bool _showSeasons;
   late bool _showYears;
 
   List<String> clothesList = [
+    'All Items',
     'Shoes',
     'Skirts',
     'Jackets',
@@ -34,7 +65,6 @@ class _TrackerState extends State<Tracker> {
   void initState() {
     super.initState();
     setFilters();
-    _showWeeks = false;
     _showMonths = false;
     _showSeasons = false;
     _showYears = true;
@@ -43,265 +73,637 @@ class _TrackerState extends State<Tracker> {
 
   setFilters() {
     setState(() {
-      dropDownValue = clothesList[4];
+      dropDownValue = clothesList[0];
     });
   }
 
+  final List<ChartData> chartData = [
+    ChartData(DateTime.utc(2019, 11, 9), 35, 0.32),
+    ChartData(DateTime.utc(2020, 11, 9), 38, 0.21),
+    ChartData(DateTime.utc(2021, 11, 9), 34, 0.38),
+    ChartData(DateTime.utc(2022, 11, 9), 52, 0.29),
+    ChartData(DateTime.utc(2023, 11, 9), 40, 0.34)
+  ];
+
+  final List<YearData> yearData = [
+    YearData(DateTime.utc(2023, 6, 1), 1, id1_2023),
+    YearData(DateTime.utc(2022, 6, 1), 1, id1_2022),
+    YearData(DateTime.utc(2021, 6, 1), 1, id1_2021),
+    YearData(DateTime.utc(2020, 6, 1), 1, id1_2020),
+    YearData(DateTime.utc(2019, 6, 1), 1, id1_2019),
+    YearData(DateTime.utc(2023, 6, 1), 2, id2_2023),
+    YearData(DateTime.utc(2022, 6, 1), 2, id2_2022),
+    YearData(DateTime.utc(2021, 6, 1), 2, id2_2021),
+    YearData(DateTime.utc(2020, 6, 1), 2, id2_2020),
+    YearData(DateTime.utc(2019, 6, 1), 2, id2_2019),
+    YearData(DateTime.utc(2023, 6, 1), 3, id3_2023),
+    YearData(DateTime.utc(2022, 6, 1), 3, id3_2022),
+    YearData(DateTime.utc(2021, 6, 1), 3, id3_2021),
+    YearData(DateTime.utc(2020, 6, 1), 3, id3_2020),
+    YearData(DateTime.utc(2019, 6, 1), 4, id3_2019),
+    YearData(DateTime.utc(2023, 6, 1), 4, id4_2023),
+    YearData(DateTime.utc(2022, 6, 1), 4, id4_2022),
+    YearData(DateTime.utc(2021, 6, 1), 4, id4_2021),
+    YearData(DateTime.utc(2020, 6, 1), 4, id4_2020),
+    YearData(DateTime.utc(2019, 6, 1), 4, id4_2019),
+    YearData(DateTime.utc(2023, 6, 1), 5, id5_2023),
+    YearData(DateTime.utc(2022, 6, 1), 5, id5_2022),
+    YearData(DateTime.utc(2021, 6, 1), 5, id5_2021),
+    YearData(DateTime.utc(2020, 6, 1), 5, id5_2020),
+    YearData(DateTime.utc(2019, 6, 1), 5, id5_2019),
+    YearData(DateTime.utc(2023, 6, 1), 6, id6_2023),
+    YearData(DateTime.utc(2022, 6, 1), 6, id6_2022),
+    YearData(DateTime.utc(2021, 6, 1), 6, id6_2021),
+    YearData(DateTime.utc(2020, 6, 1), 6, id6_2020),
+    YearData(DateTime.utc(2019, 6, 1), 6, id6_2019),
+    YearData(DateTime.utc(2023, 6, 1), 7, id7_2023),
+    YearData(DateTime.utc(2022, 6, 1), 7, id7_2022),
+    YearData(DateTime.utc(2021, 6, 1), 7, id7_2021),
+    YearData(DateTime.utc(2020, 6, 1), 7, id7_2020),
+    YearData(DateTime.utc(2019, 6, 1), 7, id7_2019),
+    YearData(DateTime.utc(2023, 6, 1), 8, id8_2023),
+    YearData(DateTime.utc(2022, 6, 1), 8, id8_2022),
+    YearData(DateTime.utc(2021, 6, 1), 8, id8_2021),
+    YearData(DateTime.utc(2020, 6, 1), 8, id8_2020),
+    YearData(DateTime.utc(2019, 6, 1), 8, id8_2019),
+    YearData(DateTime.utc(2023, 6, 1), 9, id9_2023),
+    YearData(DateTime.utc(2022, 6, 1), 9, id9_2022),
+    YearData(DateTime.utc(2021, 6, 1), 9, id9_2021),
+    YearData(DateTime.utc(2020, 6, 1), 9, id9_2020),
+    YearData(DateTime.utc(2019, 6, 1), 9, id9_2019),
+    YearData(DateTime.utc(2023, 6, 1), 10, id10_2023),
+    YearData(DateTime.utc(2022, 6, 1), 10, id10_2022),
+    YearData(DateTime.utc(2021, 6, 1), 10, id10_2021),
+    YearData(DateTime.utc(2020, 6, 1), 10, id10_2020),
+    YearData(DateTime.utc(2019, 6, 1), 10, id10_2019),
+    YearData(DateTime.utc(2023, 6, 1), 11, id11_2023),
+    YearData(DateTime.utc(2022, 6, 1), 11, id11_2022),
+    YearData(DateTime.utc(2021, 6, 1), 11, id11_2021),
+    YearData(DateTime.utc(2020, 6, 1), 11, id11_2020),
+    YearData(DateTime.utc(2019, 6, 1), 11, id11_2019),
+    YearData(DateTime.utc(2023, 6, 1), 12, id12_2023),
+    YearData(DateTime.utc(2022, 6, 1), 12, id12_2022),
+    YearData(DateTime.utc(2021, 6, 1), 12, id12_2021),
+    YearData(DateTime.utc(2020, 6, 1), 12, id12_2020),
+    YearData(DateTime.utc(2019, 6, 1), 12, id12_2019),
+    YearData(DateTime.utc(2023, 6, 1), 13, id13_2023),
+    YearData(DateTime.utc(2022, 6, 1), 13, id13_2022),
+    YearData(DateTime.utc(2021, 6, 1), 13, id13_2021),
+    YearData(DateTime.utc(2020, 6, 1), 13, id13_2020),
+    YearData(DateTime.utc(2019, 6, 1), 13, id13_2019),
+    YearData(DateTime.utc(2023, 6, 1), 14, id14_2023),
+    YearData(DateTime.utc(2022, 6, 1), 14, id14_2022),
+    YearData(DateTime.utc(2021, 6, 1), 14, id14_2021),
+    YearData(DateTime.utc(2020, 6, 1), 14, id14_2020),
+    YearData(DateTime.utc(2019, 6, 1), 14, id14_2019),
+    YearData(DateTime.utc(2023, 6, 1), 15, id15_2023),
+    YearData(DateTime.utc(2022, 6, 1), 15, id15_2022),
+    YearData(DateTime.utc(2021, 6, 1), 15, id15_2021),
+    YearData(DateTime.utc(2020, 6, 1), 15, id15_2020),
+    YearData(DateTime.utc(2019, 6, 1), 15, id15_2019),
+    YearData(DateTime.utc(2023, 6, 1), 16, id16_2023),
+    YearData(DateTime.utc(2022, 6, 1), 16, id16_2022),
+    YearData(DateTime.utc(2021, 6, 1), 16, id16_2021),
+    YearData(DateTime.utc(2020, 6, 1), 16, id16_2020),
+    YearData(DateTime.utc(2019, 6, 1), 16, id16_2019),
+    YearData(DateTime.utc(2023, 6, 1), 17, id17_2023),
+    YearData(DateTime.utc(2022, 6, 1), 17, id17_2022),
+    YearData(DateTime.utc(2021, 6, 1), 17, id17_2021),
+    YearData(DateTime.utc(2020, 6, 1), 17, id17_2020),
+    YearData(DateTime.utc(2019, 6, 1), 17, id17_2019),
+    YearData(DateTime.utc(2023, 6, 1), 18, id18_2023),
+    YearData(DateTime.utc(2022, 6, 1), 18, id18_2022),
+    YearData(DateTime.utc(2021, 6, 1), 18, id18_2021),
+    YearData(DateTime.utc(2020, 6, 1), 18, id18_2020),
+    YearData(DateTime.utc(2019, 6, 1), 18, id18_2019),
+    YearData(DateTime.utc(2023, 6, 1), 19, id19_2023),
+    YearData(DateTime.utc(2022, 6, 1), 19, id19_2022),
+    YearData(DateTime.utc(2021, 6, 1), 19, id19_2021),
+    YearData(DateTime.utc(2020, 6, 1), 19, id19_2020),
+    YearData(DateTime.utc(2019, 6, 1), 19, id19_2019),
+    YearData(DateTime.utc(2023, 6, 1), 20, id20_2023),
+    YearData(DateTime.utc(2022, 6, 1), 20, id20_2022),
+    YearData(DateTime.utc(2021, 6, 1), 20, id20_2021),
+    YearData(DateTime.utc(2020, 6, 1), 20, id20_2020),
+    YearData(DateTime.utc(2019, 6, 1), 20, id20_2019),
+  ];
+
+  final List<YearData2> yearData2 = [
+    YearData2(2023, "Blue blazer", id1_2023),
+    YearData2(2022, "Blue blazer", id1_2022),
+    YearData2(2021, "Blue blazer", id1_2021),
+    YearData2(2020, "Blue blazer", id1_2020),
+    YearData2(2019, "Blue blazer", id1_2019),
+    YearData2(2023, "Light jeans", id2_2023),
+    YearData2(2022, "Light jeans", id2_2022),
+    YearData2(2021, "Light jeans", id2_2021),
+    YearData2(2020, "Light jeans", id2_2020),
+    YearData2(2019, "Light jeans", id2_2019),
+    YearData2(2023, "White neck", id3_2023),
+    YearData2(2022, "White neck", id3_2022),
+    YearData2(2021, "White neck", id3_2021),
+    YearData2(2020, "White neck", id3_2020),
+    YearData2(2019, "White neck", id3_2019),
+    YearData2(2023, "Green skirt", id4_2023),
+    YearData2(2022, "Green skirt", id4_2022),
+    YearData2(2021, "Green skirt", id4_2021),
+    YearData2(2020, "Green skirt", id4_2020),
+    YearData2(2019, "Green skirt", id4_2019),
+    YearData2(2023, "Adidas blue", id5_2023),
+    YearData2(2022, "Adidas blue", id5_2022),
+    YearData2(2021, "Adidas blue", id5_2021),
+    YearData2(2020, "Adidas blue", id5_2020),
+    YearData2(2019, "Adidas blue", id5_2019),
+    YearData2(2023, "Anna's t-shirt", id6_2023),
+    YearData2(2022, "Anna's t-shirt", id6_2022),
+    YearData2(2021, "Anna's t-shirt", id6_2021),
+    YearData2(2020, "Anna's t-shirt", id6_2020),
+    YearData2(2019, "Anna's t-shirt", id6_2019),
+    YearData2(2023, "Black blazer", id7_2023),
+    YearData2(2022, "Black blazer", id7_2022),
+    YearData2(2021, "Black blazer", id7_2021),
+    YearData2(2020, "Black blazer", id7_2020),
+    YearData2(2019, "Black blazer", id7_2019),
+    YearData2(2023, "Black jeans", id8_2023),
+    YearData2(2022, "Black jeans", id8_2022),
+    YearData2(2021, "Black jeans", id8_2021),
+    YearData2(2020, "Black jeans", id8_2020),
+    YearData2(2019, "Black jeans", id8_2019),
+    YearData2(2023, "Grey t-shirt", id9_2023),
+    YearData2(2022, "Grey t-shirt", id9_2022),
+    YearData2(2021, "Grey t-shirt", id9_2021),
+    YearData2(2020, "Grey t-shirt", id9_2020),
+    YearData2(2019, "Grey t-shirt", id9_2019),
+    YearData2(2023, "Stripped shirt", id10_2023),
+    YearData2(2022, "Stripped shirt", id10_2022),
+    YearData2(2021, "Stripped shirt", id10_2021),
+    YearData2(2020, "Stripped shirt", id10_2020),
+    YearData2(2019, "Stripped shirt", id10_2019),
+    YearData2(2023, "Beige coat", id11_2023),
+    YearData2(2022, "Beige coat", id11_2022),
+    YearData2(2021, "Beige coat", id11_2021),
+    YearData2(2020, "Beige coat", id11_2020),
+    YearData2(2019, "Beige coat", id11_2019),
+    YearData2(2023, "Long jacket", id12_2023),
+    YearData2(2022, "Long jacket", id12_2022),
+    YearData2(2021, "Long jacket", id12_2021),
+    YearData2(2020, "Long jacket", id12_2020),
+    YearData2(2019, "Long jacket", id12_2019),
+    YearData2(2023, "Slip on boots", id13_2023),
+    YearData2(2022, "Slip on boots", id13_2022),
+    YearData2(2021, "Slip on boots", id13_2021),
+    YearData2(2020, "Slip on boots", id13_2020),
+    YearData2(2019, "Slip on boots", id13_2019),
+    YearData2(2023, "Leggings", id14_2023),
+    YearData2(2022, "Leggings", id14_2022),
+    YearData2(2021, "Leggings", id14_2021),
+    YearData2(2020, "Leggings", id14_2020),
+    YearData2(2019, "Leggings", id14_2019),
+    YearData2(2023, "Nike shoes", id15_2023),
+    YearData2(2022, "Nike shoes", id15_2022),
+    YearData2(2021, "Nike shoes", id15_2021),
+    YearData2(2020, "Nike shoes", id15_2020),
+    YearData2(2019, "Nike shoes", id15_2019),
+    YearData2(2023, "Wool jumper", id16_2023),
+    YearData2(2022, "Wool jumper", id16_2022),
+    YearData2(2021, "Wool jumper", id16_2021),
+    YearData2(2020, "Wool jumper", id16_2020),
+    YearData2(2019, "Wool jumper", id16_2019),
+    YearData2(2023, "Navy jumper", id17_2023),
+    YearData2(2022, "Navy jumper", id17_2022),
+    YearData2(2021, "Navy jumper", id17_2021),
+    YearData2(2020, "Navy jumper", id17_2020),
+    YearData2(2019, "Navy jumper", id17_2019),
+    YearData2(2023, "Black hoodie", id18_2023),
+    YearData2(2022, "Black hoodie", id18_2022),
+    YearData2(2021, "Black hoodie", id18_2021),
+    YearData2(2020, "Black hoodie", id18_2020),
+    YearData2(2019, "Black hoodie", id18_2019),
+    YearData2(2023, "Black jacket", id19_2023),
+    YearData2(2022, "Black jacket", id19_2022),
+    YearData2(2021, "Black jacket", id19_2021),
+    YearData2(2020, "Black jacket", id19_2020),
+    YearData2(2019, "Black jacket", id19_2019),
+    YearData2(2023, "Black skirt", id20_2023),
+    YearData2(2022, "Black skirt", id20_2022),
+    YearData2(2021, "Black skirt", id20_2021),
+    YearData2(2020, "Black skirt", id20_2020),
+    YearData2(2019, "Black skirt", id20_2019),
+  ];
+
+  // final List<YearData3> yearData2023 = [
+  //   YearData3("Blue blazer", id1_2023, const Color(0xff865537)),
+  //   YearData3(
+  //       "Light jeans", id2_2023, const Color.fromARGB(255, 213, 154, 118)),
+  //   YearData3("White neck", id3_2023, const Color.fromARGB(255, 43, 18, 3)),
+  //   YearData3("Green skirt", id4_2023, const Color.fromARGB(255, 88, 82, 78)),
+  //   YearData3("Adidas blue", id5_2023, const Color.fromARGB(255, 174, 154, 59)),
+  //   YearData3(
+  //       "Anna's t-shirt", id6_2023, const Color.fromARGB(255, 106, 127, 11)),
+  //   YearData3("Black blazer", id7_2023, const Color.fromARGB(255, 47, 68, 189)),
+  //   YearData3("Black jeans", id8_2023, const Color.fromARGB(255, 97, 104, 184)),
+  //   YearData3("Grey t-shirt", id9_2023, const Color.fromARGB(255, 132, 19, 83)),
+  //   YearData3(
+  //       "Stripped shirt", id10_2023, const Color.fromARGB(255, 134, 55, 59)),
+  //   YearData3("Beige coat", id11_2023, const Color.fromARGB(255, 33, 194, 81)),
+  //   YearData3(
+  //       "Long jacket", id12_2023, const Color.fromARGB(255, 67, 197, 214)),
+  //   YearData3(
+  //       "Slip on boots", id13_2023, const Color.fromARGB(255, 166, 128, 14)),
+  //   YearData3("Leggings", id14_2023, const Color.fromARGB(255, 167, 12, 190)),
+  //   YearData3("Nike shoes", id15_2023, const Color.fromARGB(255, 235, 20, 35)),
+  //   YearData3(
+  //       "Wool jumper", id16_2023, const Color.fromARGB(255, 194, 156, 156)),
+  //   YearData3("Navy jumper", id17_2023, const Color.fromARGB(255, 38, 127, 56)),
+  //   YearData3(
+  //       "Black hoodie", id18_2023, const Color.fromARGB(255, 70, 142, 213)),
+  //   YearData3("Black jacket", id19_2023, const Color.fromARGB(255, 58, 4, 4)),
+  //   YearData3("Black skirt", id10_2023, const Color.fromARGB(255, 7, 7, 7)),
+  // ];
+  final List<YearData3> yearData2023 = [
+    YearData3("Blue blazer", id1_2023),
+    YearData3("Light jeans", id2_2023),
+    YearData3("White neck", id3_2023),
+    YearData3("Green skirt", id4_2023),
+    YearData3("Adidas blue", id5_2023),
+    YearData3("Anna's t-shirt", id6_2023),
+    YearData3("Black blazer", id7_2023),
+    YearData3("Black jeans", id8_2023),
+    YearData3("Grey t-shirt", id9_2023),
+    YearData3("Stripped shirt", id10_2023),
+    YearData3("Beige coat", id11_2023),
+    YearData3("Long jacket", id12_2023),
+    YearData3("Slip on boots", id13_2023),
+    YearData3("Leggings", id14_2023),
+    YearData3("Nike shoes", id15_2023),
+    YearData3("Wool jumper", id16_2023),
+    YearData3("Navy jumper", id17_2023),
+    YearData3("Black hoodie", id18_2023),
+    YearData3("Black jacket", id19_2023),
+    YearData3("Black skirt", id10_2023),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Text(
-            "Tracker",
-            style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff865537)),
-          ),
-        ),
-        // Padding(
-        //   padding: const EdgeInsets.only(bottom: 10.0),
-        //   child: Padding(
-        //     padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        //     child: Row(
-        //       children: [
-        //         Expanded(
-        //           child: Container(
-        //             decoration: BoxDecoration(
-        //               color: Colors.grey[200],
-        //               borderRadius: BorderRadius.circular(25.0),
-        //             ),
-        //             child: TextField(
-        //               onChanged: (text) async {
-        //                 // setState(() {
-        //                 //   _futureClothingItems =
-        //                 //       filterClothingItemsByName(text);
-        //                 // });
-        //               },
-        //               decoration: const InputDecoration(
-        //                 hintText: 'Select Type',
-        //                 contentPadding: EdgeInsets.symmetric(
-        //                   horizontal: 20.0,
-        //                   vertical: 15.0,
-        //                 ),
-        //                 border: InputBorder.none,
-        //                 suffixIcon: Icon(Icons.arrow_drop_down),
-        //               ),
-        //             ),
-        //           ),
-        //         ),
-        //       ],
-        //     ),
-        //   ),
-        // ),
-        Container(
-          margin: const EdgeInsets.all(20.0),
-          child: Column(
-            children: <Widget>[
-              DropdownButtonFormField(
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 20.0,
-                      vertical: 15.0,
-                    ),
-                    border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(30.0),
-                      ),
-                    ),
-                    filled: true,
-                    hintStyle: TextStyle(color: Colors.grey[600]),
-                    hintText: "Name",
-                    fillColor: Colors.grey[200]),
-                value: dropDownValue,
-                onChanged: (String? newValue) {
-                  setState(() {
-                    dropDownValue = newValue!;
-                  });
-                },
-                items: clothesList
-                    .map((clothesTitle) => DropdownMenuItem(
-                        value: clothesTitle, child: Text(clothesTitle)))
-                    .toList(),
+        resizeToAvoidBottomInset: true,
+        body: Container(
+            child: SingleChildScrollView(
+                child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                "Tracker",
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff865537)),
               ),
-            ],
-          ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Times you wore each of your $dropDownValue:',
-                style:
-                    const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
+            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(bottom: 10.0),
+            //   child: Padding(
+            //     padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            //     child: Row(
+            //       children: [
+            //         Expanded(
+            //           child: Container(
+            //             decoration: BoxDecoration(
+            //               color: Colors.grey[200],
+            //               borderRadius: BorderRadius.circular(25.0),
+            //             ),
+            //             child: TextField(
+            //               onChanged: (text) async {
+            //                 // setState(() {
+            //                 //   _futureClothingItems =
+            //                 //       filterClothingItemsByName(text);
+            //                 // });
+            //               },
+            //               decoration: const InputDecoration(
+            //                 hintText: 'Select Type',
+            //                 contentPadding: EdgeInsets.symmetric(
+            //                   horizontal: 20.0,
+            //                   vertical: 15.0,
+            //                 ),
+            //                 border: InputBorder.none,
+            //                 suffixIcon: Icon(Icons.arrow_drop_down),
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            Container(
+              margin: const EdgeInsets.all(20.0),
+              child: Column(
+                children: <Widget>[
+                  DropdownButtonFormField(
+                    decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                          vertical: 15.0,
+                        ),
+                        border: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30.0),
+                          ),
+                        ),
+                        filled: true,
+                        hintStyle: TextStyle(color: Colors.grey[600]),
+                        hintText: "Name",
+                        fillColor: Colors.grey[200]),
+                    value: dropDownValue,
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        if (newValue == "All Items") {
+                          newValue = "Clothes";
+                        }
+                        dropDownValue = newValue!;
+                      });
+                    },
+                    items: clothesList
+                        .map((clothesTitle) => DropdownMenuItem(
+                            value: clothesTitle, child: Text(clothesTitle)))
+                        .toList(),
+                  ),
+                ],
               ),
-              const SizedBox(height: 10.0),
-              Positioned(
-                bottom: 16.0,
-                left: 0,
-                right: 0,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Times you wore each of your $dropDownValue:',
+                    style: const TextStyle(
+                        fontSize: 18.0, color: Color(0xff865537)),
+                  ),
+                  const SizedBox(height: 10.0),
+                  Positioned(
+                    bottom: 16.0,
+                    left: 0,
+                    right: 0,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // handle the "Weeks" button press
-                          setState(() {
-                            _showWeeks = true;
-                            _showMonths = _showSeasons = _showYears = false;
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: _showWeeks
-                              ? Colors.white
-                              : const Color(0xff865537),
-                          backgroundColor: _showWeeks
-                              ? const Color(0xff865537)
-                              : Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24.0, vertical: 12.0),
-                          textStyle: const TextStyle(fontSize: 18.0),
-                        ),
-                        child: const Text("Weeks",
-                            style: TextStyle(fontSize: 18.0)),
-                      ),
-                    ),
-                    const SizedBox(width: 3.0),
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // handle the "Months" button press
+                              setState(() {
+                                _showMonths = true;
+                                _showSeasons = _showYears = false;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: _showMonths
+                                  ? Colors.white
+                                  : const Color(0xff865537),
+                              backgroundColor: _showMonths
+                                  ? const Color(0xff865537)
+                                  : Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24.0, vertical: 12.0),
+                              textStyle: const TextStyle(fontSize: 18.0),
+                            ),
+                            child: const Text("Months",
+                                style: TextStyle(fontSize: 18.0)),
                           ),
-                        ],
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // handle the "Months" button press
-                          setState(() {
-                            _showMonths = true;
-                            _showWeeks = _showSeasons = _showYears = false;
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: _showMonths
-                              ? Colors.white
-                              : const Color(0xff865537),
-                          backgroundColor: _showMonths
-                              ? const Color(0xff865537)
-                              : Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24.0, vertical: 12.0),
-                          textStyle: const TextStyle(fontSize: 18.0),
                         ),
-                        child: const Text("Months",
-                            style: TextStyle(fontSize: 18.0)),
-                      ),
-                    ),
-                    const SizedBox(width: 3.0),
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
+                        const SizedBox(width: 3.0),
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // handle the "Seasons" button press
-                          setState(() {
-                            _showSeasons = true;
-                            _showWeeks = _showMonths = _showYears = false;
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: _showSeasons
-                              ? Colors.white
-                              : const Color(0xff865537),
-                          backgroundColor: _showSeasons
-                              ? const Color(0xff865537)
-                              : Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24.0, vertical: 12.0),
-                          textStyle: const TextStyle(fontSize: 18.0),
-                        ),
-                        child: const Text("Seasons",
-                            style: TextStyle(fontSize: 18.0)),
-                      ),
-                    ),
-                    const SizedBox(width: 3.0),
-                    Container(
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: const Offset(0, 3),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // handle the "Seasons" button press
+                              setState(() {
+                                _showSeasons = true;
+                                _showMonths = _showYears = false;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: _showSeasons
+                                  ? Colors.white
+                                  : const Color(0xff865537),
+                              backgroundColor: _showSeasons
+                                  ? const Color(0xff865537)
+                                  : Colors.white,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24.0, vertical: 12.0),
+                              textStyle: const TextStyle(fontSize: 18.0),
+                            ),
+                            child: const Text("Seasons",
+                                style: TextStyle(fontSize: 18.0)),
                           ),
-                        ],
-                      ),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // handle the "Years" button press
-                          setState(() {
-                            _showYears = true;
-                            _showWeeks = _showMonths = _showSeasons = false;
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: _showYears
-                              ? Colors.white
-                              : const Color(0xff865537),
-                          backgroundColor: _showYears
-                              ? const Color(0xff865537)
-                              : Colors.white,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24.0, vertical: 12.0),
-                          textStyle: const TextStyle(fontSize: 18.0),
                         ),
-                        child: const Text("Years",
-                            style: TextStyle(fontSize: 18.0)),
-                      ),
+                        const SizedBox(width: 3.0),
+                        Container(
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: const Offset(0, 3),
+                              ),
+                            ],
+                          ),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              // handle the "Years" button press
+                              setState(() {
+                                _showYears = true;
+                                _showMonths = _showSeasons = false;
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: _showYears
+                                  ? Colors.white
+                                  : const Color(0xff865537),
+                              backgroundColor: _showYears
+                                  ? const Color(0xff865537)
+                                  : Colors.white,
+                              //padding: const EdgeInsets.symmetric(
+                              // horizontal: 24.0, vertical: 12.0),
+                              textStyle: const TextStyle(fontSize: 18.0),
+                            ),
+                            child: const Text("Years",
+                                style: TextStyle(fontSize: 18.0)),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  SingleChildScrollView(
+                      child: SizedBox(
+                          height: 700,
+                          child: SfCartesianChart(
+                              // zoomPanBehavior: ZoomPanBehavior(
+                              //     enablePinching: true,
+                              //     enablePanning: true),
+                              tooltipBehavior: TooltipBehavior(
+                                  enable: true,
+                                  header: '',
+                                  canShowMarker: false,
+                                  textAlignment: ChartAlignment.center,
+                                  format: 'worn point.size times'),
+                              primaryXAxis: DateTimeAxis(
+                                  rangePadding: ChartRangePadding.additional,
+                                  minimum: DateTime.utc(2018, 6, 1),
+                                  maximum: DateTime.utc(2024, 6, 1)),
+                              primaryYAxis: NumericAxis(
+                                  interval: 1,
+                                  minimum: 0,
+                                  maximum: 21,
+                                  desiredIntervals: null,
+                                  majorGridLines:
+                                      const MajorGridLines(width: 1)),
+                              series: <ChartSeries>[
+                                // Renders bubble charts
+                                BubbleSeries<YearData, DateTime>(
+                                  color: const Color(0xff865537),
+                                  name: 'Tracker by year',
+                                  xAxisName: 'Year',
+                                  yAxisName: 'Item',
+                                  selectionBehavior: SelectionBehavior(
+                                      enable: true, selectedColor: Colors.red),
+                                  enableTooltip: true,
+                                  dataSource: yearData,
+                                  sizeValueMapper: (YearData data, _) =>
+                                      data.count,
+                                  minimumRadius: 0,
+                                  xValueMapper: (YearData data, _) => data.year,
+                                  yValueMapper: (YearData data, _) => data.id,
+                                )
+                              ]))),
+                  const SizedBox(height: 15.0),
+                  SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: SizedBox(
+                          height: 300,
+                          width: 1500,
+                          child: SfCartesianChart(
+                              // zoomPanBehavior: ZoomPanBehavior(
+                              //     enablePinching: true,
+                              //     enablePanning: true),
+                              tooltipBehavior: TooltipBehavior(
+                                  enable: true,
+                                  header: '',
+                                  canShowMarker: false,
+                                  textAlignment: ChartAlignment.center,
+                                  format: 'worn point.size times'),
+                              primaryYAxis: NumericAxis(
+                                interval: 1,
+                                minimum: 2018,
+                                maximum: 2024,
+                              ),
+                              primaryXAxis: CategoryAxis(
+                                  majorGridLines:
+                                      const MajorGridLines(width: 1)),
+                              // primaryYAxis: NumericAxis(
+                              //     interval: 1,
+                              //     minimum: 0,
+                              //     maximum: 21,
+                              //     desiredIntervals: null,
+                              //     majorGridLines:
+                              //         const MajorGridLines(width: 1)),
+                              series: <ChartSeries>[
+                                // Renders bubble charts
+                                BubbleSeries<YearData2, String>(
+                                    color: const Color(0xff865537),
+                                    name: 'Tracker by year',
+                                    xAxisName: 'Year',
+                                    yAxisName: 'Item',
+                                    selectionBehavior: SelectionBehavior(
+                                        enable: true,
+                                        selectedColor: Colors.red),
+                                    enableTooltip: true,
+                                    dataSource: yearData2,
+                                    sizeValueMapper: (YearData2 data, _) =>
+                                        data.count,
+                                    minimumRadius: 0,
+                                    xValueMapper: (YearData2 data, _) =>
+                                        data.id,
+                                    yValueMapper: (YearData2 data, _) =>
+                                        data.year)
+                              ]))),
+                  const SizedBox(height: 15.0),
+                  SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Container(
+                          alignment: Alignment.center,
+                          child: SizedBox(
+                              height: 300,
+                              child: SfCircularChart(
+                                  tooltipBehavior: TooltipBehavior(
+                                      enable: true,
+                                      header: '',
+                                      canShowMarker: false,
+                                      textAlignment: ChartAlignment.center,
+                                      format: 'point.x\nworn point.y times'),
+                                  series: <CircularSeries>[
+                                    // Renders bubble charts
+                                    PieSeries<YearData3, String>(
+                                      explode: true,
+                                      explodeIndex: 1,
+                                      explodeOffset: '30%',
+                                      dataSource: yearData2023,
+                                      //pointColorMapper: (YearData3 data, _) => data.color,
+                                      dataLabelMapper: (YearData3 data, _) =>
+                                          data.x,
+
+                                      radius: '60%',
+                                      xValueMapper: (YearData3 data, _) =>
+                                          data.x,
+                                      yValueMapper: (YearData3 data, _) =>
+                                          data.y,
+                                      dataLabelSettings: const DataLabelSettings(
+                                          isVisible: true,
+                                          labelIntersectAction:
+                                              LabelIntersectAction.shift,
+                                          labelPosition:
+                                              ChartDataLabelPosition.outside,
+                                          connectorLineSettings:
+                                              ConnectorLineSettings(
+                                                  type: ConnectorType.curve,
+                                                  length: '25%')),
+                                    )
+                                  ])))),
+                  const SizedBox(height: 15.0),
+                  Text(
+                    '$dropDownValue you haven\'t worn in this time period:',
+                    style: const TextStyle(
+                        fontSize: 18.0, color: Color(0xff865537)),
+                  ),
+                  const SizedBox(height: 20.0),
+                ],
               ),
-              const SizedBox(height: 15.0),
-              Text(
-                '$dropDownValue you haven\'t worn in this time period:',
-                style:
-                    const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
-              ),
-              const SizedBox(height: 20.0),
-            ],
-          ),
-        ),
-      ],
-    ));
+            ),
+          ],
+        ))));
   }
 }
