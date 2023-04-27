@@ -54,15 +54,15 @@ class Home extends StatelessWidget {
                       }
                       final itemInfo = snapshot.data!;
                       return Container(
-                        // decoration: BoxDecoration(
-                        //   boxShadow: [
-                        //     BoxShadow(
-                        //         color: Colors.grey.withOpacity(0.2),
-                        //         spreadRadius: 1,
-                        //         blurRadius: 15.0,
-                        //         offset: const Offset(0, 15)),
-                        //   ],
-                        // ),
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 1,
+                                blurRadius: 15.0,
+                                offset: const Offset(0, 15)),
+                          ],
+                        ),
                         padding: const EdgeInsets.symmetric(horizontal: 20.0),
                         child: Container(
                           decoration: BoxDecoration(
