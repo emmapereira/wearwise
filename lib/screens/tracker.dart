@@ -478,10 +478,7 @@ class _TrackerState extends State<Tracker> {
   ];
   @override
   Widget build(BuildContext context) {
-    return
-        //SingleChildScrollView(
-        //child:
-        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       const Padding(
         padding: EdgeInsets.all(20.0),
         child: Text(
@@ -528,7 +525,7 @@ class _TrackerState extends State<Tracker> {
       //   ),
       // ),
       Container(
-        margin: const EdgeInsets.all(20.0),
+        margin: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           children: <Widget>[
             DropdownButtonFormField(
@@ -561,7 +558,7 @@ class _TrackerState extends State<Tracker> {
           ],
         ),
       ),
-      //ListView(children: <Widget>[
+      const SizedBox(height: 10.0),
       Container(
           margin: const EdgeInsets.symmetric(horizontal: 20.0),
           child:
@@ -686,7 +683,7 @@ class _TrackerState extends State<Tracker> {
           ])),
       const SizedBox(height: 5.0),
 
-      // Graph 1
+      // Graph 1 - Vertical with Items on the Y axis
       // SingleChildScrollView(
       //     child: SizedBox(
       //         height: 700,
@@ -740,9 +737,6 @@ class _TrackerState extends State<Tracker> {
                   height: 300,
                   width: 1700,
                   child: SfCartesianChart(
-                      // zoomPanBehavior: ZoomPanBehavior(
-                      //     enablePinching: true,
-                      //     enablePanning: true),
                       tooltipBehavior: TooltipBehavior(
                           enable: true,
                           header: '',
@@ -756,13 +750,6 @@ class _TrackerState extends State<Tracker> {
                       ),
                       primaryXAxis: CategoryAxis(
                           majorGridLines: const MajorGridLines(width: 1)),
-                      // primaryYAxis: NumericAxis(
-                      //     interval: 1,
-                      //     minimum: 0,
-                      //     maximum: 21,
-                      //     desiredIntervals: null,
-                      //     majorGridLines:
-                      //         const MajorGridLines(width: 1)),
                       series: <ChartSeries>[
                         // Renders bubble charts
                         BubbleSeries<YearData2, String>(
@@ -1083,7 +1070,6 @@ class _TrackerState extends State<Tracker> {
       //                                 length: '25%')),
       //                   )
       //                 ])))),
-      //const SizedBox(height: 15.0),
 
       Column(children: [
         if (dropDownValue == "Shoes" ||
@@ -1101,7 +1087,6 @@ class _TrackerState extends State<Tracker> {
         ] else
           ...[],
       ]),
-
       Column(children: [
         if (dropDownValue == "All Clothes" ||
             dropDownValue == "Skirts" ||
@@ -1227,10 +1212,7 @@ class _TrackerState extends State<Tracker> {
             }
           },
         ),
-      ),
+      )
     ]);
-    //],
-    //);
-    //);
   }
 }
