@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wearwise/screens/closet.dart';
+
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:wearwise/assets/tracked_data.dart';
 import 'package:intl/intl.dart';
