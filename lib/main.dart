@@ -5,6 +5,7 @@ import 'screens/closet.dart';
 import 'screens/tracker.dart';
 import 'screens/profile.dart';
 import 'models/app_state.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 void main() {
   final appState = AppState();
@@ -47,6 +48,49 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<String> selectedItems;
 
   _MyHomePageState({required this.selectedItems});
+  List<String> _selectedItems = [];
+
+  late PersistentTabController _controller;
+  List<Widget> _screens = [];
+  List<PersistentBottomNavBarItem> _navBarItems = [];
+
+  List<Widget> _buildScreens() {
+    return [
+      Home(selectedItems: _selectedItems, currentIndex: _currentIndex),
+      Closet(),
+      Tracker(),
+      Profile(),
+    ];
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.home),
+        title: "Home",
+        activeColorPrimary: Colors.black,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.view_list),
+        title: "Closet",
+        activeColorPrimary: Colors.black,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.track_changes),
+        title: "Tracker",
+        activeColorPrimary: Colors.black,
+        inactiveColorPrimary: Colors.grey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: const Icon(Icons.person),
+        title: "Profile",
+        activeColorPrimary: Colors.black,
+        inactiveColorPrimary: Colors.grey,
+      ),
+    ];
+  }
 
   /* final List<Widget> _children = [
     Home(selectedItems: widget.appState.selectedItems),
@@ -54,15 +98,52 @@ class _MyHomePageState extends State<MyHomePage> {
     Tracker(),
     Profile(),
   ];  */
-  List<String> _selectedItems = [];
+
+  /* @override
+  void initState() {
+    super.initState();
+    _selectedItems = widget.appState.selectedItems;
+  } */
 
   @override
   void initState() {
     super.initState();
     _selectedItems = widget.appState.selectedItems;
+    _controller = PersistentTabController(initialIndex: _currentIndex);
   }
 
-  void onTabTapped(int index) {
+  @override
+  Widget build(BuildContext context) {
+    return PersistentTabView(
+      context,
+      controller: _controller,
+      screens: _buildScreens(),
+      items: _navBarsItems(),
+      confineInSafeArea: true,
+      backgroundColor: Colors.white,
+      handleAndroidBackButtonPress: true,
+      resizeToAvoidBottomInset: true,
+      stateManagement: true,
+      hideNavigationBarWhenKeyboardShows: true,
+      decoration: NavBarDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        colorBehindNavBar: Colors.white,
+      ),
+      popAllScreensOnTapOfSelectedTab: true,
+      popActionScreens: PopActionScreensType.all,
+      itemAnimationProperties: const ItemAnimationProperties(
+        duration: Duration(milliseconds: 200),
+        curve: Curves.ease,
+      ),
+      screenTransitionAnimation: const ScreenTransitionAnimation(
+        animateTabTransition: true,
+        curve: Curves.ease,
+        duration: Duration(milliseconds: 200),
+      ),
+      navBarStyle: NavBarStyle.style3,
+    );
+  }
+  /* void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
     });
@@ -177,7 +258,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavBar(
         currentIndex: _currentIndex,
         onTabTapped: onTabTapped,
-      ),
-    );
-  }
+      ), 
+    ); 
+  }*/
 }
