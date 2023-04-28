@@ -738,10 +738,10 @@ class _SelectableClosetState extends State<SelectableCloset> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(
+      /* bottomNavigationBar: BottomNavBar(
         currentIndex: 0,
         onTabTapped: (index) {},
-      ),
+      ), */
     );
   }
 }
