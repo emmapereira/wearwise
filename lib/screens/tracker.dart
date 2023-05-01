@@ -683,7 +683,8 @@ class _TrackerState extends State<Tracker> {
           ])),
       const SizedBox(height: 5.0),
 
-      // Graph 1 - Vertical with Items on the Y axis
+      // Graph Option 1 - Vertical with Items on the Y axis
+
       // SingleChildScrollView(
       //     child: SizedBox(
       //         height: 700,
@@ -1071,148 +1072,150 @@ class _TrackerState extends State<Tracker> {
       //                   )
       //                 ])))),
 
-      Column(children: [
-        if (dropDownValue == "Shoes" ||
-            dropDownValue == "Jackets" ||
-            dropDownValue == "Pants" ||
-            dropDownValue == "T-shirts") ...[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              'You have worn every item from the list of $dropDownValue in this time period.\nGood for you, keep it up!',
-              style: const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
-            ),
-          ),
-          const SizedBox(height: 3.0),
-        ] else
-          ...[],
-      ]),
-      Column(children: [
-        if (dropDownValue == "All Clothes" ||
-            dropDownValue == "Skirts" ||
-            dropDownValue == "Coats" ||
-            dropDownValue == "Sweatshirts") ...[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              '$dropDownValue you haven\'t worn in this time period:',
-              style: const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
-            ),
-          ),
-          const SizedBox(height: 3.0),
-        ]
-      ]),
-      Expanded(
-        child: FutureBuilder<List<ClothingItem>>(
-          future: _futureClothingItems,
-          builder: (BuildContext context,
-              AsyncSnapshot<List<ClothingItem>> snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasData) {
-                return GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final clothingItem = snapshot.data![index];
+      // List of Not Worn Items
 
-                    Color tagColor = Colors.grey;
-                    if (clothingItem.type == "jacket") {
-                      tagColor = Colors.brown;
-                    } else if (clothingItem.type == "pants") {
-                      tagColor = Colors.green;
-                    } else if (clothingItem.type == "t-shirt") {
-                      tagColor = Colors.deepOrange;
-                    } else if (clothingItem.type == "skirt") {
-                      tagColor = Colors.purple;
-                    } else if (clothingItem.type == "shoes") {
-                      tagColor = Colors.red;
-                    } else if (clothingItem.type == "coat") {
-                      tagColor = Colors.blue;
-                    } else if (clothingItem.type == "sweatshirt") {
-                      tagColor = Colors.yellow;
-                    }
+      // Column(children: [
+      //   if (dropDownValue == "Shoes" ||
+      //       dropDownValue == "Jackets" ||
+      //       dropDownValue == "Pants" ||
+      //       dropDownValue == "T-shirts") ...[
+      //     Padding(
+      //       padding: const EdgeInsets.symmetric(horizontal: 20),
+      //       child: Text(
+      //         'You have worn every item from the list of $dropDownValue in this time period.\nGood for you, keep it up!',
+      //         style: const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
+      //       ),
+      //     ),
+      //     const SizedBox(height: 3.0),
+      //   ] else
+      //     ...[],
+      // ]),
+      // Column(children: [
+      //   if (dropDownValue == "All Clothes" ||
+      //       dropDownValue == "Skirts" ||
+      //       dropDownValue == "Coats" ||
+      //       dropDownValue == "Sweatshirts") ...[
+      //     Padding(
+      //       padding: const EdgeInsets.symmetric(horizontal: 20),
+      //       child: Text(
+      //         '$dropDownValue you haven\'t worn in this time period:',
+      //         style: const TextStyle(fontSize: 18.0, color: Color(0xff865537)),
+      //       ),
+      //     ),
+      //     const SizedBox(height: 3.0),
+      //   ]
+      // ]),
+      // Expanded(
+      //   child: FutureBuilder<List<ClothingItem>>(
+      //     future: _futureClothingItems,
+      //     builder: (BuildContext context,
+      //         AsyncSnapshot<List<ClothingItem>> snapshot) {
+      //       if (snapshot.connectionState == ConnectionState.done) {
+      //         if (snapshot.hasData) {
+      //           return GridView.builder(
+      //             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+      //                 crossAxisCount: 2),
+      //             itemCount: snapshot.data!.length,
+      //             itemBuilder: (BuildContext context, int index) {
+      //               final clothingItem = snapshot.data![index];
 
-                    return GridTile(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 2,
-                                blurRadius: 5,
-                                offset: const Offset(0, 3),
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  clothingItem.name,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 12.0,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0, vertical: 4.0),
-                                  decoration: BoxDecoration(
-                                    color: tagColor,
-                                    borderRadius: BorderRadius.circular(20.0),
-                                  ),
-                                  child: Text(
-                                    clothingItem.type,
-                                    style: const TextStyle(
-                                      fontSize: 10.0,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Center(
-                                    child: Image.asset(
-                                      'lib/assets/images/image${clothingItem.id}.png',
-                                      width: double
-                                          .infinity, // set the width to the maximum available width
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                );
-              } else {
-                return const Center(
-                  child: Text("No clothing items found."),
-                );
-              }
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ),
-      )
+      //               Color tagColor = Colors.grey;
+      //               if (clothingItem.type == "jacket") {
+      //                 tagColor = Colors.brown;
+      //               } else if (clothingItem.type == "pants") {
+      //                 tagColor = Colors.green;
+      //               } else if (clothingItem.type == "t-shirt") {
+      //                 tagColor = Colors.deepOrange;
+      //               } else if (clothingItem.type == "skirt") {
+      //                 tagColor = Colors.purple;
+      //               } else if (clothingItem.type == "shoes") {
+      //                 tagColor = Colors.red;
+      //               } else if (clothingItem.type == "coat") {
+      //                 tagColor = Colors.blue;
+      //               } else if (clothingItem.type == "sweatshirt") {
+      //                 tagColor = Colors.yellow;
+      //               }
+
+      //               return GridTile(
+      //                 child: Padding(
+      //                   padding: const EdgeInsets.all(10.0),
+      //                   child: Container(
+      //                     decoration: BoxDecoration(
+      //                       color: Colors.white,
+      //                       borderRadius: BorderRadius.circular(10.0),
+      //                       boxShadow: [
+      //                         BoxShadow(
+      //                           color: Colors.grey.withOpacity(0.5),
+      //                           spreadRadius: 2,
+      //                           blurRadius: 5,
+      //                           offset: const Offset(0, 3),
+      //                         ),
+      //                       ],
+      //                     ),
+      //                     child: Column(
+      //                       crossAxisAlignment: CrossAxisAlignment.start,
+      //                       children: [
+      //                         Padding(
+      //                           padding: const EdgeInsets.all(8.0),
+      //                           child: Text(
+      //                             clothingItem.name,
+      //                             style: const TextStyle(
+      //                               fontWeight: FontWeight.bold,
+      //                               fontSize: 12.0,
+      //                             ),
+      //                           ),
+      //                         ),
+      //                         Padding(
+      //                           padding:
+      //                               const EdgeInsets.symmetric(horizontal: 8.0),
+      //                           child: Container(
+      //                             padding: const EdgeInsets.symmetric(
+      //                                 horizontal: 8.0, vertical: 4.0),
+      //                             decoration: BoxDecoration(
+      //                               color: tagColor,
+      //                               borderRadius: BorderRadius.circular(20.0),
+      //                             ),
+      //                             child: Text(
+      //                               clothingItem.type,
+      //                               style: const TextStyle(
+      //                                 fontSize: 10.0,
+      //                               ),
+      //                             ),
+      //                           ),
+      //                         ),
+      //                         Expanded(
+      //                           child: Padding(
+      //                             padding: const EdgeInsets.all(8.0),
+      //                             child: Center(
+      //                               child: Image.asset(
+      //                                 'lib/assets/images/image${clothingItem.id}.png',
+      //                                 width: double
+      //                                     .infinity, // set the width to the maximum available width
+      //                                 fit: BoxFit.contain,
+      //                               ),
+      //                             ),
+      //                           ),
+      //                         ),
+      //                       ],
+      //                     ),
+      //                   ),
+      //                 ),
+      //               );
+      //             },
+      //           );
+      //         } else {
+      //           return const Center(
+      //             child: Text("No clothing items found."),
+      //           );
+      //         }
+      //       } else {
+      //         return const Center(
+      //           child: CircularProgressIndicator(),
+      //         );
+      //       }
+      //     },
+      //   ),
+      // )
     ]);
   }
 }
