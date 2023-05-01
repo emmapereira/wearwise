@@ -109,7 +109,7 @@
         {
             "id": "10",
             "name": "Stripped white shirt",
-            "type": "shirt",
+            "type": "t-shirt",
             "colour": "white",
             "seasons": [
                 "winter",
