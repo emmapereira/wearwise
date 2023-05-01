@@ -63,7 +63,8 @@ class Home extends StatelessWidget {
                                 offset: const Offset(0, 15)),
                           ],
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 1.0),
                         child: Container(
                           decoration: BoxDecoration(
                             border: Border.all(
