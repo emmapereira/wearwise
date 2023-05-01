@@ -662,297 +662,314 @@ class _ClosetState extends State<Closet> {
 
           const SizedBox(height: 10.0),
           Positioned(
-            bottom: 16.0,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
+              bottom: 16.0,
+              left: 0,
+              right: 0,
+              child: Column(children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // handle the "Shoes" button press
-                      setState(() {
-                        _showShoes = true;
-                        _showJackets = false;
-                        _showPants = false;
-                        _showCoats = false;
-                        _showTShirts = false;
-                        _showSweatshirts = false;
-                        _showSkirts = false;
-                        _futureClothingItems =
-                            filterClothingItemsByType("shoes");
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor:
-                          _showShoes ? Colors.white : const Color(0xff865537),
-                      backgroundColor:
-                          _showShoes ? const Color(0xff865537) : Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24.0, vertical: 12.0),
-                      textStyle: const TextStyle(fontSize: 132.0),
-                    ),
-                    child:
-                        const Text("shoes", style: TextStyle(fontSize: 13.0)),
-                  ),
-                ),
-                const SizedBox(width: 2.0),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "T-Shirts" button press
+                          setState(() {
+                            _showShoes = false;
+                            _showJackets = false;
+                            _showPants = false;
+                            _showCoats = false;
+                            _showTShirts = true;
+                            _showSweatshirts = false;
+                            _showSkirts = false;
+                            _futureClothingItems =
+                                filterClothingItemsByType("t-shirt");
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showTShirts
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showTShirts
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          //padding: const EdgeInsets.symmetric(
+                          // horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("t-shirts",
+                            style: TextStyle(fontSize: 18.0)),
                       ),
-                    ],
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // handle the "Skirts" button press
-                      setState(() {
-                        _showShoes = false;
-                        _showJackets = false;
-                        _showPants = false;
-                        _showCoats = false;
-                        _showTShirts = false;
-                        _showSweatshirts = false;
-                        _showSkirts = true;
-                        _futureClothingItems =
-                            filterClothingItemsByType("skirt");
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor:
-                          _showSkirts ? Colors.white : const Color(0xff865537),
-                      backgroundColor:
-                          _showSkirts ? const Color(0xff865537) : Colors.white,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24.0, vertical: 12.0),
-                      textStyle: const TextStyle(fontSize: 13.0),
                     ),
-                    child:
-                        const Text("skirts", style: TextStyle(fontSize: 13.0)),
-                  ),
-                ),
-                const SizedBox(width: 2.0),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
+                    const SizedBox(width: 4.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // handle the "Jackets" button press
-                      setState(() {
-                        _showShoes = false;
-                        _showJackets = true;
-                        _showPants = false;
-                        _showCoats = false;
-                        _showTShirts = false;
-                        _showSweatshirts = false;
-                        _showSkirts = false;
-                        _futureClothingItems =
-                            filterClothingItemsByType("jacket");
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor:
-                          _showJackets ? Colors.white : const Color(0xff865537),
-                      backgroundColor:
-                          _showJackets ? const Color(0xff865537) : Colors.white,
-                      //padding: const EdgeInsets.symmetric(
-                      // horizontal: 24.0, vertical: 12.0),
-                      textStyle: const TextStyle(fontSize: 13.0),
-                    ),
-                    child:
-                        const Text("jackets", style: TextStyle(fontSize: 13.0)),
-                  ),
-                ),
-                const SizedBox(width: 2.0),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "Coats" button press
+                          setState(() {
+                            _showShoes = false;
+                            _showJackets = false;
+                            _showPants = false;
+                            _showCoats = true;
+                            _showTShirts = false;
+                            _showSweatshirts = false;
+                            _showSkirts = false;
+                            _futureClothingItems =
+                                filterClothingItemsByType("coat");
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showCoats
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showCoats
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          //padding: const EdgeInsets.symmetric(
+                          // horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("coats",
+                            style: TextStyle(fontSize: 18.0)),
                       ),
-                    ],
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // handle the "Pants" button press
-                      setState(() {
-                        _showShoes = false;
-                        _showJackets = false;
-                        _showPants = true;
-                        _showCoats = false;
-                        _showTShirts = false;
-                        _showSweatshirts = false;
-                        _showSkirts = false;
-                        _futureClothingItems =
-                            filterClothingItemsByType("pants");
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor:
-                          _showPants ? Colors.white : const Color(0xff865537),
-                      backgroundColor:
-                          _showPants ? const Color(0xff865537) : Colors.white,
-                      //padding: const EdgeInsets.symmetric(
-                      // horizontal: 24.0, vertical: 12.0),
-                      textStyle: const TextStyle(fontSize: 13.0),
                     ),
-                    child:
-                        const Text("pants", style: TextStyle(fontSize: 13.0)),
-                  ),
-                ),
-                const SizedBox(width: 2.0),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
+                    const SizedBox(width: 4.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // handle the "T-Shirts" button press
-                      setState(() {
-                        _showShoes = false;
-                        _showJackets = false;
-                        _showPants = false;
-                        _showCoats = false;
-                        _showTShirts = true;
-                        _showSweatshirts = false;
-                        _showSkirts = false;
-                        _futureClothingItems =
-                            filterClothingItemsByType("t-shirt");
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor:
-                          _showTShirts ? Colors.white : const Color(0xff865537),
-                      backgroundColor:
-                          _showTShirts ? const Color(0xff865537) : Colors.white,
-                      //padding: const EdgeInsets.symmetric(
-                      // horizontal: 24.0, vertical: 12.0),
-                      textStyle: const TextStyle(fontSize: 13.0),
-                    ),
-                    child: const Text("t-shirts",
-                        style: TextStyle(fontSize: 13.0)),
-                  ),
-                ),
-                const SizedBox(width: 2.0),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "SweatShirts" button press
+                          setState(() {
+                            _showShoes = false;
+                            _showJackets = false;
+                            _showPants = false;
+                            _showCoats = false;
+                            _showTShirts = false;
+                            _showSweatshirts = true;
+                            _showSkirts = false;
+                            _futureClothingItems =
+                                filterClothingItemsByType("sweatshirt");
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showSweatshirts
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showSweatshirts
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          //padding: const EdgeInsets.symmetric(
+                          // horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("sweatshirts",
+                            style: TextStyle(fontSize: 18.0)),
                       ),
-                    ],
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // handle the "Coats" button press
-                      setState(() {
-                        _showShoes = false;
-                        _showJackets = false;
-                        _showPants = false;
-                        _showCoats = true;
-                        _showTShirts = false;
-                        _showSweatshirts = false;
-                        _showSkirts = false;
-                        _futureClothingItems =
-                            filterClothingItemsByType("coat");
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor:
-                          _showCoats ? Colors.white : const Color(0xff865537),
-                      backgroundColor:
-                          _showCoats ? const Color(0xff865537) : Colors.white,
-                      //padding: const EdgeInsets.symmetric(
-                      // horizontal: 24.0, vertical: 12.0),
-                      textStyle: const TextStyle(fontSize: 13.0),
                     ),
-                    child:
-                        const Text("coats", style: TextStyle(fontSize: 13.0)),
-                  ),
+                  ],
                 ),
-                const SizedBox(width: 2.0),
-                Container(
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 5,
-                        offset: const Offset(0, 3),
+                const SizedBox(height: 5.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // handle the "SweatShirts" button press
-                      setState(() {
-                        _showShoes = false;
-                        _showJackets = false;
-                        _showPants = false;
-                        _showCoats = false;
-                        _showTShirts = false;
-                        _showSweatshirts = true;
-                        _showSkirts = false;
-                        _futureClothingItems =
-                            filterClothingItemsByType("sweatshirt");
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: _showSweatshirts
-                          ? Colors.white
-                          : const Color(0xff865537),
-                      backgroundColor: _showSweatshirts
-                          ? const Color(0xff865537)
-                          : Colors.white,
-                      //padding: const EdgeInsets.symmetric(
-                      // horizontal: 24.0, vertical: 12.0),
-                      textStyle: const TextStyle(fontSize: 13.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "Shoes" button press
+                          setState(() {
+                            _showShoes = true;
+                            _showJackets = false;
+                            _showPants = false;
+                            _showCoats = false;
+                            _showTShirts = false;
+                            _showSweatshirts = false;
+                            _showSkirts = false;
+                            _futureClothingItems =
+                                filterClothingItemsByType("shoes");
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showShoes
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showShoes
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 182.0),
+                        ),
+                        child: const Text("shoes",
+                            style: TextStyle(fontSize: 18.0)),
+                      ),
                     ),
-                    child: const Text("sweatshirts",
-                        style: TextStyle(fontSize: 13.0)),
-                  ),
+                    const SizedBox(width: 4.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "Skirts" button press
+                          setState(() {
+                            _showShoes = false;
+                            _showJackets = false;
+                            _showPants = false;
+                            _showCoats = false;
+                            _showTShirts = false;
+                            _showSweatshirts = false;
+                            _showSkirts = true;
+                            _futureClothingItems =
+                                filterClothingItemsByType("skirt");
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showSkirts
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showSkirts
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("skirts",
+                            style: TextStyle(fontSize: 18.0)),
+                      ),
+                    ),
+                    const SizedBox(width: 4.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "Jackets" button press
+                          setState(() {
+                            _showShoes = false;
+                            _showJackets = true;
+                            _showPants = false;
+                            _showCoats = false;
+                            _showTShirts = false;
+                            _showSweatshirts = false;
+                            _showSkirts = false;
+                            _futureClothingItems =
+                                filterClothingItemsByType("jacket");
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showJackets
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showJackets
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          //padding: const EdgeInsets.symmetric(
+                          // horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("jackets",
+                            style: TextStyle(fontSize: 18.0)),
+                      ),
+                    ),
+                    const SizedBox(width: 4.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "Pants" button press
+                          setState(() {
+                            _showShoes = false;
+                            _showJackets = false;
+                            _showPants = true;
+                            _showCoats = false;
+                            _showTShirts = false;
+                            _showSweatshirts = false;
+                            _showSkirts = false;
+                            _futureClothingItems =
+                                filterClothingItemsByType("pants");
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: _showPants
+                              ? Colors.white
+                              : const Color(0xff865537),
+                          backgroundColor: _showPants
+                              ? const Color(0xff865537)
+                              : Colors.white,
+                          //padding: const EdgeInsets.symmetric(
+                          // horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("pants",
+                            style: TextStyle(fontSize: 18.0)),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 8.0),
+              ])),
 
           //here we display the grid with the closet items
           Expanded(
