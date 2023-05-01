@@ -24,7 +24,7 @@ class Item extends StatelessWidget {
         future: findClothingItemById(itemId),
         builder: (BuildContext context, AsyncSnapshot<ClothingItem?> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
@@ -71,7 +71,7 @@ class Item extends StatelessWidget {
                     },
                   ),
                   Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Text(
                       itemInfo.name,
                       style: const TextStyle(
@@ -115,11 +115,11 @@ class Item extends StatelessWidget {
                   ]),
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Text(
-                  'Times you wore it:',
-                  style: const TextStyle(
+                  'Times you wore it this year:',
+                  style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: Color(0xff865537)),
@@ -168,9 +168,10 @@ class Item extends StatelessWidget {
                                     data.month,
                                 yValueMapper: (MonthlyData data, _) =>
                                     data.count,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10))),
                           ]))),
+              const SizedBox(height: 20.0),
             ],
           );
         },

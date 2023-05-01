@@ -1,138 +1,184 @@
+  final List<SeasonData> seasonDataAll_2023 = [
+    SeasonData("Spring", "Blue blazer", id1_spring_2023),
+    SeasonData("Summer", "Blue blazer", id1_summer_2023),
+    SeasonData("Autumn", "Blue blazer", id1_autumn_2023),
+    SeasonData("Winter", "Blue blazer", id1_winter_2023),
+    SeasonData("Spring", "Light jeans", id2_spring_2023),
+    SeasonData("Summer", "Light jeans", id2_summer_2023),
+    SeasonData("Autumn", "Light jeans", id2_autumn_2023),
+    SeasonData("Winter", "Light jeans", id2_winter_2023),    
+    SeasonData("Spring", "White neck", id3_spring_2023),
+    SeasonData("Summer", "White neck", id3_summer_2023),
+    SeasonData("Autumn", "White neck", id3_autumn_2023),
+    SeasonData("Winter", "White neck", id3_winter_2023),
+    SeasonData("Spring", "Green skirt", id4_spring_2023),
+    SeasonData("Summer", "Green skirt", id4_summer_2023),
+    SeasonData("Autumn", "Green skirt", id4_autumn_2023),
+    SeasonData("Winter", "Green skirt", id4_winter_2023),
+    SeasonData("Spring", "Adidas blue", id5_spring_2023),
+    SeasonData("Summer", "Adidas blue", id5_summer_2023),
+    SeasonData("Autumn", "Adidas blue", id5_autumn_2023),
+    SeasonData("Winter", "Adidas blue", id5_winter_2023),
+    SeasonData("Spring", "Anna's t-shirt", id6_spring_2023),
+    SeasonData("Summer", "Anna's t-shirt", id6_summer_2023),
+    SeasonData("Autumn", "Anna's t-shirt", id6_autumn_2023),
+    SeasonData("Winter", "Anna's t-shirt", id6_winter_2023),
+    SeasonData("Spring", "Black blazer", id7_spring_2023),
+    SeasonData("Summer", "Black blazer", id7_summer_2023),
+    SeasonData("Autumn", "Black blazer", id7_autumn_2023),
+    SeasonData("Winter", "Black blazer", id7_winter_2023),
+    SeasonData("Spring", "Black jeans", id8_spring_2023),
+    SeasonData("Summer", "Black jeans", id8_summer_2023),
+    SeasonData("Autumn", "Black jeans", id8_autumn_2023),
+    SeasonData("Winter", "Black jeans", id8_winter_2023),
+    SeasonData("Spring", "Grey t-shirt", id9_spring_2023),
+    SeasonData("Summer", "Grey t-shirt", id9_summer_2023),
+    SeasonData("Autumn", "Grey t-shirt", id9_autumn_2023),
+    SeasonData("Winter", "Grey t-shirt", id9_winter_2023),
+    SeasonData("Spring", "Stripped shirt", id10_spring_2023),
+    SeasonData("Summer", "Stripped shirt", id10_summer_2023),
+    SeasonData("Autumn", "Stripped shirt", id10_autumn_2023),
+    SeasonData("Winter", "Stripped shirt", id10_winter_2023),
+    SeasonData("Spring", "Beige coat", id11_spring_2023),
+    SeasonData("Summer", "Beige coat", id11_summer_2023),
+    SeasonData("Autumn", "Beige coat", id11_autumn_2023),
+    SeasonData("Winter", "Beige coat", id11_winter_2023),
+    SeasonData("Spring", "Long jacket", id12_spring_2023),
+    SeasonData("Summer", "Long jacket", id12_summer_2023),
+    SeasonData("Autumn", "Long jacket", id12_autumn_2023),
+    SeasonData("Winter", "Long jacket", id12_winter_2023),
+    SeasonData("Spring", "Slip on boots", id13_spring_2023),
+    SeasonData("Summer", "Slip on boots", id13_summer_2023),
+    SeasonData("Autumn", "Slip on boots", id13_autumn_2023),
+    SeasonData("Winter", "Slip on boots", id13_winter_2023),
+    SeasonData("Spring", "Leggings", id14_spring_2023),
+    SeasonData("Summer", "Leggings", id14_summer_2023),
+    SeasonData("Autumn", "Leggings", id14_autumn_2023),
+    SeasonData("Winter", "Leggings", id14_winter_2023),
+    SeasonData("Spring", "Nike shoes", id15_spring_2023),
+    SeasonData("Summer", "Nike shoes", id15_summer_2023),
+    SeasonData("Autumn", "Nike shoes", id15_autumn_2023),
+    SeasonData("Winter", "Nike shoes", id15_winter_2023),
+    SeasonData("Spring", "Wool jumper", id16_spring_2023),
+    SeasonData("Summer", "Wool jumper", id16_summer_2023),
+    SeasonData("Autumn", "Wool jumper", id16_autumn_2023),
+    SeasonData("Winter", "Wool jumper", id16_winter_2023),
+    SeasonData("Spring", "Navy jumper", id17_spring_2023),
+    SeasonData("Summer", "Navy jumper", id17_summer_2023),
+    SeasonData("Autumn", "Navy jumper", id17_autumn_2023),
+    SeasonData("Winter", "Navy jumper", id17_winter_2023),
+    SeasonData("Spring", "Black hoodie", id18_spring_2023),
+    SeasonData("Summer", "Black hoodie", id18_summer_2023),
+    SeasonData("Autumn", "Black hoodie", id18_autumn_2023),
+    SeasonData("Winter", "Black hoodie", id18_winter_2023),
+    SeasonData("Spring", "Black jacket", id19_spring_2023),
+    SeasonData("Summer", "Black jacket", id19_summer_2023),
+    SeasonData("Autumn", "Black jacket", id19_autumn_2023),
+    SeasonData("Winter", "Black jacket", id19_winter_2023),
+    SeasonData("Spring", "Black skirt", id20_spring_2023),
+    SeasonData("Summer", "Black skirt", id20_summer_2023),
+    SeasonData("Autumn", "Black skirt", id20_autumn_2023),
+    SeasonData("Winter", "Black skirt", id20_winter_2023),
+    
+  ];
 
+  final List<SeasonData> seasonDataShoes_2023 = [
+    SeasonData("Spring", "Adidas blue", id5_spring_2023),
+    SeasonData("Summer", "Adidas blue", id5_summer_2023),
+    SeasonData("Autumn", "Adidas blue", id5_autumn_2023),
+    SeasonData("Winter", "Adidas blue", id5_winter_2023),
+    SeasonData("Spring", "Slip on boots", id13_spring_2023),
+    SeasonData("Summer", "Slip on boots", id13_summer_2023),
+    SeasonData("Autumn", "Slip on boots", id13_autumn_2023),
+    SeasonData("Winter", "Slip on boots", id13_winter_2023),
+    SeasonData("Spring", "Nike shoes", id15_spring_2023),
+    SeasonData("Summer", "Nike shoes", id15_summer_2023),
+    SeasonData("Autumn", "Nike shoes", id15_autumn_2023),
+    SeasonData("Winter", "Nike shoes", id15_winter_2023),
+  ];
 
+  final List<SeasonData> seasonDataSkirts_2023 = [
+    SeasonData("Spring", "Green skirt", id4_spring_2023),
+    SeasonData("Summer", "Green skirt", id4_summer_2023),
+    SeasonData("Autumn", "Green skirt", id4_autumn_2023),
+    SeasonData("Winter", "Green skirt", id4_winter_2023),
+    SeasonData("Spring", "Black skirt", id20_spring_2023),
+    SeasonData("Summer", "Black skirt", id20_summer_2023),
+    SeasonData("Autumn", "Black skirt", id20_autumn_2023),
+    SeasonData("Winter", "Black skirt", id20_winter_2023),
+  ];
 
+  final List<SeasonData> seasonDataJackets_2023 = [
+    SeasonData("Spring", "Blue blazer", id1_spring_2023),
+    SeasonData("Summer", "Blue blazer", id1_summer_2023),
+    SeasonData("Autumn", "Blue blazer", id1_autumn_2023),
+    SeasonData("Winter", "Blue blazer", id1_winter_2023),
+    SeasonData("Spring", "Black blazer", id7_spring_2023),
+    SeasonData("Summer", "Black blazer", id7_summer_2023),
+    SeasonData("Autumn", "Black blazer", id7_autumn_2023),
+    SeasonData("Winter", "Black blazer", id7_winter_2023),
+  ];
 
+  final List<SeasonData> seasonDataPants_2023 = [
+    SeasonData("Spring", "Light jeans", id2_spring_2023),
+    SeasonData("Summer", "Light jeans", id2_summer_2023),
+    SeasonData("Autumn", "Light jeans", id2_autumn_2023),
+    SeasonData("Winter", "Light jeans", id2_winter_2023),
+    SeasonData("Spring", "Black jeans", id8_spring_2023),
+    SeasonData("Summer", "Black jeans", id8_summer_2023),
+    SeasonData("Autumn", "Black jeans", id8_autumn_2023),
+    SeasonData("Winter", "Black jeans", id8_winter_2023),
+    SeasonData("Spring", "Leggings", id14_spring_2023),
+    SeasonData("Summer", "Leggings", id14_summer_2023),
+    SeasonData("Autumn", "Leggings", id14_autumn_2023),
+    SeasonData("Winter", "Leggings", id14_winter_2023),
+  ];
 
+  final List<SeasonData> seasonDataTShirts_2023 = [
+    SeasonData("Spring", "White neck", id3_spring_2023),
+    SeasonData("Summer", "White neck", id3_summer_2023),
+    SeasonData("Autumn", "White neck", id3_autumn_2023),
+    SeasonData("Winter", "White neck", id3_winter_2023),
+    SeasonData("Spring", "Anna's t-shirt", id6_spring_2023),
+    SeasonData("Summer", "Anna's t-shirt", id6_summer_2023),
+    SeasonData("Autumn", "Anna's t-shirt", id6_autumn_2023),
+    SeasonData("Winter", "Anna's t-shirt", id6_winter_2023),
+    SeasonData("Spring", "Grey t-shirt", id9_spring_2023),
+    SeasonData("Summer", "Grey t-shirt", id9_summer_2023),
+    SeasonData("Autumn", "Grey t-shirt", id9_autumn_2023),
+    SeasonData("Winter", "Grey t-shirt", id9_winter_2023),
+    SeasonData("Spring", "Stripped shirt", id10_spring_2023),
+    SeasonData("Summer", "Stripped shirt", id10_summer_2023),
+    SeasonData("Autumn", "Stripped shirt", id10_autumn_2023),
+    SeasonData("Winter", "Stripped shirt", id10_winter_2023),
+  ];
 
+  final List<SeasonData> seasonDataCoats_2023 = [
+    SeasonData("Spring", "Beige coat", id11_spring_2023),
+    SeasonData("Summer", "Beige coat", id11_summer_2023),
+    SeasonData("Autumn", "Beige coat", id11_autumn_2023),
+    SeasonData("Winter", "Beige coat", id11_winter_2023),
+    SeasonData("Spring", "Long jacket", id12_spring_2023),
+    SeasonData("Summer", "Long jacket", id12_summer_2023),
+    SeasonData("Autumn", "Long jacket", id12_autumn_2023),
+    SeasonData("Winter", "Long jacket", id12_winter_2023),
+    SeasonData("Spring", "Black jacket", id19_spring_2023),
+    SeasonData("Summer", "Black jacket", id19_summer_2023),
+    SeasonData("Autumn", "Black jacket", id19_autumn_2023),
+    SeasonData("Winter", "Black jacket", id19_winter_2023),
+  ];
 
-@override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Text(
-            "Tracker",
-            style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color(0xff865537)),
-          ),
-        ),
-        Expanded(
-          child: FutureBuilder<List<ClothingItem>>(
-            future: _futureClothingItems,
-            builder: (BuildContext context,
-                AsyncSnapshot<List<ClothingItem>> snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasData) {
-                  return GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2),
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final clothingItem = snapshot.data![index];
-
-                      Color tagColor = Colors.grey;
-                      if (clothingItem.type == "jacket") {
-                        tagColor = Colors.brown;
-                      } else if (clothingItem.type == "pants") {
-                        tagColor = Colors.green;
-                      } else if (clothingItem.type == "t-shirt") {
-                        tagColor = Colors.deepOrange;
-                      } else if (clothingItem.type == "skirt") {
-                        tagColor = Colors.purple;
-                      } else if (clothingItem.type == "shoes") {
-                        tagColor = Colors.red;
-                      } else if (clothingItem.type == "coat") {
-                        tagColor = Colors.blue;
-                      } else if (clothingItem.type == "sweatshirt") {
-                        tagColor = Colors.yellow;
-                      }
-
-                      return GridTile(
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10.0),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
-                                  blurRadius: 5,
-                                  offset: const Offset(0, 3),
-                                ),
-                              ],
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    clothingItem.name,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12.0,
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 8.0),
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8.0, vertical: 4.0),
-                                    decoration: BoxDecoration(
-                                      color: tagColor,
-                                      borderRadius: BorderRadius.circular(20.0),
-                                    ),
-                                    child: Text(
-                                      clothingItem.type,
-                                      style: const TextStyle(
-                                        fontSize: 10.0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Center(
-                                      child: Image.asset(
-                                        'lib/assets/images/image${clothingItem.id}.png',
-                                        width: double
-                                            .infinity, // set the width to the maximum available width
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return const Center(
-                    child: Text("No clothing items found."),
-                  );
-                }
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
-          ),
-        ),
-      ],
-    );
-  }
-}
+  final List<SeasonData> seasonDataSweatShirts_2023 = [
+    SeasonData("Spring", "Wool jumper", id16_spring_2023),
+    SeasonData("Summer", "Wool jumper", id16_summer_2023),
+    SeasonData("Autumn", "Wool jumper", id16_autumn_2023),
+    SeasonData("Winter", "Wool jumper", id16_winter_2023),
+    SeasonData("Spring", "Navy jumper", id17_spring_2023),
+    SeasonData("Summer", "Navy jumper", id17_summer_2023),
+    SeasonData("Autumn", "Navy jumper", id17_autumn_2023),
+    SeasonData("Winter", "Navy jumper", id17_winter_2023),
+    SeasonData("Spring", "Black hoodie", id18_spring_2023),
+    SeasonData("Summer", "Black hoodie", id18_summer_2023),
+    SeasonData("Autumn", "Black hoodie", id18_autumn_2023),
+    SeasonData("Winter", "Black hoodie", id18_winter_2023),
+  ];
