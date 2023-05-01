@@ -1,7 +1,5 @@
 // ignore_for_file: constant_identifier_names, non_constant_identifier_names
-
 import 'dart:convert';
-import 'dart:js';
 import 'package:flutter/services.dart';
 import 'package:csv/csv.dart';
 import 'package:flutter/widgets.dart';
@@ -193,11 +191,4 @@ Future<List<ClothingItem>> filterClothingItemsBySeason(
   List<ClothingItem> filteredList =
       tempList.where((item) => (item.seasons.contains(filterSeason))).toList();
   return filteredList;
-}
-
-Future<List<List<dynamic>>> processCsv() async {
-  var result = await DefaultAssetBundle.of(context as BuildContext).loadString(
-    "assets/data/test.csv",
-  );
-  return const CsvToListConverter().convert(result, eol: "\n");
 }

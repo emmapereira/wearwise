@@ -1099,7 +1099,7 @@ class _SelectableClosetState extends State<SelectableCloset> {
                         ),
                         child: ElevatedButton(
                           onPressed: () {
-                            // handle the "Cancel" button press
+                            // handle the "Clear" button press
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -1111,7 +1111,7 @@ class _SelectableClosetState extends State<SelectableCloset> {
                                 horizontal: 24.0, vertical: 12.0),
                             textStyle: const TextStyle(fontSize: 18.0),
                           ),
-                          child: const Text("Cancel",
+                          child: const Text("Clear",
                               style: TextStyle(fontSize: 18.0)),
                         ),
                       ),
@@ -1155,10 +1155,10 @@ class _SelectableClosetState extends State<SelectableCloset> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavBar(
+      /* bottomNavigationBar: BottomNavBar(
         currentIndex: 0,
         onTabTapped: (index) {},
-      ),
+      ), */
     );
   }
 }
