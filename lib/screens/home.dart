@@ -108,7 +108,7 @@ class Home extends StatelessWidget {
               },
               child: Container(
                 width: 40.0,
-                height: 40.0,
+                height: 100.0,
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.black,
