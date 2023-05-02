@@ -137,17 +137,27 @@ class _TrackerState extends State<Tracker> {
             _futureClothingItems = filterClothingItemsByMultipleIds([]);
             _isEmpty = true;
           }
-        } else if (_show2022) {
-          _futureClothingItems = filterClothingItemsByMultipleIds(["1"]);
-        } else if (_show2021) {
-          _futureClothingItems = filterClothingItemsByMultipleIds(["2"]);
-        } else if (_show2020) {
-          _futureClothingItems = filterClothingItemsByMultipleIds(["3"]);
-        } else if (_show2019) {
-          _futureClothingItems = filterClothingItemsByMultipleIds(["4"]);
+        } else if (_show2022 || _show2021 || _show2020 || _show2019) {
+          if (type == "Skirts") {
+            _futureClothingItems = filterClothingItemsByMultipleIds(["20"]);
+            _isEmpty = false;
+          } else if (type == "Coats") {
+            _futureClothingItems =
+                filterClothingItemsByMultipleIds(["11", "19"]);
+            _isEmpty = false;
+          } else if (type == "Sweatshirts") {
+            _futureClothingItems = filterClothingItemsByMultipleIds(["17"]);
+            _isEmpty = false;
+          } else if (type == "All Clothes") {
+            _futureClothingItems =
+                filterClothingItemsByMultipleIds(["11", "17", "19", "20"]);
+            _isEmpty = false;
+          } else {
+            _futureClothingItems = filterClothingItemsByMultipleIds([]);
+            _isEmpty = true;
+          }
         }
-        //_futureClothingItems = filterClothingItemsByMultipleIds([]);
-      } else {}
+      }
     });
   }
 
