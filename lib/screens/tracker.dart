@@ -1487,43 +1487,86 @@ class _TrackerState extends State<Tracker> {
                   // Graph All Clothes
                   SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: SizedBox(
-                          height: 300,
-                          width: 1700,
-                          child: SfCartesianChart(
-                              tooltipBehavior: TooltipBehavior(
-                                  enable: true,
-                                  header: '',
-                                  canShowMarker: false,
-                                  textAlignment: ChartAlignment.center,
-                                  format: 'worn point.size times'),
-                              primaryYAxis: NumericAxis(),
-                              primaryXAxis: CategoryAxis(
-                                  majorGridLines:
-                                      const MajorGridLines(width: 1)),
-                              series: <ChartSeries>[
-                                // Renders bubble charts
-                                BubbleSeries<SeasonData, String>(
-                                    color: const Color(0xff865537),
-                                    name: 'Tracker by year',
-                                    xAxisName: 'Year',
-                                    yAxisName: 'Item',
-                                    selectionBehavior: SelectionBehavior(
+                      child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.only(left: 15.0),
+                                child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: const [
+                                      SizedBox(height: 53.0),
+                                      Text("Spring",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color:
+                                                Color.fromARGB(255, 80, 79, 79),
+                                            fontSize: 13.0,
+                                          )),
+                                      SizedBox(height: 36.0),
+                                      Text("Summer",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color:
+                                                Color.fromARGB(255, 80, 79, 79),
+                                            fontSize: 13.0,
+                                          )),
+                                      SizedBox(height: 36.0),
+                                      Text("Autumn",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color:
+                                                Color.fromARGB(255, 80, 79, 79),
+                                            fontSize: 13.0,
+                                          )),
+                                      SizedBox(height: 36.0),
+                                      Text("Winter",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color:
+                                                Color.fromARGB(255, 80, 79, 79),
+                                            fontSize: 13.0,
+                                          )),
+                                    ])),
+                            SizedBox(
+                                height: 300,
+                                width: 1700,
+                                child: SfCartesianChart(
+                                    tooltipBehavior: TooltipBehavior(
                                         enable: true,
-                                        selectedColor: Colors.red),
-                                    enableTooltip: true,
-                                    dataSource: seasonDataAll_2023,
-                                    sizeValueMapper: (SeasonData data, _) =>
-                                        data.count,
-                                    minimumRadius: 0,
-                                    xValueMapper: (SeasonData data, _) =>
-                                        data.name,
-                                    yValueMapper: (SeasonData data, _) =>
-                                        data.season)
-                              ])
-
-                          ////////////
-                          )),
+                                        header: '',
+                                        canShowMarker: false,
+                                        textAlignment: ChartAlignment.center,
+                                        format: 'worn point.size times'),
+                                    primaryYAxis: NumericAxis(
+                                      labelStyle: const TextStyle(
+                                          color: Colors.transparent),
+                                    ),
+                                    primaryXAxis: CategoryAxis(
+                                        majorGridLines:
+                                            const MajorGridLines(width: 1)),
+                                    series: <ChartSeries>[
+                                      // Renders bubble charts
+                                      BubbleSeries<SeasonData, String>(
+                                          color: const Color(0xff865537),
+                                          name: 'Tracker by year',
+                                          xAxisName: 'Year',
+                                          yAxisName: 'Item',
+                                          selectionBehavior: SelectionBehavior(
+                                              enable: true,
+                                              selectedColor: Colors.red),
+                                          enableTooltip: true,
+                                          dataSource: seasonDataAll_2023,
+                                          sizeValueMapper:
+                                              (SeasonData data, _) =>
+                                                  data.count,
+                                          minimumRadius: 0,
+                                          xValueMapper: (SeasonData data, _) =>
+                                              data.name,
+                                          yValueMapper: (SeasonData data, _) =>
+                                              data.season)
+                                    ]))
+                          ])),
                 ]
 
                 // Handle Months types of graphs
