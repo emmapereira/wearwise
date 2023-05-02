@@ -61,6 +61,7 @@ class _TrackerState extends State<Tracker> {
   late bool _show2021;
   late bool _show2022;
   late bool _show2023;
+  late bool _isEmpty;
 
   List<String> clothesList = [
     'All Clothes',
@@ -86,6 +87,7 @@ class _TrackerState extends State<Tracker> {
     _show2021 = false;
     _show2022 = false;
     _show2023 = true;
+    _isEmpty = false;
     _futureClothingItems =
         filterClothingItemsByMultipleIds(["11", "17", "19", "20"]);
   }
@@ -95,21 +97,56 @@ class _TrackerState extends State<Tracker> {
       if (_showYears) {
         if (type == "Skirts") {
           _futureClothingItems = filterClothingItemsByMultipleIds(["20"]);
+          _isEmpty = false;
         } else if (type == "Coats") {
           _futureClothingItems = filterClothingItemsByMultipleIds(["11", "19"]);
+          _isEmpty = false;
         } else if (type == "Sweatshirts") {
           _futureClothingItems = filterClothingItemsByMultipleIds(["17"]);
+          _isEmpty = false;
         } else if (type == "All Clothes") {
           _futureClothingItems =
               filterClothingItemsByMultipleIds(["11", "17", "19", "20"]);
+          _isEmpty = false;
         } else {
           _futureClothingItems = filterClothingItemsByMultipleIds([]);
+          _isEmpty = true;
         }
       }
       if (_showSeasons) {
+        if (_show2023 == true) {
+          if (type == "Skirts") {
+            _futureClothingItems =
+                filterClothingItemsByMultipleIds(["4", "20"]);
+            _isEmpty = false;
+          } else if (type == "Coats") {
+            _futureClothingItems =
+                filterClothingItemsByMultipleIds(["11", "19"]);
+            _isEmpty = false;
+          } else if (type == "Sweatshirts") {
+            _futureClothingItems = filterClothingItemsByMultipleIds(["17"]);
+            _isEmpty = false;
+          } else if (type == "T-shirts") {
+            _futureClothingItems = filterClothingItemsByMultipleIds(["6"]);
+            _isEmpty = false;
+          } else if (type == "All Clothes") {
+            _futureClothingItems = filterClothingItemsByMultipleIds(
+                ["4", "6", "11", "17", "19", "20"]);
+            _isEmpty = false;
+          } else {
+            _futureClothingItems = filterClothingItemsByMultipleIds([]);
+            _isEmpty = true;
+          }
+        } else if (_show2022) {
+          _futureClothingItems = filterClothingItemsByMultipleIds(["1"]);
+        } else if (_show2021) {
+          _futureClothingItems = filterClothingItemsByMultipleIds(["2"]);
+        } else if (_show2020) {
+          _futureClothingItems = filterClothingItemsByMultipleIds(["3"]);
+        } else if (_show2019) {
+          _futureClothingItems = filterClothingItemsByMultipleIds(["4"]);
+        }
         //_futureClothingItems = filterClothingItemsByMultipleIds([]);
-        _futureClothingItems =
-            filterClothingItemsByMultipleIds(["11", "17", "19", "20"]);
       } else {}
     });
   }
@@ -4119,10 +4156,11 @@ class _TrackerState extends State<Tracker> {
                 // List of Not Worn Items
 
                 Column(children: [
-                  if (dropDownValue == "Shoes" ||
-                      dropDownValue == "Jackets" ||
-                      dropDownValue == "Pants" ||
-                      dropDownValue == "T-shirts") ...[
+                  // if (dropDownValue == "Shoes" ||
+                  //     dropDownValue == "Jackets" ||
+                  //     dropDownValue == "Pants" ||
+                  //     dropDownValue == "T-shirts")
+                  if (_isEmpty) ...[
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
@@ -4136,10 +4174,11 @@ class _TrackerState extends State<Tracker> {
                     ...[],
                 ]),
                 Column(children: [
-                  if (dropDownValue == "All Clothes" ||
-                      dropDownValue == "Skirts" ||
-                      dropDownValue == "Coats" ||
-                      dropDownValue == "Sweatshirts") ...[
+                  // if (dropDownValue == "All Clothes" ||
+                  //     dropDownValue == "Skirts" ||
+                  //     dropDownValue == "Coats" ||
+                  //     dropDownValue == "Sweatshirts")
+                  if (!_isEmpty) ...[
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
