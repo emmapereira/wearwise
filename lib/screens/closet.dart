@@ -19,6 +19,7 @@ class Closet extends StatefulWidget {
 class _ClosetState extends State<Closet> {
   late Future<List<ClothingItem>> _futureClothingItems;
   late bool _isVisible;
+  late bool _showAll;
   late bool _showShoes;
   late bool _showSkirts;
   late bool _showJackets;
@@ -32,6 +33,7 @@ class _ClosetState extends State<Closet> {
     super.initState();
     _futureClothingItems = getClothingItems();
     _isVisible = false;
+    _showAll = true;
     _showShoes = false;
     _showJackets = false;
     _showPants = false;
@@ -82,6 +84,7 @@ class _ClosetState extends State<Closet> {
                             _showTShirts = false;
                             _showSweatshirts = false;
                             _showSkirts = false;
+                            _showAll = false;
                           });
                         },
                         decoration: const InputDecoration(
@@ -348,6 +351,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -373,6 +377,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -398,6 +403,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -423,6 +429,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -448,6 +455,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -474,6 +482,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -500,6 +509,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -526,6 +536,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -566,6 +577,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -591,6 +603,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -616,6 +629,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -641,6 +655,7 @@ class _ClosetState extends State<Closet> {
                                       _showTShirts = false;
                                       _showSweatshirts = false;
                                       _showSkirts = false;
+                                      _showAll = false;
                                     });
                                   },
                                 ),
@@ -688,9 +703,50 @@ class _ClosetState extends State<Closet> {
                             _showJackets = false;
                             _showPants = false;
                             _showCoats = false;
+                            _showTShirts = false;
+                            _showSweatshirts = false;
+                            _showSkirts = false;
+                            _showAll = true;
+                            _futureClothingItems = getClothingItems();
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor:
+                              _showAll ? Colors.white : const Color(0xff865537),
+                          backgroundColor:
+                              _showAll ? const Color(0xff865537) : Colors.white,
+                          //padding: const EdgeInsets.symmetric(
+                          // horizontal: 24.0, vertical: 12.0),
+                          textStyle: const TextStyle(fontSize: 18.0),
+                        ),
+                        child: const Text("all clothes",
+                            style: TextStyle(fontSize: 18.0)),
+                      ),
+                    ),
+                    const SizedBox(width: 4.0),
+                    Container(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 2,
+                            blurRadius: 5,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // handle the "T-Shirts" button press
+                          setState(() {
+                            _showShoes = false;
+                            _showJackets = false;
+                            _showPants = false;
+                            _showCoats = false;
                             _showTShirts = true;
                             _showSweatshirts = false;
                             _showSkirts = false;
+                            _showAll = false;
                             _futureClothingItems =
                                 filterClothingItemsByType("t-shirt");
                           });
@@ -733,6 +789,7 @@ class _ClosetState extends State<Closet> {
                             _showTShirts = false;
                             _showSweatshirts = false;
                             _showSkirts = false;
+                            _showAll = false;
                             _futureClothingItems =
                                 filterClothingItemsByType("coat");
                           });
@@ -775,6 +832,7 @@ class _ClosetState extends State<Closet> {
                             _showTShirts = false;
                             _showSweatshirts = true;
                             _showSkirts = false;
+                            _showAll = false;
                             _futureClothingItems =
                                 filterClothingItemsByType("sweatshirt");
                           });
@@ -822,6 +880,7 @@ class _ClosetState extends State<Closet> {
                             _showTShirts = false;
                             _showSweatshirts = false;
                             _showSkirts = false;
+                            _showAll = false;
                             _futureClothingItems =
                                 filterClothingItemsByType("shoes");
                           });
@@ -864,6 +923,7 @@ class _ClosetState extends State<Closet> {
                             _showTShirts = false;
                             _showSweatshirts = false;
                             _showSkirts = true;
+                            _showAll = false;
                             _futureClothingItems =
                                 filterClothingItemsByType("skirt");
                           });
@@ -902,6 +962,7 @@ class _ClosetState extends State<Closet> {
                             _showShoes = false;
                             _showJackets = true;
                             _showPants = false;
+                            _showAll = false;
                             _showCoats = false;
                             _showTShirts = false;
                             _showSweatshirts = false;
@@ -948,6 +1009,7 @@ class _ClosetState extends State<Closet> {
                             _showTShirts = false;
                             _showSweatshirts = false;
                             _showSkirts = false;
+                            _showAll = false;
                             _futureClothingItems =
                                 filterClothingItemsByType("pants");
                           });
