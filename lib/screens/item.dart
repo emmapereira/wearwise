@@ -138,7 +138,7 @@ class Item extends StatelessWidget {
                               header: '',
                               canShowMarker: false,
                               textAlignment: ChartAlignment.center,
-                              format: 'worn point.count times'),
+                              format: 'worn point.y times\n  in point.x 2023'),
                           primaryXAxis: DateTimeAxis(
                               rangePadding: ChartRangePadding.none,
                               minimum: DateTime.utc(2022, 12, 1),
@@ -162,7 +162,7 @@ class Item extends StatelessWidget {
                                 yAxisName: 'Item',
                                 selectionBehavior: SelectionBehavior(
                                     enable: true, selectedColor: Colors.red),
-                                enableTooltip: false,
+                                enableTooltip: true,
                                 dataSource: filteredData,
                                 xValueMapper: (MonthlyData data, _) =>
                                     data.month,
