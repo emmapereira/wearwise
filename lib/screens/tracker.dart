@@ -1570,7 +1570,7 @@ class _TrackerState extends State<Tracker> {
                             // Graph Shoes
                             SizedBox(
                                 height: 300,
-                                width: 500,
+                                width: 435,
                                 child: SfCartesianChart(
                                     tooltipBehavior: TooltipBehavior(
                                         enable: true,
@@ -1588,13 +1588,13 @@ class _TrackerState extends State<Tracker> {
                                     series: <ChartSeries>[
                                       // Renders bubble charts
                                       BubbleSeries<SeasonData, String>(
-                                          color: const Color(0xff865537),
+                                          color: Colors.red,
                                           name: 'Tracker by year',
                                           xAxisName: 'Year',
                                           yAxisName: 'Item',
                                           selectionBehavior: SelectionBehavior(
                                               enable: true,
-                                              selectedColor: Colors.red),
+                                              selectedColor: Colors.deepOrange),
                                           enableTooltip: true,
                                           dataSource: seasonDataShoes_2023,
                                           sizeValueMapper:
@@ -1610,7 +1610,7 @@ class _TrackerState extends State<Tracker> {
                             // Graph Skirts
                             SizedBox(
                                 height: 300,
-                                width: 500,
+                                width: 435,
                                 child: SfCartesianChart(
                                     tooltipBehavior: TooltipBehavior(
                                         enable: true,
@@ -1628,7 +1628,7 @@ class _TrackerState extends State<Tracker> {
                                     series: <ChartSeries>[
                                       // Renders bubble charts
                                       BubbleSeries<SeasonData, String>(
-                                          color: const Color(0xff865537),
+                                          color: Colors.purple,
                                           name: 'Tracker by year',
                                           xAxisName: 'Year',
                                           yAxisName: 'Item',
@@ -1650,7 +1650,7 @@ class _TrackerState extends State<Tracker> {
                             // Graph Jackets
                             SizedBox(
                                 height: 300,
-                                width: 500,
+                                width: 435,
                                 child: SfCartesianChart(
                                     tooltipBehavior: TooltipBehavior(
                                         enable: true,
@@ -1668,7 +1668,7 @@ class _TrackerState extends State<Tracker> {
                                     series: <ChartSeries>[
                                       // Renders bubble charts
                                       BubbleSeries<SeasonData, String>(
-                                          color: const Color(0xff865537),
+                                          color: Colors.brown,
                                           name: 'Tracker by year',
                                           xAxisName: 'Year',
                                           yAxisName: 'Item',
@@ -1690,7 +1690,7 @@ class _TrackerState extends State<Tracker> {
                             // Graph Pants
                             SizedBox(
                                 height: 300,
-                                width: 500,
+                                width: 435,
                                 child: SfCartesianChart(
                                     tooltipBehavior: TooltipBehavior(
                                         enable: true,
@@ -1708,7 +1708,7 @@ class _TrackerState extends State<Tracker> {
                                     series: <ChartSeries>[
                                       // Renders bubble charts
                                       BubbleSeries<SeasonData, String>(
-                                          color: const Color(0xff865537),
+                                          color: Colors.green,
                                           name: 'Tracker by year',
                                           xAxisName: 'Year',
                                           yAxisName: 'Item',
@@ -1730,7 +1730,7 @@ class _TrackerState extends State<Tracker> {
                             // Graph T-Shirts
                             SizedBox(
                                 height: 300,
-                                width: 500,
+                                width: 435,
                                 child: SfCartesianChart(
                                     tooltipBehavior: TooltipBehavior(
                                         enable: true,
@@ -1748,7 +1748,7 @@ class _TrackerState extends State<Tracker> {
                                     series: <ChartSeries>[
                                       // Renders bubble charts
                                       BubbleSeries<SeasonData, String>(
-                                          color: const Color(0xff865537),
+                                          color: Colors.deepOrange,
                                           name: 'Tracker by year',
                                           xAxisName: 'Year',
                                           yAxisName: 'Item',
@@ -1770,7 +1770,7 @@ class _TrackerState extends State<Tracker> {
                             // Graph Coats
                             SizedBox(
                                 height: 300,
-                                width: 500,
+                                width: 435,
                                 child: SfCartesianChart(
                                     tooltipBehavior: TooltipBehavior(
                                         enable: true,
@@ -1788,7 +1788,7 @@ class _TrackerState extends State<Tracker> {
                                     series: <ChartSeries>[
                                       // Renders bubble charts
                                       BubbleSeries<SeasonData, String>(
-                                          color: const Color(0xff865537),
+                                          color: Colors.blue,
                                           name: 'Tracker by year',
                                           xAxisName: 'Year',
                                           yAxisName: 'Item',
@@ -1810,7 +1810,7 @@ class _TrackerState extends State<Tracker> {
                             // Graph Sweatshirts
                             SizedBox(
                                 height: 300,
-                                width: 500,
+                                width: 435,
                                 child: SfCartesianChart(
                                     tooltipBehavior: TooltipBehavior(
                                         enable: true,
@@ -1828,7 +1828,7 @@ class _TrackerState extends State<Tracker> {
                                     series: <ChartSeries>[
                                       // Renders bubble charts
                                       BubbleSeries<SeasonData, String>(
-                                          color: const Color(0xff865537),
+                                          color: Colors.yellow,
                                           name: 'Tracker by year',
                                           xAxisName: 'Year',
                                           yAxisName: 'Item',
