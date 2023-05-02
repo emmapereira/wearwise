@@ -2294,6 +2294,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2339,6 +2340,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2384,6 +2386,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2429,6 +2432,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2475,6 +2479,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2520,6 +2525,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2566,6 +2572,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2611,6 +2618,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2659,6 +2667,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2704,6 +2713,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2749,6 +2759,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2794,6 +2805,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2840,6 +2852,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2885,6 +2898,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2931,6 +2945,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -2976,6 +2991,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3024,6 +3040,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3069,6 +3086,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3114,6 +3132,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3159,6 +3178,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3205,6 +3225,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3250,6 +3271,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3296,6 +3318,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3341,6 +3364,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3389,6 +3413,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3434,6 +3459,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3479,6 +3505,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3524,6 +3551,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3570,6 +3598,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3615,6 +3644,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3661,6 +3691,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3706,6 +3737,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3754,6 +3786,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3799,6 +3832,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3844,6 +3878,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3889,6 +3924,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3935,6 +3971,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -3980,6 +4017,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -4026,6 +4064,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
@@ -4071,6 +4110,7 @@ class _TrackerState extends State<Tracker> {
                                                 ChartAlignment.center,
                                             format: 'worn point.size times'),
                                         primaryYAxis: NumericAxis(
+                                          isInversed: true,
                                           labelStyle: const TextStyle(
                                               color: Colors.transparent),
                                         ),
