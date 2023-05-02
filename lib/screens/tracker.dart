@@ -16,31 +16,6 @@ class Tracker extends StatefulWidget {
   }
 }
 
-//////////
-final List<charts.Series> seriesList = [
-  charts.Series(
-    id: 'Sales',
-    //domainFn: (SalesData sales, _) => sales.year,
-    domainFn: (dynamic sales, _) => (sales as SalesData).year,
-
-    //measureFn: (SalesData sales, _) => sales.sales,
-    measureFn: (dynamic sales, _) => (sales as SalesData).sales,
-    data: [
-      SalesData('2018', 100),
-      SalesData('2019', 200),
-      SalesData('2020', 150),
-      SalesData('2021', 300),
-    ],
-  ),
-];
-
-class SalesData {
-  final String year;
-  final int sales;
-
-  SalesData(this.year, this.sales);
-}
-
 class ChartData {
   ChartData(this.x, this.y, this.size);
   final DateTime x;
@@ -2267,352 +2242,1831 @@ class _TrackerState extends State<Tracker> {
                                             fontSize: 13.0,
                                           )),
                                     ])),
-                            if (dropDownValue == "All Clothes") ...[
-                              // Graph All Clothes
-                              SizedBox(
-                                  height: 300,
-                                  width: 1700,
-                                  child: SfCartesianChart(
-                                      tooltipBehavior: TooltipBehavior(
-                                          enable: true,
-                                          header: '',
-                                          canShowMarker: false,
-                                          textAlignment: ChartAlignment.center,
-                                          format: 'worn point.size times'),
-                                      primaryYAxis: NumericAxis(
-                                        labelStyle: const TextStyle(
-                                            color: Colors.transparent),
-                                      ),
-                                      primaryXAxis: CategoryAxis(
-                                          majorGridLines:
-                                              const MajorGridLines(width: 1)),
-                                      series: <ChartSeries>[
-                                        // Renders bubble charts
-                                        BubbleSeries<SeasonData, String>(
-                                            color: const Color(0xff865537),
-                                            name: 'Tracker by year',
-                                            xAxisName: 'Year',
-                                            yAxisName: 'Item',
-                                            selectionBehavior:
-                                                SelectionBehavior(
-                                                    enable: true,
-                                                    selectedColor: Colors.red),
-                                            enableTooltip: true,
-                                            dataSource: seasonDataAll_2023,
-                                            sizeValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.count,
-                                            minimumRadius: 0,
-                                            xValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.name,
-                                            yValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.season)
-                                      ]))
-                            ] else if (dropDownValue == "Shoes") ...[
-                              // Graph Shoes
-                              SizedBox(
-                                  height: 300,
-                                  width: 435,
-                                  child: SfCartesianChart(
-                                      tooltipBehavior: TooltipBehavior(
-                                          enable: true,
-                                          header: '',
-                                          canShowMarker: false,
-                                          textAlignment: ChartAlignment.center,
-                                          format: 'worn point.size times'),
-                                      primaryYAxis: NumericAxis(
-                                        labelStyle: const TextStyle(
-                                            color: Colors.transparent),
-                                      ),
-                                      primaryXAxis: CategoryAxis(
-                                          majorGridLines:
-                                              const MajorGridLines(width: 1)),
-                                      series: <ChartSeries>[
-                                        // Renders bubble charts
-                                        BubbleSeries<SeasonData, String>(
-                                            color: Colors.red,
-                                            name: 'Tracker by year',
-                                            xAxisName: 'Year',
-                                            yAxisName: 'Item',
-                                            selectionBehavior:
-                                                SelectionBehavior(
-                                                    enable: true,
-                                                    selectedColor:
-                                                        Colors.deepOrange),
-                                            enableTooltip: true,
-                                            dataSource: seasonDataShoes_2023,
-                                            sizeValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.count,
-                                            minimumRadius: 0,
-                                            xValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.name,
-                                            yValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.season)
-                                      ]))
-                            ] else if (dropDownValue == "Skirts") ...[
-                              // Graph Skirts
-                              SizedBox(
-                                  height: 300,
-                                  width: 435,
-                                  child: SfCartesianChart(
-                                      tooltipBehavior: TooltipBehavior(
-                                          enable: true,
-                                          header: '',
-                                          canShowMarker: false,
-                                          textAlignment: ChartAlignment.center,
-                                          format: 'worn point.size times'),
-                                      primaryYAxis: NumericAxis(
-                                        labelStyle: const TextStyle(
-                                            color: Colors.transparent),
-                                      ),
-                                      primaryXAxis: CategoryAxis(
-                                          majorGridLines:
-                                              const MajorGridLines(width: 1)),
-                                      series: <ChartSeries>[
-                                        // Renders bubble charts
-                                        BubbleSeries<SeasonData, String>(
-                                            color: Colors.purple,
-                                            name: 'Tracker by year',
-                                            xAxisName: 'Year',
-                                            yAxisName: 'Item',
-                                            selectionBehavior:
-                                                SelectionBehavior(
-                                                    enable: true,
-                                                    selectedColor: Colors.red),
-                                            enableTooltip: true,
-                                            dataSource: seasonDataSkirts_2023,
-                                            sizeValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.count,
-                                            minimumRadius: 0,
-                                            xValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.name,
-                                            yValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.season)
-                                      ]))
-                            ] else if (dropDownValue == "Jackets") ...[
-                              // Graph Jackets
-                              SizedBox(
-                                  height: 300,
-                                  width: 435,
-                                  child: SfCartesianChart(
-                                      tooltipBehavior: TooltipBehavior(
-                                          enable: true,
-                                          header: '',
-                                          canShowMarker: false,
-                                          textAlignment: ChartAlignment.center,
-                                          format: 'worn point.size times'),
-                                      primaryYAxis: NumericAxis(
-                                        labelStyle: const TextStyle(
-                                            color: Colors.transparent),
-                                      ),
-                                      primaryXAxis: CategoryAxis(
-                                          majorGridLines:
-                                              const MajorGridLines(width: 1)),
-                                      series: <ChartSeries>[
-                                        // Renders bubble charts
-                                        BubbleSeries<SeasonData, String>(
-                                            color: Colors.brown,
-                                            name: 'Tracker by year',
-                                            xAxisName: 'Year',
-                                            yAxisName: 'Item',
-                                            selectionBehavior:
-                                                SelectionBehavior(
-                                                    enable: true,
-                                                    selectedColor: Colors.red),
-                                            enableTooltip: true,
-                                            dataSource: seasonDataJackets_2023,
-                                            sizeValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.count,
-                                            minimumRadius: 0,
-                                            xValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.name,
-                                            yValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.season)
-                                      ]))
-                            ] else if (dropDownValue == "Pants") ...[
-                              // Graph Pants
-                              SizedBox(
-                                  height: 300,
-                                  width: 435,
-                                  child: SfCartesianChart(
-                                      tooltipBehavior: TooltipBehavior(
-                                          enable: true,
-                                          header: '',
-                                          canShowMarker: false,
-                                          textAlignment: ChartAlignment.center,
-                                          format: 'worn point.size times'),
-                                      primaryYAxis: NumericAxis(
-                                        labelStyle: const TextStyle(
-                                            color: Colors.transparent),
-                                      ),
-                                      primaryXAxis: CategoryAxis(
-                                          majorGridLines:
-                                              const MajorGridLines(width: 1)),
-                                      series: <ChartSeries>[
-                                        // Renders bubble charts
-                                        BubbleSeries<SeasonData, String>(
-                                            color: Colors.green,
-                                            name: 'Tracker by year',
-                                            xAxisName: 'Year',
-                                            yAxisName: 'Item',
-                                            selectionBehavior:
-                                                SelectionBehavior(
-                                                    enable: true,
-                                                    selectedColor: Colors.red),
-                                            enableTooltip: true,
-                                            dataSource: seasonDataPants_2023,
-                                            sizeValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.count,
-                                            minimumRadius: 0,
-                                            xValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.name,
-                                            yValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.season)
-                                      ]))
-                            ] else if (dropDownValue == "T-shirts") ...[
-                              // Graph T-Shirts
-                              SizedBox(
-                                  height: 300,
-                                  width: 435,
-                                  child: SfCartesianChart(
-                                      tooltipBehavior: TooltipBehavior(
-                                          enable: true,
-                                          header: '',
-                                          canShowMarker: false,
-                                          textAlignment: ChartAlignment.center,
-                                          format: 'worn point.size times'),
-                                      primaryYAxis: NumericAxis(
-                                        labelStyle: const TextStyle(
-                                            color: Colors.transparent),
-                                      ),
-                                      primaryXAxis: CategoryAxis(
-                                          majorGridLines:
-                                              const MajorGridLines(width: 1)),
-                                      series: <ChartSeries>[
-                                        // Renders bubble charts
-                                        BubbleSeries<SeasonData, String>(
-                                            color: Colors.deepOrange,
-                                            name: 'Tracker by year',
-                                            xAxisName: 'Year',
-                                            yAxisName: 'Item',
-                                            selectionBehavior:
-                                                SelectionBehavior(
-                                                    enable: true,
-                                                    selectedColor: Colors.red),
-                                            enableTooltip: true,
-                                            dataSource: seasonDataTShirts_2023,
-                                            sizeValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.count,
-                                            minimumRadius: 0,
-                                            xValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.name,
-                                            yValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.season)
-                                      ]))
-                            ] else if (dropDownValue == "Coats") ...[
-                              // Graph Coats
-                              SizedBox(
-                                  height: 300,
-                                  width: 435,
-                                  child: SfCartesianChart(
-                                      tooltipBehavior: TooltipBehavior(
-                                          enable: true,
-                                          header: '',
-                                          canShowMarker: false,
-                                          textAlignment: ChartAlignment.center,
-                                          format: 'worn point.size times'),
-                                      primaryYAxis: NumericAxis(
-                                        labelStyle: const TextStyle(
-                                            color: Colors.transparent),
-                                      ),
-                                      primaryXAxis: CategoryAxis(
-                                          majorGridLines:
-                                              const MajorGridLines(width: 1)),
-                                      series: <ChartSeries>[
-                                        // Renders bubble charts
-                                        BubbleSeries<SeasonData, String>(
-                                            color: Colors.blue,
-                                            name: 'Tracker by year',
-                                            xAxisName: 'Year',
-                                            yAxisName: 'Item',
-                                            selectionBehavior:
-                                                SelectionBehavior(
-                                                    enable: true,
-                                                    selectedColor: Colors.red),
-                                            enableTooltip: true,
-                                            dataSource: seasonDataCoats_2023,
-                                            sizeValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.count,
-                                            minimumRadius: 0,
-                                            xValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.name,
-                                            yValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.season)
-                                      ]))
-                            ] else if (dropDownValue == "Sweatshirts") ...[
-                              // Graph Sweatshirts
-                              SizedBox(
-                                  height: 300,
-                                  width: 435,
-                                  child: SfCartesianChart(
-                                      tooltipBehavior: TooltipBehavior(
-                                          enable: true,
-                                          header: '',
-                                          canShowMarker: false,
-                                          textAlignment: ChartAlignment.center,
-                                          format: 'worn point.size times'),
-                                      primaryYAxis: NumericAxis(
-                                        labelStyle: const TextStyle(
-                                            color: Colors.transparent),
-                                      ),
-                                      primaryXAxis: CategoryAxis(
-                                          majorGridLines:
-                                              const MajorGridLines(width: 1)),
-                                      series: <ChartSeries>[
-                                        // Renders bubble charts
-                                        BubbleSeries<SeasonData, String>(
-                                            color: Colors.yellow,
-                                            name: 'Tracker by year',
-                                            xAxisName: 'Year',
-                                            yAxisName: 'Item',
-                                            selectionBehavior:
-                                                SelectionBehavior(
-                                                    enable: true,
-                                                    selectedColor: Colors.red),
-                                            enableTooltip: true,
-                                            dataSource:
-                                                seasonDataSweatShirts_2023,
-                                            sizeValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.count,
-                                            minimumRadius: 0,
-                                            xValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.name,
-                                            yValueMapper:
-                                                (SeasonData data, _) =>
-                                                    data.season)
-                                      ]))
+                            if (_show2023) ...[
+                              if (dropDownValue == "All Clothes") ...[
+                                // Graph All Clothes
+                                SizedBox(
+                                    height: 300,
+                                    width: 1700,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: const Color(0xff865537),
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataAll_2023,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Shoes") ...[
+                                // Graph Shoes
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.red,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.deepOrange),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataShoes_2023,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Skirts") ...[
+                                // Graph Skirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.purple,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataSkirts_2023,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Jackets") ...[
+                                // Graph Jackets
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.brown,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataJackets_2023,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Pants") ...[
+                                // Graph Pants
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.green,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataPants_2023,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "T-shirts") ...[
+                                // Graph T-Shirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.deepOrange,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataTShirts_2023,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Coats") ...[
+                                // Graph Coats
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.blue,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataCoats_2023,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Sweatshirts") ...[
+                                // Graph Sweatshirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.yellow,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataSweatShirts_2023,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ]
+                            ] else if (_show2022) ...[
+                              if (dropDownValue == "All Clothes") ...[
+                                // Graph All Clothes
+                                SizedBox(
+                                    height: 300,
+                                    width: 1700,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: const Color(0xff865537),
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataAll_2022,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Shoes") ...[
+                                // Graph Shoes
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.red,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.deepOrange),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataShoes_2022,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Skirts") ...[
+                                // Graph Skirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.purple,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataSkirts_2022,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Jackets") ...[
+                                // Graph Jackets
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.brown,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataJackets_2022,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Pants") ...[
+                                // Graph Pants
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.green,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataPants_2022,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "T-shirts") ...[
+                                // Graph T-Shirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.deepOrange,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataTShirts_2022,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Coats") ...[
+                                // Graph Coats
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.blue,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataCoats_2022,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Sweatshirts") ...[
+                                // Graph Sweatshirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.yellow,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataSweatShirts_2022,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ]
+                            ] else if (_show2021) ...[
+                              if (dropDownValue == "All Clothes") ...[
+                                // Graph All Clothes
+                                SizedBox(
+                                    height: 300,
+                                    width: 1700,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: const Color(0xff865537),
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataAll_2021,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Shoes") ...[
+                                // Graph Shoes
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.red,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.deepOrange),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataShoes_2021,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Skirts") ...[
+                                // Graph Skirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.purple,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataSkirts_2021,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Jackets") ...[
+                                // Graph Jackets
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.brown,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataJackets_2021,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Pants") ...[
+                                // Graph Pants
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.green,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataPants_2021,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "T-shirts") ...[
+                                // Graph T-Shirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.deepOrange,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataTShirts_2021,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Coats") ...[
+                                // Graph Coats
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.blue,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataCoats_2021,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Sweatshirts") ...[
+                                // Graph Sweatshirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.yellow,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataSweatShirts_2021,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ]
+                            ] else if (_show2020) ...[
+                              if (dropDownValue == "All Clothes") ...[
+                                // Graph All Clothes
+                                SizedBox(
+                                    height: 300,
+                                    width: 1700,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: const Color(0xff865537),
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataAll_2020,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Shoes") ...[
+                                // Graph Shoes
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.red,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.deepOrange),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataShoes_2020,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Skirts") ...[
+                                // Graph Skirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.purple,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataSkirts_2020,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Jackets") ...[
+                                // Graph Jackets
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.brown,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataJackets_2020,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Pants") ...[
+                                // Graph Pants
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.green,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataPants_2020,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "T-shirts") ...[
+                                // Graph T-Shirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.deepOrange,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataTShirts_2020,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Coats") ...[
+                                // Graph Coats
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.blue,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataCoats_2020,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Sweatshirts") ...[
+                                // Graph Sweatshirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.yellow,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataSweatShirts_2020,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ]
+                            ] else if (_show2019) ...[
+                              if (dropDownValue == "All Clothes") ...[
+                                // Graph All Clothes
+                                SizedBox(
+                                    height: 300,
+                                    width: 1700,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: const Color(0xff865537),
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataAll_2019,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Shoes") ...[
+                                // Graph Shoes
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.red,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.deepOrange),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataShoes_2019,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Skirts") ...[
+                                // Graph Skirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.purple,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataSkirts_2019,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Jackets") ...[
+                                // Graph Jackets
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.brown,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataJackets_2019,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Pants") ...[
+                                // Graph Pants
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.green,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataPants_2019,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "T-shirts") ...[
+                                // Graph T-Shirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.deepOrange,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataTShirts_2019,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Coats") ...[
+                                // Graph Coats
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.blue,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource: seasonDataCoats_2019,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ] else if (dropDownValue == "Sweatshirts") ...[
+                                // Graph Sweatshirts
+                                SizedBox(
+                                    height: 300,
+                                    width: 435,
+                                    child: SfCartesianChart(
+                                        tooltipBehavior: TooltipBehavior(
+                                            enable: true,
+                                            header: '',
+                                            canShowMarker: false,
+                                            textAlignment:
+                                                ChartAlignment.center,
+                                            format: 'worn point.size times'),
+                                        primaryYAxis: NumericAxis(
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent),
+                                        ),
+                                        primaryXAxis: CategoryAxis(
+                                            majorGridLines:
+                                                const MajorGridLines(width: 1)),
+                                        series: <ChartSeries>[
+                                          // Renders bubble charts
+                                          BubbleSeries<SeasonData, String>(
+                                              color: Colors.yellow,
+                                              name: 'Tracker by year',
+                                              xAxisName: 'Year',
+                                              yAxisName: 'Item',
+                                              selectionBehavior:
+                                                  SelectionBehavior(
+                                                      enable: true,
+                                                      selectedColor:
+                                                          Colors.red),
+                                              enableTooltip: true,
+                                              dataSource:
+                                                  seasonDataSweatShirts_2019,
+                                              sizeValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.count,
+                                              minimumRadius: 0,
+                                              xValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.name,
+                                              yValueMapper:
+                                                  (SeasonData data, _) =>
+                                                      data.season)
+                                        ]))
+                              ]
                             ]
                           ])),
 
