@@ -4,8 +4,11 @@ import 'package:wearwise/assets/tracked_data.dart';
 
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:syncfusion_flutter_charts/charts.dart';
+import '../screens/selectable_closet.dart';
 
 class Tracker extends StatefulWidget {
+  final List<String> selectedItems;
+  const Tracker({Key? key, required this.selectedItems}) : super(key: key);
   @override
   _TrackerState createState() => _TrackerState();
 
@@ -77,6 +80,8 @@ class YearData3 {
   final double y;
   final Color color;
 }
+
+double id1_count = 0;
 
 class _TrackerState extends State<Tracker> {
   late Future<List<ClothingItem>> _futureClothingItems;
@@ -242,7 +247,7 @@ class _TrackerState extends State<Tracker> {
   ];
 
   final List<YearData2> yearDataAll = [
-    YearData2(2023, "Blue blazer", id1_2023),
+    YearData2(2023, "Blue blazer", id1_2023 + id1_count),
     YearData2(2022, "Blue blazer", id1_2022),
     YearData2(2021, "Blue blazer", id1_2021),
     YearData2(2020, "Blue blazer", id1_2020),

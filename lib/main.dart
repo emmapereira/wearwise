@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return [
       Home(selectedItems: _selectedItems, currentIndex: _currentIndex),
       Closet(),
-      Tracker(),
+      Tracker(selectedItems: _selectedItems),
       Profile(),
     ];
   }
