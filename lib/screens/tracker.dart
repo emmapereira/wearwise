@@ -4212,46 +4212,231 @@ class _TrackerState extends State<Tracker> {
 
                         // Graph Option 1 - Vertical with Items on the Y axis
 
-                        // SingleChildScrollView(
-                        //     child: SizedBox(
-                        //         height: 1000,
-                        //         child: SfCartesianChart(
-                        //             // zoomPanBehavior: ZoomPanBehavior(
-                        //             //     enablePinching: true,
-                        //             //     enablePanning: true),
-                        //             tooltipBehavior: TooltipBehavior(
-                        //                 enable: true,
-                        //                 header: '',
-                        //                 canShowMarker: false,
-                        //                 textAlignment: ChartAlignment.center,
-                        //                 format: 'worn point.size times'),
-                        //             primaryXAxis: DateTimeAxis(
-                        //                 rangePadding: ChartRangePadding.additional,
-                        //                 minimum: DateTime.utc(2018, 6, 1),
-                        //                 maximum: DateTime.utc(2024, 6, 1)),
-                        //             primaryYAxis: NumericAxis(
-                        //                 interval: 1,
-                        //                 minimum: 0,
-                        //                 maximum: 21,
-                        //                 desiredIntervals: null,
-                        //                 majorGridLines: const MajorGridLines(width: 1)),
-                        //             series: <ChartSeries>[
-                        //               // Renders bubble charts
-                        //               BubbleSeries<YearData, DateTime>(
-                        //                 color: const Color(0xff865537),
-                        //                 name: 'Tracker by year',
-                        //                 xAxisName: 'Year',
-                        //                 yAxisName: 'Item',
-                        //                 selectionBehavior: SelectionBehavior(
-                        //                     enable: true, selectedColor: Colors.red),
-                        //                 enableTooltip: true,
-                        //                 dataSource: yearData,
-                        //                 sizeValueMapper: (YearData data, _) => data.count,
-                        //                 minimumRadius: 0,
-                        //                 xValueMapper: (YearData data, _) => data.year,
-                        //                 yValueMapper: (YearData data, _) => data.id,
-                        //               )
-                        //             ]))),
+                        SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Row(children: [
+                              Padding(
+                                  padding: const EdgeInsets.only(left: 15.0),
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: const [
+                                        Text("Black skirt",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Black leather jacket",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Black hoodie",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Navy jumper",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Light blue wool jumper",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Nike running shoes",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Leggings",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Slip on black boots",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Long puffer jacket",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 30.0),
+                                        Text("Beige coat",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Stripped white shirt",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Grey t-shirt",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Black jeans",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Black blazer",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Anna's yellow t-shirt",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Adidas gazelle blue",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Green skirt",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("White turtle neck",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Light blue jeans",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 31.0),
+                                        Text("Blue blazer",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                        SizedBox(height: 20.0),
+                                        Text("",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              color: Color.fromARGB(
+                                                  255, 80, 79, 79),
+                                              fontSize: 11.0,
+                                            )),
+                                      ])),
+                              SizedBox(
+                                  height: 1000,
+                                  child: SfCartesianChart(
+                                      // zoomPanBehavior: ZoomPanBehavior(
+                                      //     enablePinching: true,
+                                      //     enablePanning: true),
+                                      tooltipBehavior: TooltipBehavior(
+                                          enable: true,
+                                          header: '',
+                                          canShowMarker: false,
+                                          textAlignment: ChartAlignment.center,
+                                          format: 'worn point.size times'),
+                                      primaryXAxis: DateTimeAxis(
+                                          rangePadding:
+                                              ChartRangePadding.additional,
+                                          minimum: DateTime.utc(2018, 6, 1),
+                                          maximum: DateTime.utc(2024, 6, 1)),
+                                      primaryYAxis: NumericAxis(
+                                          interval: 1,
+                                          minimum: 0,
+                                          maximum: 21,
+                                          desiredIntervals: null,
+                                          majorGridLines:
+                                              const MajorGridLines(width: 1),
+                                          labelStyle: const TextStyle(
+                                              color: Colors.transparent)),
+                                      series: <ChartSeries>[
+                                        // Renders bubble charts
+                                        BubbleSeries<YearData, DateTime>(
+                                          color: const Color(0xff865537),
+                                          name: 'Tracker by year',
+                                          xAxisName: 'Year',
+                                          yAxisName: 'Item',
+                                          selectionBehavior: SelectionBehavior(
+                                              enable: true,
+                                              selectedColor: Colors.red),
+                                          enableTooltip: true,
+                                          dataSource: yearData,
+                                          sizeValueMapper: (YearData data, _) =>
+                                              data.count,
+                                          minimumRadius: 0,
+                                          xValueMapper: (YearData data, _) =>
+                                              data.year,
+                                          yValueMapper: (YearData data, _) =>
+                                              data.id,
+                                        )
+                                      ]))
+                            ])),
 
                         // Handle Years type of graphs
                         if (_showYears) ...[
