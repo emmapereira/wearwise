@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/home.dart';
-import 'screens/explore.dart';
-import 'screens/matches.dart';
+import 'screens/closet.dart';
+import 'screens/tracker.dart';
 import 'screens/profile.dart';
 import 'models/app_state.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'WearWise',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.brown,
         bottomNavigationBarTheme:
             const BottomNavigationBarThemeData(selectedItemColor: Colors.black),
       ),
@@ -56,8 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> _buildScreens() {
     return [
       Home(selectedItems: _selectedItems, currentIndex: _currentIndex),
-      Explore(),
-      Matches(),
+      Closet(),
+      Tracker(),
       Profile(),
     ];
   }
@@ -68,24 +68,25 @@ class _MyHomePageState extends State<MyHomePage> {
         icon: const Icon(Icons.home),
         title: "Home",
         activeColorPrimary: Colors.black,
-        inactiveColorPrimary: Color.fromARGB(255, 119, 119, 119),
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
-          icon: const Icon(Icons.checkroom),
-          title: "Closet",
-          activeColorPrimary: Colors.black,
-          inactiveColorPrimary: Color.fromARGB(255, 119, 119, 119)),
+        icon: const Icon(Icons.checkroom),
+        title: "Closet",
+        activeColorPrimary: Colors.black,
+        inactiveColorPrimary: Colors.grey,
+      ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.track_changes),
-        title: "Matches",
+        title: "Tracker",
         activeColorPrimary: Colors.black,
-        inactiveColorPrimary: Color.fromARGB(255, 119, 119, 119),
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.person),
         title: "Profile",
         activeColorPrimary: Colors.black,
-        inactiveColorPrimary: Color.fromARGB(255, 119, 119, 119),
+        inactiveColorPrimary: Colors.grey,
       ),
     ];
   }
@@ -105,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: Color(0xffdabfff),
+      backgroundColor: Color(0xfff2e3d5),
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset: true,
       stateManagement: true,

@@ -1,0 +1,232 @@
+{
+    "data": [
+        {
+            "id": "1",
+            "name": "Blue blazer",
+            "type": "jacket",
+            "colour": "dark blue",
+            "seasons": [
+                "winter",
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Light blue jeans",
+            "type": "pants",
+            "colour": "light blue",
+            "seasons": [
+                "winter",
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "3",
+            "name": "White turtle neck",
+            "type": "t-shirt",
+            "colour": "white",
+            "seasons": [
+                "winter",
+                "spring",
+                "fall"
+            ]
+        },
+        {
+            "id": "4",
+            "name": "Green skirt",
+            "type": "skirt",
+            "colour": "dark green",
+            "seasons": [
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "5",
+            "name": "Adidas gazelle blue",
+            "type": "shoes",
+            "colour": "dark blue",
+            "seasons": [
+                "winter",
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "6",
+            "name": "Anna's yellow t-shirt",
+            "type": "t-shirt",
+            "colour": "yellow",
+            "seasons": [
+                "winter",
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "7",
+            "name": "Black blazer",
+            "type": "jacket",
+            "colour": "black",
+            "seasons": [
+                "winter",
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "8",
+            "name": "Black jeans",
+            "type": "pants",
+            "colour": "black",
+            "seasons": [
+                "winter",
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "9",
+            "name": "Grey t-shirt",
+            "type": "t-shirt",
+            "colour": "grey",
+            "seasons": [
+                "winter",
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "10",
+            "name": "Stripped white shirt",
+            "type": "t-shirt",
+            "colour": "white",
+            "seasons": [
+                "winter",
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "11",
+            "name": "Beige coat",
+            "type": "coat",
+            "colour": "beige",
+            "seasons": [
+                "winter",
+                "spring",
+                "fall"
+            ]
+        },
+        {
+            "id": "12",
+            "name": "Long puffer jacket",
+            "type": "coat",
+            "colour": "dark green",
+            "seasons": [
+                "winter"
+            ]
+        },
+        {
+            "id": "13",
+            "name": "Slip on black boots",
+            "type": "shoes",
+            "colour": "black",
+            "seasons": [
+                "winter",
+                "spring",
+                "fall"
+            ]
+        },
+        {
+            "id": "14",
+            "name": "Leggings",
+            "type": "pants",
+            "colour": "black",
+            "seasons": [
+                "winter",
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "15",
+            "name": "Nike running shoess",
+            "type": "shoes",
+            "colour": "black",
+            "seasons": [
+                "winter",
+                "spring",
+                "summer",
+                "fall"
+            ]
+        },
+        {
+            "id": "16",
+            "name": "Light blue wool jumper",
+            "type": "sweatshirt",
+            "colour": "light blue",
+            "seasons": [
+                "winter",
+                "spring",
+                "fall"
+            ]
+        },
+        {
+            "id": "17",
+            "name": "Navy jumper",
+            "type": "sweatshirt",
+            "colour": "dark blue",
+            "seasons": [
+                "winter",
+                "spring",
+                "fall"
+            ]
+        },
+        {
+            "id": "18",
+            "name": "Black hoodie",
+            "type": "sweatshirt",
+            "colour": "black",
+            "seasons": [
+                "winter",
+                "spring",
+                "fall"
+            ]
+        },
+        {
+            "id": "19",
+            "name": "Black leather jacket",
+            "type": "coat",
+            "colour": "black",
+            "seasons": [
+                "winter",
+                "spring",
+                "fall"
+            ]
+        },
+        {
+            "id": "20",
+            "name": "Black skirt",
+            "type": "skirt",
+            "colour": "black",
+            "seasons": [
+                "spring",
+                "summer",
+                "fall"
+            ]
+        }
+    ]
+}

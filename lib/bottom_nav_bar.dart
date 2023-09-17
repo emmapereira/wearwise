@@ -20,22 +20,22 @@ class BottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Home',
-          backgroundColor: Color(0xff4F518C),
+          backgroundColor: Color(0xfff2e3d5),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.checkroom),
           label: 'Closet',
-          backgroundColor: Color(0xff4F518C),
+          backgroundColor: Color(0xfff2e3d5),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.query_stats),
           label: 'Tracker',
-          backgroundColor: Color(0xff4F518C),
+          backgroundColor: Color(0xfff2e3d5),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
           label: 'Profile',
-          backgroundColor: Color(0xff4F518C),
+          backgroundColor: Color(0xfff2e3d5),
         ),
       ],
     );
