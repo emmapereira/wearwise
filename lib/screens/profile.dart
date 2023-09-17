@@ -28,7 +28,7 @@ class Profile extends StatelessWidget {
               style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xff865537)),
+                  color: Color.fromARGB(255, 79, 81, 140)),
             ),
           ),
           Expanded(
